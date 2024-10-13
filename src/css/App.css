@@ -57,3 +57,14 @@
 .footer-link {
   color: var(--color-accent);
 }
+
+/* Recipe Page */
+.cooking-lab-btn {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cooking-lab-btn:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+}
