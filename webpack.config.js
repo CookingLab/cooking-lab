@@ -5,11 +5,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/', // Ensure all routes are handled by the client
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      components: path.resolve(__dirname, 'src/components/'), // Add alias for components
+      components: path.resolve(__dirname, 'src/components/'),
     },
   },
   module: {
@@ -42,5 +43,6 @@ module.exports = {
     },
     compress: true,
     port: 3000,
+    historyApiFallback: true, // Redirect 404s to /index.html
   },
 };

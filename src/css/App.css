@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #FF885B;
+  --color-secondary: #FFE5CF;
+  --color-accent: #557C56;
+  --color-dark: #33372C;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +21,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--color-dark);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +32,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--color-primary);
 }
 
 @keyframes App-logo-spin {
@@ -40,4 +47,13 @@
 .logo {
   width: 100px;
   height: 100px;
+}
+
+/* footer */
+.footer-copyright {
+  color: var(--color-primary);
+}
+
+.footer-link {
+  color: var(--color-accent);
 }

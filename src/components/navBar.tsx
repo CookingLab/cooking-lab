@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../img/cookingLabLogo2.png';
 
-
 const NavBar = () => {
   return (
     <nav className="navbar navbar-light">

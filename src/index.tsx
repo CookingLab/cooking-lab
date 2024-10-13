@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
+const container = document.getElementById('root');
+if (container) {
+  const root = ReactDOM.createRoot(container);
   root.render(
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   );
 } else {
-  console.error('Failed to find the root element');
+  console.error('Root container not found');
 }
