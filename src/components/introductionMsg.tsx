@@ -1,4 +1,8 @@
-import { COOKING_LAB_TITLE, COOKING_LAB_MOTTO, COOKING_LAB_WELCOME } from '../i18n/constants';
+import {
+  COOKING_LAB_TITLE,
+  COOKING_LAB_MOTTO,
+  COOKING_LAB_WELCOME
+} from '../i18n/constants';
 import React from 'react';
 
 const IntroductionMsg = () => {
