@@ -7,11 +7,13 @@ import Home from './Home'; // Correct import path
 import RecipePage from './components/recipePage';
 import Step1 from 'components/step1';
 import Step2 from 'components/step2';
+import IntroductionMsg from 'components/introductionMsg';
 
 function App() {
   return (
     <div>
       <NavBar />
+      <IntroductionMsg/>    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
