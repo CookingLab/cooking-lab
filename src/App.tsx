@@ -7,6 +7,7 @@ import Home from './Home'; // Correct import path
 import RecipePage from './components/recipePage';
 import Step1 from 'components/step1';
 import Step2 from 'components/step2';
+import Step3 from 'components/step3';
 import IntroductionMsg from 'components/introductionMsg';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/step1" element={<Step1 />} />
         <Route path="/step2" element={<Step2 />} />
+        <Route path="/step3" element={<Step3 />} />
       </Routes>
       <Footer />
     </div>

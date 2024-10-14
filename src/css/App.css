@@ -50,6 +50,30 @@
   height: 100px;
 }
 
+/* Step 3 */
+
+.meal-type-img{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.meal-type-btn {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.meal-type-btn.active {
+  background-color: var(--color-dark) !important;
+  border-color: var(--color-dark) !important;
+}
+
 /* footer */
 .footer-copyright {
   color: var(--color-primary);
