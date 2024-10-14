@@ -10,7 +10,15 @@ export const TML_LINKEDIN = 'https://www.linkedin.com/in/tmluong19/?originalSubd
 export const TC = 'Tien Chung';
 export const TC_LINKEDIN = 'https://www.linkedin.com/in/tchung24';
 
-//Step2 constants
+// Step1 constants
+export const STEP1_TITLE = 'Step 1: Select ingredients';
+export const STEP1_QUESTION = 'What is in your fridge?';
+export const STEP1_NO_INGREDIENT = 'No ingredients?';
+export const STEP1_CLICK_HERE = 'Click here';
+export const STEP1_RANDOM_RECIPE = 'to generate a random recipe!';
+export const STEP1_CLEAR = 'Clear';
+
+// Step2 constants
 export const STEP2_TITLE = 'Step 2: Choose the Cooking Cuisine';
 export const STEP2_DESCRIPTION = 'Select a cuisine you would like to cook.';
 export const STEP2_RANDOM = 'Choose for me!';

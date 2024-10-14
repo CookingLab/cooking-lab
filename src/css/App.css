@@ -89,3 +89,16 @@
   background-color: var(--color-dark);
   border-color: var(--color-dark);
 }
+
+/* Links */
+.cooking-lab-link {
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.cooking-lab-link:hover {
+  color: var(--color-dark);
+  text-decoration: underline;
+}

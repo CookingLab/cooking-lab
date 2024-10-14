@@ -1,3 +1,11 @@
+import {
+  STEP1_TITLE,
+  STEP1_QUESTION,
+  STEP1_NO_INGREDIENT,
+  STEP1_CLICK_HERE,
+  STEP1_RANDOM_RECIPE,
+  STEP1_CLEAR
+} from '../i18n/constants';
 import React, { useState } from 'react';
 import { formatInputValue } from '../utils/index';
 
@@ -24,13 +32,13 @@ const Step1 = () => {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col text-center">
-              <h1 className="card-title">Step 1: Select Ingredients</h1>
+              <h1 className="card-title">{STEP1_TITLE}</h1>
             </div>
           </div>
           
           <div className="row align-items-center mx-5">
             <div className="col-12 col-md-4 mb-2 mb-md-0 text-md-end text-center">
-              <h4>What is in your fridge?</h4>
+              <h4>{STEP1_QUESTION}</h4>
             </div>
             <div className="col-12 col-md-8 mb-2 mb-md-0 d-flex align-items-center text-md-end">
               <input
@@ -50,9 +58,9 @@ const Step1 = () => {
           </div>
           
           <p className="text-center">
-            No ingredients?
-            <span><a href="#"> Click here </a></span>
-            to generate a random recipe!
+            {STEP1_NO_INGREDIENT}
+            <span><a href="#" className="cooking-lab-link"> {STEP1_CLICK_HERE} </a></span>
+            {STEP1_RANDOM_RECIPE}
           </p>
 
           <ul className="list-group mx-5 text-center">
@@ -77,7 +85,7 @@ const Step1 = () => {
               className="btn btn-danger"
               onClick={() => setIngredients([])}
             >
-              Clear
+              {STEP1_CLEAR}
             </button>
           </div>}
         </div>
