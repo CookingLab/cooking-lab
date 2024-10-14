@@ -1,3 +1,9 @@
+import {
+  RECIPE_INGREDIENT,
+  RECIPE_COOK_TIME,
+  RECIPE_DIRECTION,
+  RECIPE_RANDOM
+} from '../i18n/constants';
 import React from 'react';
 import logo from '../img/cookingLabLogo2.png'; // This is a placeholder image
 
@@ -17,20 +23,20 @@ const RecipePage = () => {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <h3>Ingredients</h3>
+              <h3>{RECIPE_INGREDIENT}</h3>
               <ul className="list-group">
                 <li className="list-group-item">Ingredient 1</li>
                 <li className="list-group-item">Ingredient 2</li>
                 <li className="list-group-item">Ingredient 3</li>
               </ul>
-              <h3 className="mt-4">Cook Time</h3>
+              <h3 className="mt-4">{RECIPE_COOK_TIME}</h3>
               <p>45 minutes</p>
             </div>
           </div>
           <hr className="my-4" />
           <div className="row mt-4">
             <div className="col-12">
-              <h3>Directions</h3>
+              <h3>{RECIPE_DIRECTION}</h3>
               <ol className="list-group list-group-numbered">
                 <li className="list-group-item">Step 1</li>
                 <li className="list-group-item">Step 2</li>
@@ -48,7 +54,7 @@ const RecipePage = () => {
 
           <div className="row mt-4">
             <div className="col-12 text-center">
-              <button className="btn btn-primary cooking-lab-btn">Generate another recipe</button>
+              <button className="btn btn-primary cooking-lab-btn">{RECIPE_RANDOM}</button>
             </div>
           </div>
 

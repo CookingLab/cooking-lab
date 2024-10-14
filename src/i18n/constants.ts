@@ -10,3 +10,15 @@ export const TML_LINKEDIN = 'https://www.linkedin.com/in/tmluong19/?originalSubd
 export const TC = 'Tien Chung';
 export const TC_LINKEDIN = 'https://www.linkedin.com/in/tchung24';
 
+//Step2 constants
+export const STEP2_TITLE = 'Step 2: Choose the Cooking Cuisine';
+export const STEP2_DESCRIPTION = 'Select up to 2 cuisines you would like to cook.';
+export const STEP2_ERROR = 'You can only select up to 2 cuisines.';
+export const STEP2_RANDOM = 'Choose for me!';
+export const STEP2_CUISINES = ['Italian', 'Indian', 'Mexican', 'Japanese', 'French', 'Chinese', 'Middle Eastern', 'Thai', 'Greek', 'Brazilian', 'Spanish', 'Vietnamese', 'Korean', 'African', 'Caribbean'];
+
+// RecipePage constants
+export const RECIPE_INGREDIENT = 'Ingredients';
+export const RECIPE_COOK_TIME = 'Cook Time';
+export const RECIPE_DIRECTION = 'Directions';
+export const RECIPE_RANDOM = 'Generate another recipe';
