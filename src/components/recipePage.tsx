@@ -6,8 +6,10 @@ import {
 } from '../i18n/constants';
 import React from 'react';
 import logo from '../img/cookingLabLogo2.png'; // This is a placeholder image
+import { useNavigate } from 'react-router-dom';
 
 const RecipePage = () => {
+  const navigate = useNavigate();
   return (
     <div className="container mt-5">
       <div className="card shadow">
@@ -53,7 +55,12 @@ const RecipePage = () => {
           </div>
 
           <div className="row mt-4">
-            <div className="col-12 text-center">
+            <div className="col-12 d-flex justify-content-center align-items-center">
+              <i
+                className="bi bi-arrow-left-circle-fill me-3"
+                style={{ fontSize: '2rem', cursor: 'pointer' }}
+                onClick={() => navigate('/step4')}
+              />
               <button className="btn btn-dark cooking-lab-btn">{RECIPE_RANDOM}</button>
             </div>
           </div>
