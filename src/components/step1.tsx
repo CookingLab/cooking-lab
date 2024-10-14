@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import { formatInputValue } from '../utils/index';
+
+const Step1 = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  
+  const handleAddIngredient = () => {
+    const formattedValue = formatInputValue(inputValue.trim());
+    if (formattedValue !== '' && !ingredients.includes(formattedValue)) {
+      setIngredients([...ingredients, formattedValue]);
+      setInputValue('');
+    }
+    setInputValue('');
+  };
+  
+  const handleRemoveIngredient = (index: number) => {
+    setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="container mt-5">
+      <div className="card shadow">
+        <div className="card-body">
+          <div className="row mb-4">
+            <div className="col text-center">
+              <h1 className="card-title">Step 1: Select Ingredients</h1>
+            </div>
+          </div>
+          
+          <div className="row align-items-center mx-5">
+            <div className="col-12 col-md-4 mb-2 mb-md-0 text-md-end text-center">
+              <h4>What is in your fridge?</h4>
+            </div>
+            <div className="col-12 col-md-8 mb-2 mb-md-0 d-flex align-items-center text-md-end">
+              <input
+                type="text"
+                className="form-control me-2"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <i
+                className="bi bi-plus-square-fill"
+                style={{ fontSize: '2rem', cursor: 'pointer' }}
+                onClick={handleAddIngredient}
+              />
+            </div>
+          </div>
+          
+          <p className="text-center">
+            No ingredients?
+            <span><a href="#"> Click here </a></span>
+            to generate a random recipe!
+          </p>
+
+          <ul className="list-group mx-5 text-center">
+            {ingredients.map((ingredient, index) => (
+              <div key={index} className="d-flex align-items-center mb-2">
+                <span className="me-2"><strong>{index + 1}.</strong></span>
+                <li className="list-group-item flex-grow-1 d-flex justify-content-between align-items-center rounded">
+                  <span>{ingredient}</span>
+                </li>
+                <i
+                  className="bi bi-trash-fill"
+                  style={{ fontSize: '2rem', cursor: 'pointer' }}
+                  onClick={() => handleRemoveIngredient(index)}
+                ></i>
+              </div>
+            ))}
+          </ul>
+          
+          {ingredients.length > 0 && <div className="text-center">          
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => setIngredients([])}
+            >
+              Clear
+            </button>
+          </div>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Step1;
