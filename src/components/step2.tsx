@@ -13,13 +13,13 @@ const Step2 = () => {
     setSelectedCuisine(cuisine);
   };
     
-  const removeCuisine = (cuisine: string) => {
+  const removeCuisine = () => {
     setSelectedCuisine('');
   };
     
   const handleCuisineClick = (cuisine: string) => {
     if (selectedCuisine === cuisine) {
-      removeCuisine(cuisine);
+      removeCuisine();
     } else {
       addCuisine(cuisine);
     }
