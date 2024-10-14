@@ -5,8 +5,10 @@ import {
   STEP2_CUISINES,
 } from '../i18n/constants';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Step2 = () => {
+  const navigate = useNavigate();
   const [selectedCuisine, setSelectedCuisine] = useState<string>('');
     
   const addCuisine = (cuisine: string) => {
@@ -55,7 +57,17 @@ const Step2 = () => {
                   </button>
                 ))}
               </div>
+              <i
+                className="bi bi-arrow-left-circle-fill me-3"
+                style={{ fontSize: '2rem', cursor: 'pointer' }}
+                onClick={() => navigate('/')}
+              />
               <button className="btn btn-dark cooking-lab-btn mb-3" onClick={chooseRandomCuisine}>{STEP2_RANDOM}</button>
+              {selectedCuisine && <i
+                className="bi bi-arrow-right-circle-fill ms-3"
+                style={{ fontSize: '2rem', cursor: 'pointer' }}
+                onClick={() => navigate('/step3')}
+              />}
             </div>
           </div>
         </div>
