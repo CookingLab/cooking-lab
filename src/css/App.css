@@ -2,6 +2,7 @@
   --color-primary: #FF885B;
   --color-secondary: #FFE5CF;
   --color-accent: #557C56;
+  --color-light: #339136;
   --color-dark: #33372C;
 }
 
@@ -58,13 +59,33 @@
   color: var(--color-accent);
 }
 
-/* Recipe Page */
+/* Buttons */
 .cooking-lab-btn {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
 .cooking-lab-btn:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+}
+
+.cooking-lab-btn.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cooking-lab-btn-option {
+  background-color: var(--color-light);
+  border-color: var(--color-light);
+}
+
+.cooking-lab-btn-option:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+}
+
+.cooking-lab-btn-option.active{
   background-color: var(--color-dark);
   border-color: var(--color-dark);
 }
