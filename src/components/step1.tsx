@@ -8,8 +8,11 @@ import {
 } from '../i18n/constants';
 import React, { useState } from 'react';
 import { formatInputValue } from '../utils/index';
+import { useNavigate } from 'react-router-dom';
 
 const Step1 = () => {
+  const navigate = useNavigate();
+  
   const [inputValue, setInputValue] = useState('');
   const [ingredients, setIngredients] = useState<string[]>([]);
   
@@ -79,7 +82,7 @@ const Step1 = () => {
             ))}
           </ul>
           
-          {ingredients.length > 0 && <div className="text-center">          
+          {ingredients.length > 0 && <div className="d-flex justify-content-center align-items-center w-100">       
             <button
               type="button"
               className="btn btn-danger"
@@ -87,6 +90,11 @@ const Step1 = () => {
             >
               {STEP1_CLEAR}
             </button>
+            <i
+              className="bi bi-arrow-right-circle-fill ms-3"
+              style={{ fontSize: '2rem', cursor: 'pointer' }}
+              onClick={() => navigate('/step2')}
+            />
           </div>}
         </div>
       </div>
