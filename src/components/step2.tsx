@@ -1,41 +1,33 @@
 import {
   STEP2_TITLE,
   STEP2_DESCRIPTION,
-  STEP2_ERROR,
   STEP2_RANDOM,
   STEP2_CUISINES,
 } from '../i18n/constants';
 import React, { useState } from 'react';
 
 const Step2 = () => {
-  const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string>('');
-
-
+  const [selectedCuisine, setSelectedCuisine] = useState<string>('');
+    
   const addCuisine = (cuisine: string) => {
-    setSelectedCuisines([...selectedCuisines, cuisine]);
-    setErrorMessage('');
+    setSelectedCuisine(cuisine);
   };
-  
+    
   const removeCuisine = (cuisine: string) => {
-    setSelectedCuisines(selectedCuisines.filter(c => c !== cuisine));
-    setErrorMessage('');
+    setSelectedCuisine('');
   };
-
+    
   const handleCuisineClick = (cuisine: string) => {
-    if (selectedCuisines.includes(cuisine)) {
+    if (selectedCuisine === cuisine) {
       removeCuisine(cuisine);
-    } else if (selectedCuisines.length < 2) {
-      addCuisine(cuisine);
     } else {
-      setErrorMessage(STEP2_ERROR);
+      addCuisine(cuisine);
     }
   };
-
-  const chooseRandomCuisines = () => {
+    
+  const chooseRandomCuisine = () => {
     const shuffled = [...STEP2_CUISINES].sort(() => 0.5 - Math.random());
-    setSelectedCuisines(shuffled.slice(0, 2));
-    setErrorMessage('');
+    setSelectedCuisine(shuffled[0]);
   };
 
   return (
@@ -52,19 +44,18 @@ const Step2 = () => {
               <p className="lead mb-4">
                 {STEP2_DESCRIPTION}
               </p>
-              {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
               <div className="mb-4">
                 {STEP2_CUISINES.map(cuisine => (
                   <button
                     key={cuisine}
-                    className={`btn btn-dark cooking-lab-btn-option m-2 ${selectedCuisines.includes(cuisine) ? 'active' : ''}`}
+                    className={`btn btn-dark cooking-lab-btn-option m-2 ${selectedCuisine.includes(cuisine) ? 'active' : ''}`}
                     onClick={() => handleCuisineClick(cuisine)}
                   >
                     {cuisine}
                   </button>
                 ))}
               </div>
-              <button className="btn btn-dark cooking-lab-btn mb-3" onClick={chooseRandomCuisines}>{STEP2_RANDOM}</button>
+              <button className="btn btn-dark cooking-lab-btn mb-3" onClick={chooseRandomCuisine}>{STEP2_RANDOM}</button>
             </div>
           </div>
         </div>
