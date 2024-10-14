@@ -54,7 +54,7 @@ const RecipePage = () => {
 
           <div className="row mt-4">
             <div className="col-12 text-center">
-              <button className="btn btn-primary cooking-lab-btn">{RECIPE_RANDOM}</button>
+              <button className="btn btn-dark cooking-lab-btn">{RECIPE_RANDOM}</button>
             </div>
           </div>
 
