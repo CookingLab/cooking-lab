@@ -7,8 +7,11 @@ import {
   STEP3_SNACK,
   STEP3_TEATIME
 } from '../i18n/constants';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store';
+import { setMealType, clearMealType } from '../redux/mealTypeSlice';
 import breakfast from '../img/breakfast.png';
 import brunch from '../img/brunch.png';
 import dinner from '../img/dinner.png';
@@ -18,14 +21,19 @@ import teatime from '../img/teatime.png';
 
 const Step3 = () => {
   const navigate = useNavigate();
-  const [activeButton, setActiveButton] = useState('');
+  const dispatch = useDispatch();
+  const selectedType = useSelector((state: RootState) => state.mealType.selectedType);
 
   const handleButtonClick = (mealType: string) => {
-    setActiveButton(mealType);
+    if (selectedType === mealType) {
+      dispatch(clearMealType());
+    } else {
+      dispatch(setMealType(mealType));
+    }
   };
 
   const getImage = (): string => {
-    switch (activeButton) {
+    switch (selectedType) {
     case 'breakfast':
       return breakfast;
     case 'brunch':
@@ -56,31 +64,31 @@ const Step3 = () => {
             <div className="col-md-6 d-flex justify-content-center align-items-center">
               <div className="btn-group-vertical meal-type-btn-group">
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'breakfast' ? 'active' : ''}`}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'breakfast' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('breakfast')}
                 >
                   {STEP3_BREAKFAST}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'brunch' ? 'active' : ''}`}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'brunch' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('brunch')}
                 >
                   {STEP3_BRUNCH}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'lunch/dinner' ? 'active' : ''}`}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'lunch/dinner' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('lunch/dinner')}
                 >
                   {STEP3_LUNCH}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'snack' ? 'active' : ''}`}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'snack' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('snack')}
                 >
                   {STEP3_SNACK}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'teatime' ? 'active' : ''}`}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'teatime' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('teatime')}
                 >
                   {STEP3_TEATIME}
@@ -88,7 +96,7 @@ const Step3 = () => {
               </div>
             </div>
             <div className="col-md-4 text-center">
-              <img src={getImage()} alt={activeButton || 'kitchen'} className="mt-3 img-fluid shadow meal-type-img" />
+              <img src={getImage()} alt={selectedType || 'kitchen'} className="mt-3 img-fluid shadow meal-type-img" />
             </div>
           </div>
         </div>
@@ -98,7 +106,7 @@ const Step3 = () => {
             style={{ fontSize: '2rem', cursor: 'pointer' }}
             onClick={() => navigate('/step2')}
           />
-          {activeButton &&
+          {selectedType &&
             <i
               className="bi bi-arrow-right-circle-fill me-3 ms-3"
               style={{ fontSize: '2rem', cursor: 'pointer' }}

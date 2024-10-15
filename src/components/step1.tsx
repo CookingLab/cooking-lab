@@ -35,7 +35,7 @@ const Step1 = () => {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col text-center">
-              <h1 className="card-title">{STEP1_TITLE}</h1>
+              <h2 className="card-title">{STEP1_TITLE}</h2>
             </div>
           </div>
           

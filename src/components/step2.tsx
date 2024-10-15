@@ -4,19 +4,23 @@ import {
   STEP2_RANDOM,
   STEP2_CUISINES,
 } from '../i18n/constants';
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../redux/store';
+import { setCuisine, clearCuisine } from '../redux/cuisineSlice';
 
 const Step2 = () => {
   const navigate = useNavigate();
-  const [selectedCuisine, setSelectedCuisine] = useState<string>('');
+  const dispatch = useDispatch();
+  const selectedCuisine = useSelector((state: RootState) => state.cuisine.selectedCuisine);
     
   const addCuisine = (cuisine: string) => {
-    setSelectedCuisine(cuisine);
+    dispatch(setCuisine(cuisine));
   };
     
   const removeCuisine = () => {
-    setSelectedCuisine('');
+    dispatch(clearCuisine());
   };
     
   const handleCuisineClick = (cuisine: string) => {
@@ -29,7 +33,7 @@ const Step2 = () => {
     
   const chooseRandomCuisine = () => {
     const shuffled = [...STEP2_CUISINES].sort(() => 0.5 - Math.random());
-    setSelectedCuisine(shuffled[0]);
+    dispatch(setCuisine(shuffled[0]));
   };
 
   return (
