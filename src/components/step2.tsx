@@ -50,7 +50,7 @@ const Step2 = () => {
                 {STEP2_CUISINES.map(cuisine => (
                   <button
                     key={cuisine}
-                    className={`btn btn-dark cooking-lab-btn-option m-2 ${selectedCuisine.includes(cuisine) ? 'active' : ''}`}
+                    className={`btn btn-dark cooking-lab-btn-option m-2 ${selectedCuisine === cuisine ? 'active' : ''}`}
                     onClick={() => handleCuisineClick(cuisine)}
                   >
                     {cuisine}
