@@ -3,7 +3,7 @@ import cookingLabSlice from './cookingLabSlice';
 
 const store = configureStore({
   reducer: {
-    cookingLabReducer: cookingLabSlice,
+    cookingLab: cookingLabSlice,
   },
 });
 

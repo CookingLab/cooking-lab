@@ -22,7 +22,7 @@ import teatime from '../img/teatime.png';
 const Step3 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedType = useSelector((state: RootState) => state.cookingLabReducer.selectedMealType);
+  const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
 
   const handleButtonClick = (mealType: string) => {
     if (selectedType === mealType) {

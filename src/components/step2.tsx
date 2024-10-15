@@ -13,7 +13,7 @@ import { setCuisine, clearCuisine } from '../redux/cookingLabSlice';
 const Step2 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedCuisine = useSelector((state: RootState) => state.cookingLabReducer.selectedCuisine);
+  const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
     
   const addCuisine = (cuisine: string) => {
     dispatch(setCuisine(cuisine));

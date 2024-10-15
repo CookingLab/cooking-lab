@@ -10,9 +10,8 @@ const initialState: CookingLabStates = {
   selectedMealType: '',
 };
 
-// Create the combined slice
-const combinedSlice = createSlice({
-  name: 'combined',
+const cookingLabStates = createSlice({
+  name: 'CookingLab',
   initialState,
   reducers: {
     setCuisine: (state, action: PayloadAction<string>) => {
@@ -30,6 +29,5 @@ const combinedSlice = createSlice({
   },
 });
 
-// Export the action creators and the reducer
-export const { setCuisine, clearCuisine, setMealType, clearMealType } = combinedSlice.actions;
-export default combinedSlice.reducer;
+export const { setCuisine, clearCuisine, setMealType, clearMealType } = cookingLabStates.actions;
+export default cookingLabStates.reducer;
