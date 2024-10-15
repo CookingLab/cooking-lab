@@ -8,12 +8,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../redux/store';
-import { setCuisine, clearCuisine } from '../redux/cuisineSlice';
+import { setCuisine, clearCuisine } from '../redux/cookingLabSlice';
 
 const Step2 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedCuisine = useSelector((state: RootState) => state.cuisine.selectedCuisine);
+  const selectedCuisine = useSelector((state: RootState) => state.cookingLabReducer.selectedCuisine);
     
   const addCuisine = (cuisine: string) => {
     dispatch(setCuisine(cuisine));

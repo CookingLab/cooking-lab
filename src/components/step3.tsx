@@ -11,7 +11,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { setMealType, clearMealType } from '../redux/mealTypeSlice';
+import { setMealType, clearMealType } from '../redux/cookingLabSlice';
 import breakfast from '../img/breakfast.png';
 import brunch from '../img/brunch.png';
 import dinner from '../img/dinner.png';
@@ -22,7 +22,7 @@ import teatime from '../img/teatime.png';
 const Step3 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedType = useSelector((state: RootState) => state.mealType.selectedType);
+  const selectedType = useSelector((state: RootState) => state.cookingLabReducer.selectedMealType);
 
   const handleButtonClick = (mealType: string) => {
     if (selectedType === mealType) {
