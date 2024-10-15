@@ -22,16 +22,16 @@ export const STEP1_CLEAR = 'Clear';
 export const STEP2_TITLE = 'Step 2: Choose the Cooking Cuisine';
 export const STEP2_DESCRIPTION = 'Select a cuisine you would like to cook.';
 export const STEP2_RANDOM = 'Choose for me!';
-export const STEP2_CUISINES = ['Italian', 'Indian', 'Mexican', 'Japanese', 'French', 'Chinese', 'Middle Eastern', 'Thai', 'Greek', 'Brazilian', 'Spanish', 'Vietnamese', 'Korean', 'African', 'Caribbean'];
+export const STEP2_CUISINES = ['american','asian','british','caribbean','central europe','chinese','eastern europe','french', 'greek', 'indian', 'italian', 'japanese', 'korean', 'kosher', 'mediterranean', 'mexican', 'middle eastern', 'nordic', 'south american', 'south east asian', 'world'];
 
 // Step3 constants
 export const STEP3_TITLE = 'Step 3: Select a meal to make';
 export const STEP3_DESCRIPTION = 'What meal are you trying to make?';
 export const STEP3_BREAKFAST = 'Breakfast';
-export const STEP3_LUNCH = 'Lunch';
-export const STEP3_DINNER = 'Dinner';
-export const STEP3_DESSERT = 'Dessert';
+export const STEP3_BRUNCH = 'Brunch';
+export const STEP3_LUNCH = 'Lunch/Dinner';
 export const STEP3_SNACK = 'Snack';
+export const STEP3_TEATIME = 'Teatime';
 
 // RecipePage constants
 export const RECIPE_INGREDIENT = 'Ingredients';

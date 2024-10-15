@@ -2,19 +2,19 @@ import {
   STEP3_TITLE,
   STEP3_DESCRIPTION,
   STEP3_BREAKFAST,
+  STEP3_BRUNCH,
   STEP3_LUNCH,
-  STEP3_DINNER,
-  STEP3_DESSERT,
-  STEP3_SNACK
+  STEP3_SNACK,
+  STEP3_TEATIME
 } from '../i18n/constants';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import breakfast from '../img/breakfast.png';
-import lunch from '../img/lunch.png';
+import brunch from '../img/brunch.png';
 import dinner from '../img/dinner.png';
-import dessert from '../img/dessert.png';
 import snack from '../img/snack.png';
 import kitchen from '../img/kitchen.png';
+import teatime from '../img/teatime.png';
 
 const Step3 = () => {
   const navigate = useNavigate();
@@ -28,14 +28,14 @@ const Step3 = () => {
     switch (activeButton) {
     case 'breakfast':
       return breakfast;
-    case 'lunch':
-      return lunch;
-    case 'dinner':
+    case 'brunch':
+      return brunch;
+    case 'lunch/dinner':
       return dinner;
-    case 'dessert':
-      return dessert;
     case 'snack':
       return snack;
+    case 'teatime':
+      return teatime;
     default:
       return kitchen;
     }
@@ -62,28 +62,28 @@ const Step3 = () => {
                   {STEP3_BREAKFAST}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'lunch' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('lunch')}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'brunch' ? 'active' : ''}`}
+                  onClick={() => handleButtonClick('brunch')}
+                >
+                  {STEP3_BRUNCH}
+                </button>
+                <button
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'lunch/dinner' ? 'active' : ''}`}
+                  onClick={() => handleButtonClick('lunch/dinner')}
                 >
                   {STEP3_LUNCH}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'dinner' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('dinner')}
-                >
-                  {STEP3_DINNER}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'dessert' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('dessert')}
-                >
-                  {STEP3_DESSERT}
                 </button>
                 <button
                   className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'snack' ? 'active' : ''}`}
                   onClick={() => handleButtonClick('snack')}
                 >
                   {STEP3_SNACK}
+                </button>
+                <button
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${activeButton === 'teatime' ? 'active' : ''}`}
+                  onClick={() => handleButtonClick('teatime')}
+                >
+                  {STEP3_TEATIME}
                 </button>
               </div>
             </div>
