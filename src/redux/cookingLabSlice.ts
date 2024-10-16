@@ -10,7 +10,7 @@ const initialState: CookingLabStates = {
   selectedMealType: '',
 };
 
-const cookingLabStates = createSlice({
+const cookingLabSlice = createSlice({
   name: 'CookingLab',
   initialState,
   reducers: {
@@ -29,5 +29,5 @@ const cookingLabStates = createSlice({
   },
 });
 
-export const { setCuisine, clearCuisine, setMealType, clearMealType } = cookingLabStates.actions;
-export default cookingLabStates.reducer;
+export const { setCuisine, clearCuisine, setMealType, clearMealType } = cookingLabSlice.actions;
+export default cookingLabSlice.reducer;
