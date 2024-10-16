@@ -17,6 +17,10 @@ To generate a recipe, the user must follow a series of steps.
 
 - **Step1**: Selecting a cuisine.
 - **Step2**: Selecting a meal type.
+- **Step3**: Selecting one or multiple diets.
+- **Step4**: Selecting one or multiple food restrictions.
+- **SummaryPage**: Summary of the user's input.
+- **RecipePage**: Recipe informations and an URL to the recipe.
 
 ## 🚀 Installation Guide
 
