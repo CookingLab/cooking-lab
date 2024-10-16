@@ -11,7 +11,7 @@ import { RootState } from '../redux/store';
 import { setCuisine, clearCuisine } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
 
-const Step2 = () => {
+const Step1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
@@ -77,4 +77,4 @@ const Step2 = () => {
   );
 }
 
-export default Step2;
+export default Step1;

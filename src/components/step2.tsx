@@ -20,7 +20,7 @@ import snack from '../img/snack.png';
 import kitchen from '../img/kitchen.png';
 import teatime from '../img/teatime.png';
 
-const Step3 = () => {
+const Step2 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
@@ -120,4 +120,4 @@ const Step3 = () => {
   );
 };
 
-export default Step3;
+export default Step2;
