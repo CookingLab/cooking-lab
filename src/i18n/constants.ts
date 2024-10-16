@@ -27,6 +27,20 @@ export const STEP2_LUNCH = 'Lunch/Dinner';
 export const STEP2_SNACK = 'Snack';
 export const STEP2_TEATIME = 'Teatime';
 
+// SummaryPage constants
+export const SUMMARY_TITLE = 'Summary';
+export const SUMMARY_DESCRIPTION = 'You can still edit the information below.';
+export const SUMMARY_STEP1 = 'Step 1';
+export const SUMMARY_STEP2 = 'Step 2';
+export const SUMMARY_STEP3 = 'Step 3';
+export const SUMMARY_STEP4 = 'Step 4';
+export const SUMMARY_GET_RECIPE = 'Get Recipe';
+export const SUMMARY_STEP1_LABEL = 'Selected cuisine: ';
+export const SUMMARY_STEP2_LABEL = 'Selected meal type: ';
+export const SUMMARY_STEP3_LABEL = 'Selected diets: ';
+export const SUMMARY_STEP4_LABEL = 'Selected food restrictions: ';
+export const SUMMARY_EDIT = 'Edit';
+
 // RecipePage constants
 export const RECIPE_INGREDIENT = 'Ingredients';
 export const RECIPE_LINK = 'Recipe here:';
