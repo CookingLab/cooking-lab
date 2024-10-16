@@ -34,8 +34,6 @@ Follow these steps to set up and run the Cooking Lab app on your local machine:
 
 3. Start the application :
     ```sh
-    npm run dev
+    npm start
     ```
-4. Open the app locally in http://localhost:3000/
-
-
+4. Access the application locally at http://localhost:3000/
