@@ -66,14 +66,14 @@ const SummaryPage = () => {
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step4')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
-              <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/recipe')}>{SUMMARY_GET_RECIPE}</button>
+              <button className="btn btn-dark cooking-lab-btn mb-2 mt-5"  onClick={() => navigate('/recipe')}>{SUMMARY_GET_RECIPE}</button>
             </div>
           </div>
         </div>
         <i
           className="bi bi-arrow-left-circle-fill me-3 ms-3"
           style={{ fontSize: '2rem', cursor: 'pointer' }}
-          onClick={() => navigate('/step3')}
+          onClick={() => navigate('/step4')}
         />
       </div>
     </div>
