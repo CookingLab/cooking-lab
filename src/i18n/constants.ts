@@ -29,6 +29,4 @@ export const STEP2_TEATIME = 'Teatime';
 
 // RecipePage constants
 export const RECIPE_INGREDIENT = 'Ingredients';
-export const RECIPE_COOK_TIME = 'Cook Time';
-export const RECIPE_DIRECTION = 'Directions';
-export const RECIPE_RANDOM = 'Generate another recipe';
+export const RECIPE_LINK = 'Recipe here:';
