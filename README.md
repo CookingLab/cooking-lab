@@ -1,20 +1,19 @@
 # 🍳 Cooking Lab
 
-Welcome to **Cooking Lab**! This app helps you generate random recipes based on the ingredients you have, the type of cuisine you prefer, the meal type you want to prepare, and more. It's a fun and easy way to discover new dishes and experiment with flavors.
+Welcome to **Cooking Lab**! This app helps you generate recipes based on your preferences. It's a fun and easy way to discover new dishes and experiment with flavors.
 
 ## 🛠 Technologies Used
 
 - **TypeScript**
 - **React**
 - **Bootstrap**
+- **CSS**
+- **NodeJs**
 
 ## ✨ Features
 
-- **Ingredient Selection**: Input the ingredients you have in your fridge.
-- **Cuisine Selection**: Choose from a variety of cuisines.
-- **Meal Type Selection**: Select the type of meal you want to prepare (breakfast, lunch, dinner, etc.).
-- **Other Preferences**: Select spice level, skill level, and time available.
-- **Random Recipe Generation**: Get a random recipe based on your selections.
+- **FEAT1**: ...
+- **FEAT2**: ...
 
 ## 🚀 Installation Guide
 
