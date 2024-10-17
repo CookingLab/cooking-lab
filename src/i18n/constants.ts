@@ -23,7 +23,8 @@ export const STEP2_TITLE = 'Step 2: Select a meal to make';
 export const STEP2_DESCRIPTION = 'What meal are you trying to make?';
 export const STEP2_BREAKFAST = 'Breakfast';
 export const STEP2_BRUNCH = 'Brunch';
-export const STEP2_LUNCH = 'Lunch/Dinner';
+export const STEP2_LUNCH = 'Lunch';
+export const STEP2_DINNER = 'Dinner';
 export const STEP2_SNACK = 'Snack';
 export const STEP2_TEATIME = 'Teatime';
 

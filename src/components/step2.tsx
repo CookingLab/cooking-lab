@@ -4,6 +4,7 @@ import {
   STEP2_BREAKFAST,
   STEP2_BRUNCH,
   STEP2_LUNCH,
+  STEP2_DINNER,
   STEP2_SNACK,
   STEP2_TEATIME
 } from '../i18n/constants';
@@ -15,6 +16,7 @@ import { setMealType, clearMealType } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
 import breakfast from '../img/breakfast.png';
 import brunch from '../img/brunch.png';
+import lunch from '../img/lunch.png';
 import dinner from '../img/dinner.png';
 import snack from '../img/snack.png';
 import kitchen from '../img/kitchen.png';
@@ -49,7 +51,9 @@ const Step2 = () => {
       return breakfast;
     case 'brunch':
       return brunch;
-    case 'lunch/dinner':
+    case 'lunch':
+      return lunch;
+    case 'dinner':
       return dinner;
     case 'snack':
       return snack;
@@ -88,10 +92,16 @@ const Step2 = () => {
                   {STEP2_BRUNCH}
                 </button>
                 <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'lunch/dinner' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('lunch/dinner')}
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'lunch' ? 'active' : ''}`}
+                  onClick={() => handleButtonClick('lunch')}
                 >
                   {STEP2_LUNCH}
+                </button>
+                <button
+                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'dinner' ? 'active' : ''}`}
+                  onClick={() => handleButtonClick('dinner')}
+                >
+                  {STEP2_DINNER}
                 </button>
                 <button
                   className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'snack' ? 'active' : ''}`}
