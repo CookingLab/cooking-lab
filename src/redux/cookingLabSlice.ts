@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CookingLabStates {
+  isEditing: boolean;
   selectedCuisine: string;
   selectedMealType: string;
   selectedDiet: string[];
@@ -8,6 +9,7 @@ interface CookingLabStates {
 }
 
 const initialState: CookingLabStates = {
+  isEditing: false,
   selectedCuisine: '',
   selectedMealType: '',
   selectedDiet: [],
@@ -18,6 +20,9 @@ const cookingLabSlice = createSlice({
   name: 'CookingLab',
   initialState,
   reducers: {
+    setEditing: (state, action: PayloadAction<boolean>) => {
+      state.isEditing = action.payload;
+    },
     setCuisine: (state, action: PayloadAction<string>) => {
       state.selectedCuisine = action.payload;
     },
@@ -33,5 +38,5 @@ const cookingLabSlice = createSlice({
   },
 });
 
-export const { setCuisine, clearCuisine, setMealType, clearMealType } = cookingLabSlice.actions;
+export const { setEditing, setCuisine, clearCuisine, setMealType, clearMealType } = cookingLabSlice.actions;
 export default cookingLabSlice.reducer;

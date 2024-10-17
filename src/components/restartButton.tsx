@@ -2,7 +2,7 @@ import {
   RESTART
 } from '../i18n/constants';
 import React from 'react';
-import { clearCuisine, clearMealType } from '../redux/cookingLabSlice';
+import { setEditing, clearCuisine, clearMealType } from '../redux/cookingLabSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ const RestartButton = () => {
   const navigate = useNavigate();
 
   const restartSteps = () => {
+    dispatch(setEditing(false));
     dispatch(clearCuisine());
     dispatch(clearMealType());
     navigate('/');

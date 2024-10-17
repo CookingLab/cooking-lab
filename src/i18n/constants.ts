@@ -19,7 +19,7 @@ export const STEP1_RANDOM = 'Choose for me!';
 export const STEP1_CUISINES = ['american','asian','british','caribbean','central europe','chinese','eastern europe','french', 'greek', 'indian', 'italian', 'japanese', 'korean', 'kosher', 'mediterranean', 'mexican', 'middle eastern', 'nordic', 'south american', 'south east asian', 'world'];
 
 // Step2 constants
-export const STEP2_TITLE = 'Step 3: Select a meal to make';
+export const STEP2_TITLE = 'Step 2: Select a meal to make';
 export const STEP2_DESCRIPTION = 'What meal are you trying to make?';
 export const STEP2_BREAKFAST = 'Breakfast';
 export const STEP2_BRUNCH = 'Brunch';

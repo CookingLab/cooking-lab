@@ -15,6 +15,7 @@ const Step1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
+  const isEditingState = useSelector((state: RootState) => state.cookingLab.isEditing);
     
   const addCuisine = (cuisine: string) => {
     dispatch(setCuisine(cuisine));
@@ -31,6 +32,15 @@ const Step1 = () => {
       addCuisine(cuisine);
     }
   };
+
+  function handleNextButton() {
+    if(isEditingState){
+      navigate('/summary');
+    }
+    else{
+      navigate('/step2');
+    }
+  }
     
   const chooseRandomCuisine = () => {
     const shuffled = [...STEP1_CUISINES].sort(() => 0.5 - Math.random());
@@ -67,7 +77,7 @@ const Step1 = () => {
               {selectedCuisine && <i
                 className="bi bi-arrow-right-circle-fill ms-3"
                 style={{ fontSize: '2rem', cursor: 'pointer' }}
-                onClick={() => navigate('/step2')}
+                onClick={handleNextButton}
               />}
             </div>
           </div>
