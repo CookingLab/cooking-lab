@@ -24,6 +24,7 @@ const Step2 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+  const isEditingState = useSelector((state: RootState) => state.cookingLab.isEditing);
 
   const handleButtonClick = (mealType: string) => {
     if (selectedType === mealType) {
@@ -32,6 +33,15 @@ const Step2 = () => {
       dispatch(setMealType(mealType));
     }
   };
+
+  function handleNextButton() {
+    if(isEditingState){
+      navigate('/summary');
+    }
+    else{
+      navigate('/step3');
+    }
+  }
 
   const getImage = (): string => {
     switch (selectedType) {
@@ -103,16 +113,16 @@ const Step2 = () => {
           </div>
         </div>
         <div className="d-flex justify-content-between">
-          <i
+          {!isEditingState && <i
             className="bi bi-arrow-left-circle-fill me-3 ms-3"
             style={{ fontSize: '2rem', cursor: 'pointer' }}
             onClick={() => navigate('/step1')}
-          />
+          />}
           {selectedType &&
             <i
-              className="bi bi-arrow-right-circle-fill me-3 ms-3"
+              className={`bi bi-arrow-right-circle-fill me-3 ${!isEditingState ? 'ms-3' : 'ms-auto'}`}
               style={{ fontSize: '2rem', cursor: 'pointer' }}
-              onClick={() => navigate('/step3')}
+              onClick={handleNextButton}
             />}
         </div>
       </div>

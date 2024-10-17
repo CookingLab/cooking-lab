@@ -17,11 +17,19 @@ import { useNavigate } from 'react-router-dom';
 import RestartButton from './restartButton';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
+import { setEditing } from '../redux/cookingLabSlice';
+import { useDispatch } from 'react-redux';
 
 const SummaryPage = () => {
   const navigate = useNavigate();
   const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
+  const dispatch = useDispatch();
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+
+  function handleBackButton() {
+    dispatch(setEditing(false));
+    navigate('/step4');
+  }
 
   return (
     <div className="container mt-5">
@@ -73,7 +81,7 @@ const SummaryPage = () => {
         <i
           className="bi bi-arrow-left-circle-fill me-3 ms-3"
           style={{ fontSize: '2rem', cursor: 'pointer' }}
-          onClick={() => navigate('/step4')}
+          onClick={handleBackButton}
         />
       </div>
     </div>
