@@ -50,7 +50,6 @@ const GetRecipe = () => {
         url={recipe.url}
       />
     </div>
-    // </>
   );
 };
 
