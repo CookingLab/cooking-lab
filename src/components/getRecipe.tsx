@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RecipeProps } from '../src/interfaces/recipeInterface';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
-import RecipePage from 'components/recipePage';
+import RecipePage from './recipePage';
+import { RecipeProps } from '../interfaces/recipeInterface';
 
-const ApiApp = () => {
+const GetRecipe = () => {
   const [recipe, setRecipe] = useState<RecipeProps>({ label: '', image: '', ingredients: [], url: '' });
   
   const cuisineType = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
@@ -54,4 +54,4 @@ const ApiApp = () => {
   );
 };
 
-export default ApiApp;
+export default GetRecipe;

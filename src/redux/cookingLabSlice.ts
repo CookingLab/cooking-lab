@@ -3,11 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface CookingLabStates {
   selectedCuisine: string;
   selectedMealType: string;
+  selectedDiet: string[];
+  selectedHealth: string[];
 }
 
 const initialState: CookingLabStates = {
   selectedCuisine: '',
   selectedMealType: '',
+  selectedDiet: [],
+  selectedHealth: [],
 };
 
 const cookingLabSlice = createSlice({

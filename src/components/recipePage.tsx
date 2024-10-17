@@ -4,10 +4,10 @@ import {
 } from '../i18n/constants';
 import React from 'react';
 import RestartButton from './restartButton';
-import logo from '../img/cookingLabLogo2.png'; // This is a placeholder image
 import { useNavigate } from 'react-router-dom';
+import { RecipeProps } from '../interfaces/recipeInterface';
 
-const RecipePage = () => {
+const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
   return (
     <div className="container mt-5">
@@ -16,23 +16,16 @@ const RecipePage = () => {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col-md-8">
-              <h1 className="card-title">Place holder Title</h1>
+              <h1 className="card-title">{label}</h1>
               <h3>{RECIPE_INGREDIENT}</h3>
               <ul className="list-group">
-                <li className="list-group-item">Ingredient 1 (Quantity)</li>
-                <li className="list-group-item">Ingredient 2 (Quantity)</li>
-                <li className="list-group-item">Ingredient 3 (Quantity)</li>
-                <li className="list-group-item">Ingredient 4 (Quantity)</li>
-                <li className="list-group-item">Ingredient 5 (Quantity)</li>
-                <li className="list-group-item">Ingredient 6 (Quantity)</li>
-                <li className="list-group-item">Ingredient 7 (Quantity)</li>
-                <li className="list-group-item">Ingredient 8 (Quantity)</li>
-                <li className="list-group-item">Ingredient 9 (Quantity)</li>
-                <li className="list-group-item">Ingredient 10 (Quantity)</li>
+                {ingredients?.map(ingredient => (
+                  <li className="list-group-item" key={ingredient.text}>{ingredient.text}</li>
+                ))}
               </ul>
             </div>
             <div className="col-md-4 text-center">
-              <img src={logo} alt="Cooking Lab Logo" className="img-fluid shadow" />
+              <img src={image} alt={label} className="img-fluid shadow" />
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -44,7 +37,7 @@ const RecipePage = () => {
             <div className="row">
               <div className="col">
                 <h3 className="mt-4">{RECIPE_LINK}</h3>
-                <a className="cooking-lab-link" href="http://google.com" target="_blank" rel="noreferrer">Link</a>
+                <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
               </div>
             </div>
           </div>

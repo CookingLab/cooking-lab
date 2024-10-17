@@ -1,4 +1,4 @@
-import { RecipeProps } from './interfaces/recipeInterface';
+import { RecipeProps } from '../src/interfaces/recipeInterface';
 import React from 'react';
 
 const Recipe = ({label, image, ingredients}: RecipeProps) => {
