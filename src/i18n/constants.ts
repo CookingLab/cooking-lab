@@ -5,6 +5,7 @@ export const COOKING_LAB_WELCOME = 'Welcome to CookingLab! Discover a recipe and
 export const COOKING_LAB_OBJECTIVE = 'Our objective is to help you find a recipe that suits your taste and dietary needs.';
 export const HOME_GET_STARTED_BTN = 'Get started!';
 export const RESTART = 'Restart';
+export const CLEAR = 'Clear';
 
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';

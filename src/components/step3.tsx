@@ -3,13 +3,14 @@ import {
   STEP3_DESCRIPTION,
   STEP3_SELECT_LABEL,
   STEP3_DROPDOWN,
-  STEP3_DIETS
+  STEP3_DIETS,
+  CLEAR
 } from '../i18n/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { clearDiet, setDiet } from '../redux/cookingLabSlice';
+import { clearDiet, setDiet, clearDiets } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
 
 const Step3 = () => {
@@ -36,6 +37,10 @@ const Step3 = () => {
   const handleRemoveDiet = (index: number) => {
     dispatch(clearDiet(selectedDiets[index]));
   };
+
+  function handleClearBtn(){
+    dispatch(clearDiets());
+  }
 
   return (
     <div className="container mt-5">
@@ -81,6 +86,15 @@ const Step3 = () => {
                 ></i>
               </div>
             ))}
+            {selectedDiets.length > 0 && <div className="d-flex justify-content-center align-items-center w-100">       
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleClearBtn}
+              >
+                {CLEAR}
+              </button>
+            </div>}
           </ul>
           <div className="d-flex justify-content-between">
             {!isEditingState && <i

@@ -49,28 +49,28 @@ const SummaryPage = () => {
               <p className="lead mb-4">
                 {SUMMARY_DESCRIPTION}
               </p>
-              <div className="card shadow">
+              <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP1}</h3>
                   <p><b>{SUMMARY_STEP1_LABEL}</b>{selectedCuisine}</p>
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step1')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
-              <div className="card shadow">
+              <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP2}</h3>
                   <p><b>{SUMMARY_STEP2_LABEL}</b>{selectedType}</p>
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step2')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
-              <div className="card shadow">
+              <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP3}</h3>
                   <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString ? selectedDietsString : SUMMARY_NONE}</p>
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
-              <div className="card shadow">
+              <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP4}</h3>
                   <p><b>{SUMMARY_STEP4_LABEL}</b></p>
