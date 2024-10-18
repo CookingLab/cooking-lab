@@ -141,3 +141,15 @@
 .cooking-lab-dropdown-item {
   cursor: pointer;
 }
+
+.cooking-lab-dropdown-item:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.cooking-lab-dropdown-item:active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}

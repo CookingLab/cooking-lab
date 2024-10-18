@@ -1,3 +1,10 @@
+import {
+  STEP3_TITLE,
+  STEP3_DESCRIPTION,
+  STEP3_SELECT_LABEL,
+  STEP3_DROPDOWN,
+  STEP3_DIETS
+} from '../i18n/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import React from 'react';
@@ -37,28 +44,25 @@ const Step3 = () => {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col text-center">
-              <h2 className="card-title">Step 3: Select Diet(s)</h2>
-              <p>Do you have any diet?</p>
+              <h2 className="card-title">{STEP3_TITLE}</h2>
+              <p>{STEP3_DESCRIPTION}</p>
             </div>
           </div>
-          
-          <div className="row align-items-center mx-5">
-            <div className="col-12 col-md-4 mb-2 mb-md-0 text-md-end text-center">
-              <h4>Choose one or many diets</h4>
-            </div>
-            <div className="col-12 col-md-8 mb-2 mb-md-0 d-flex align-items-center text-md-end">
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Diets
-                </button>
-                <ul className="dropdown-menu">
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('balanced')}>balanced</p></li>
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('high-fiber')}>high-fiber</p></li>
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('high-protein')}>high-protein</p></li>
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('low-carb')}>low-carb</p></li>
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('low-fat')}>low-fat</p></li>
-                  <li><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet('low-sodium')}>low-sodium</p></li>
-                </ul>
+          <div className="d-flex justify-content-center">
+            <div className="row mb-4">
+              <div className="text-center">
+                <h4>{STEP3_SELECT_LABEL}</h4>
+              </div>
+              <div className="text-center">
+                <div className="dropdown">
+                  <button className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {STEP3_DROPDOWN}
+                  </button>
+                  <ul className="dropdown-menu">
+                    {STEP3_DIETS.map((diet, index) => (
+                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet(diet)}>{diet}</p></li>))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -78,15 +82,14 @@ const Step3 = () => {
               </div>
             ))}
           </ul>
-          
-          <div>
+          <div className="d-flex justify-content-between">
             {!isEditingState && <i
               className="bi bi-arrow-left-circle-fill me-3 ms-3"
               style={{ fontSize: '2rem', cursor: 'pointer' }}
               onClick={() => navigate('/step2')}
             />}
             <i
-              className="bi bi-arrow-right-circle-fill me-3 ms-3"
+              className={`bi bi-arrow-right-circle-fill me-3 ${!isEditingState ? 'ms-3' : 'ms-auto'}`}
               style={{ fontSize: '2rem', cursor: 'pointer' }}
               onClick={handleNextButton}
             />

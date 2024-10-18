@@ -2,6 +2,7 @@
 export const COOKING_LAB_TITLE = 'Welcome to CookingLab!';
 export const COOKING_LAB_MOTTO = 'Experiment with new flavors!';
 export const COOKING_LAB_WELCOME = 'Welcome to CookingLab! Discover a recipe and new dishes to try. Let\'s make cooking fun and easy!';
+export const COOKING_LAB_OBJECTIVE = 'Our objective is to help you find a recipe that suits your taste and dietary needs.';
 export const HOME_GET_STARTED_BTN = 'Get started!';
 export const RESTART = 'Restart';
 
@@ -28,6 +29,13 @@ export const STEP2_DINNER = 'Dinner';
 export const STEP2_SNACK = 'Snack';
 export const STEP2_TEATIME = 'Teatime';
 
+// Step3 constants
+export const STEP3_TITLE = 'Step 3: Select Diet(s)';
+export const STEP3_DESCRIPTION = '(This step is optional)';
+export const STEP3_SELECT_LABEL = 'Choose one or many diets: ';
+export const STEP3_DROPDOWN = 'Diets';
+export const STEP3_DIETS = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
+
 // SummaryPage constants
 export const SUMMARY_TITLE = 'Summary';
 export const SUMMARY_DESCRIPTION = 'You can still edit the information below.';
@@ -41,6 +49,7 @@ export const SUMMARY_STEP2_LABEL = 'Selected meal type: ';
 export const SUMMARY_STEP3_LABEL = 'Selected diets: ';
 export const SUMMARY_STEP4_LABEL = 'Selected food restrictions: ';
 export const SUMMARY_EDIT = 'Edit';
+export const SUMMARY_NONE = 'Not selected';
 
 // RecipePage constants
 export const RECIPE_INGREDIENT = 'Ingredients';

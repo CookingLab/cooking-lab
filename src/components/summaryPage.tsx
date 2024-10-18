@@ -10,7 +10,8 @@ import {
   SUMMARY_STEP2_LABEL,
   SUMMARY_STEP3_LABEL,
   SUMMARY_STEP4_LABEL,
-  SUMMARY_EDIT
+  SUMMARY_EDIT,
+  SUMMARY_NONE
 } from '../i18n/constants';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -22,8 +23,8 @@ import { useDispatch } from 'react-redux';
 
 const SummaryPage = () => {
   const navigate = useNavigate();
-  const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
   const dispatch = useDispatch();
+  const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
   const selectedDiets = useSelector((state: RootState) => state.cookingLab.selectedDiet);
   const selectedDietsString = selectedDiets.join(', ');
@@ -65,7 +66,7 @@ const SummaryPage = () => {
               <div className="card shadow">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP3}</h3>
-                  <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString}</p>
+                  <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString ? selectedDietsString : SUMMARY_NONE}</p>
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
