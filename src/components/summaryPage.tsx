@@ -25,6 +25,8 @@ const SummaryPage = () => {
   const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
   const dispatch = useDispatch();
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+  const selectedDiets = useSelector((state: RootState) => state.cookingLab.selectedDiet);
+  const selectedDietsString = selectedDiets.join(', ');
 
   function handleBackButton() {
     dispatch(setEditing(false));
@@ -63,7 +65,7 @@ const SummaryPage = () => {
               <div className="card shadow">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP3}</h3>
-                  <p><b>{SUMMARY_STEP3_LABEL}</b></p>
+                  <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString}</p>
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
