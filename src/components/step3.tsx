@@ -1,6 +1,6 @@
 import {
   STEP3_TITLE,
-  STEP3_DESCRIPTION,
+  STEP_OPTIONAL,
   STEP3_SELECT_LABEL,
   STEP3_DROPDOWN,
   STEP3_DIETS,
@@ -50,7 +50,7 @@ const Step3 = () => {
           <div className="row mb-4">
             <div className="col text-center">
               <h2 className="card-title">{STEP3_TITLE}</h2>
-              <p>{STEP3_DESCRIPTION}</p>
+              <p>{STEP_OPTIONAL}</p>
             </div>
           </div>
           <div className="d-flex justify-content-center">

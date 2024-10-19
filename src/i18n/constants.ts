@@ -32,10 +32,29 @@ export const STEP2_TEATIME = 'Teatime';
 
 // Step3 constants
 export const STEP3_TITLE = 'Step 3: Select Diet(s)';
-export const STEP3_DESCRIPTION = '(This step is optional)';
+export const STEP_OPTIONAL = '(This step is optional)';
 export const STEP3_SELECT_LABEL = 'Choose one or many diets: ';
 export const STEP3_DROPDOWN = 'Diets';
 export const STEP3_DIETS = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
+
+// Step4 constants
+export const STEP4_TITLE = 'Step 4: Select Food Restrictions';
+export const STEP4_DESCRIPTION = 'Do you have any food restrictions? (This step is optional)';
+export const STEP4_DROPDOWN = 'Choose one or many allergies or restrictions: ';
+export const STEP4_DROPDOWN_ALLERGIES = 'Allergies';
+export const STEP4_DROPDOWN_RESTRICTIONS = 'Restrictions';
+export const STEP4_ALLERGIES = [
+  'celery-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free',
+  'gluten-free', 'lupine-free', 'mollusk-free', 'mustard-free', 'peanut-free',
+  'sesame-free', 'shellfish-free', 'soy-free', 'sulfite-free', 'tree-nut-free', 
+  'wheat-free'
+];
+export const STEP4_RESTRICTIONS = [
+  'alcohol-cocktail', 'alcohol-free', 'DASH', 'fodmap-free', 'immuno-supportive', 
+  'keto-friendly', 'kidney-friendly', 'kosher', 'low-fat-abs', 'low-potassium', 
+  'low-sugar', 'Mediterranean', 'no-oil-added', 'paleo', 'pescatarian', 
+  'pork-free', 'red-meat-free', 'sugar-conscious', 'vegan', 'vegetarian'
+];
 
 // SummaryPage constants
 export const SUMMARY_TITLE = 'Summary';
