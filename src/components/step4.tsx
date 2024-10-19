@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import RestartButton from './restartButton';
-import { clearHealth, clearHealths, setHealth } from '../redux/cookingLabSlice';
+import { clearHealth, clearHealths, setEditing, setHealth } from '../redux/cookingLabSlice';
 import {
   CLEAR,
   STEP4_ALLERGIES,
@@ -23,6 +23,7 @@ const Step4 = () => {
   const isEditingState = useSelector((state: RootState) => state.cookingLab.isEditing);
 
   function handleNextButton() {
+    dispatch(setEditing(true));
     navigate('/summary');
   }
     
@@ -108,7 +109,7 @@ const Step4 = () => {
               onClick={() => navigate('/step3')}
             />}
             <i
-              className="bi bi-arrow-right-circle-fill me-3 ms-3"
+              className={`bi bi-arrow-right-circle-fill me-3 ${!isEditingState ? 'ms-3' : 'ms-auto'}`}
               style={{ fontSize: '2rem', cursor: 'pointer' }}
               onClick={handleNextButton}
             />
