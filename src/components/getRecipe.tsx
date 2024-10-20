@@ -15,7 +15,7 @@ const GetRecipe = () => {
 
   const getRecipes = async () => {
     try {
-      let url = `http://localhost:3001/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
+      let url = `/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
   
       if (diet.length > 0) {
         const dietParams = diet.map((d: string) => `diet=${d}`).join('&');

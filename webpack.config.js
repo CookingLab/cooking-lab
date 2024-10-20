@@ -44,5 +44,8 @@ module.exports = {
     compress: true,
     port: 3000,
     historyApiFallback: true, // Redirect 404s to /index.html
+    proxy: {
+      '/api': 'http://localhost:3001' // Proxy API requests to Express server
+    },
   },
 };

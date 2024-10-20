@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
-app.get('/recipes', async (req, res) => {
+app.get('/api/recipes', async (req, res) => {
   const { diet, health, cuisineType, mealType } = req.query;
 
   let url = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}&cuisineType=${cuisineType}&mealType=${mealType}`;
