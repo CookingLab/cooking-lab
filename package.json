@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
-    "start-server": "ts-node server.ts",
+    "start-server": "ts-node ./backend/server.ts",
     "build": "webpack --mode production",
     "start-client": "webpack serve --mode development",
     "test": "react-scripts test",
