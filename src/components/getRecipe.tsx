@@ -15,7 +15,7 @@ const GetRecipe = () => {
 
   const getRecipes = async () => {
     try {
-      let url = `/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
+      let url = `https://testing-backend-w4x5.onrender.com/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
   
       if (diet.length > 0) {
         const dietParams = diet.map((d: string) => `diet=${d}`).join('&');
