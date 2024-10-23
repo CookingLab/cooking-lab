@@ -40,7 +40,7 @@ const SummaryPage = () => {
     <div className="container mt-5">
       <RestartButton />
       <div className="card shadow">
-        <div className="card-body">
+        <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
               <h2 className="card-title">{SUMMARY_TITLE}</h2>
@@ -83,11 +83,13 @@ const SummaryPage = () => {
             </div>
           </div>
         </div>
-        <i
-          className="bi bi-arrow-left-circle-fill me-3 ms-3"
-          style={{ fontSize: '2rem', cursor: 'pointer' }}
-          onClick={handleBackButton}
-        />
+        <div className="card-body-bg">
+          <i
+            className="bi bi-arrow-left-circle-fill me-3 ms-3"
+            style={{ fontSize: '2rem', cursor: 'pointer' }}
+            onClick={handleBackButton}
+          />
+        </div>
       </div>
     </div>
   )

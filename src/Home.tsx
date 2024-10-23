@@ -9,14 +9,16 @@ import IntroductionMsg from 'components/introductionMsg';
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="d-flex flex-column align-items-center">
-      <IntroductionMsg/>   
-      <button 
-        className="btn btn-dark cooking-lab-btn cooking-lab-start-btn mb-3" 
-        onClick={() => navigate('/step1')}
-      >
-        {HOME_GET_STARTED_BTN}
-      </button>
+    <div className="container mt-4">
+      <div className="d-flex flex-column align-items-center">
+        <IntroductionMsg/>   
+        <button 
+          className="btn btn-dark cooking-lab-btn cooking-lab-start-btn mb-3" 
+          onClick={() => navigate('/step1')}
+        >
+          {HOME_GET_STARTED_BTN}
+        </button>
+      </div>
     </div>
   );
 }

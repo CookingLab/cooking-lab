@@ -68,7 +68,7 @@ const Step2 = () => {
     <div className="container mt-5">
       <RestartButton />
       <div className="card shadow">
-        <div className="card-body">
+        <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
               <h2 className="card-title">{STEP2_TITLE}</h2>
@@ -122,7 +122,7 @@ const Step2 = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between card-body-bg">
           {!isEditingState && <i
             className="bi bi-arrow-left-circle-fill me-3 ms-3"
             style={{ fontSize: '2rem', cursor: 'pointer' }}

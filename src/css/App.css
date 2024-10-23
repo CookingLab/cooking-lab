@@ -74,6 +74,14 @@
   border-color: var(--color-dark) !important;
 }
 
+.background-color {
+  background-color: var(--color-dark);
+}
+
+.card-body-bg {
+  background-color: var(--color-secondary);
+}
+
 /* footer */
 .footer-copyright {
   color: var(--color-primary);
