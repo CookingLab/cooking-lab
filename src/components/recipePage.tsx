@@ -13,7 +13,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
     <div className="container mt-5">
       <RestartButton />
       <div className="card shadow">
-        <div className="card-body">
+        <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col-md-8">
               <h1 className="card-title">{label}</h1>
