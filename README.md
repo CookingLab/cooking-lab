@@ -4,12 +4,12 @@ Welcome to **Cooking Lab**! This app helps you generate recipes based on your pr
 
 ## 🛠 Technologies Used
 
-- **TypeScript**
-- **ReactJS**
-- **Bootstrap**
-- **CSS**
-- **Redux**
-- **NodeJS**
+![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)
+![Redux](https://img.shields.io/badge/-Redux-764ABC?style=flat&logo=redux&logoColor=white)
 
 ## ✨ Features
 
