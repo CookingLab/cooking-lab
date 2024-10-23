@@ -1,5 +1,7 @@
 # 🍳 Cooking Lab
 
+<img src="public\cookingLabLogo1.png" alt="Cooking Lab Logo" width="200" height="200">
+
 Welcome to **Cooking Lab**! This app helps you generate recipes based on your preferences. It's a fun and easy way to discover new dishes and experiment with flavors.
 
 ## 🛠 Technologies Used
@@ -41,3 +43,10 @@ Follow these steps to set up and run the Cooking Lab app on your local machine:
     npm start
     ```
 4. Access the application locally at http://localhost:3000/
+
+5. Create an API key and APP ID on https://www.edamam.com/
+
+6. Create an .env file with the following fields:
+    - PORT=YOUR_PORT
+    - APP_ID=YOUR_APP_ID
+    - APP_KEY=YOUR_APP_KEY
