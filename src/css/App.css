@@ -1,0 +1,193 @@
+:root {
+  --color-primary: #FF885B;
+  --color-secondary: #FFE5CF;
+  --color-accent: #557C56;
+  --color-light: #339136;
+  --color-dark: #33372C;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--color-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: var(--color-primary);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+/* Step 2 */
+
+.meal-type-img{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.meal-type-btn {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.meal-type-btn.active {
+  background-color: var(--color-dark) !important;
+  border-color: var(--color-dark) !important;
+}
+
+.background-color {
+  background-color: var(--color-dark);
+}
+
+.card-body-bg {
+  background-color: var(--color-secondary);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Footer styles */
+.footer {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-copyright {
+  color: var(--color-primary);
+}
+
+.footer-link {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  bottom: 0 !important;
+}
+
+/* Buttons */
+
+.cooking-lab-start-btn{
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.cooking-lab-btn {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.cooking-lab-btn:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-secondary);
+}
+
+.cooking-lab-btn.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.cooking-lab-btn-option {
+  background-color: var(--color-light);
+  border-color: var(--color-light);
+  color: var(--color-secondary);
+}
+
+.cooking-lab-btn-option:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-secondary);
+}
+
+.cooking-lab-btn-option.active{
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-secondary);
+}
+
+/* Links */
+.cooking-lab-link {
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.cooking-lab-link:hover {
+  color: var(--color-dark);
+  text-decoration: underline;
+}
+
+.cooking-lab-dropdown-item {
+  cursor: pointer;
+}
+
+.cooking-lab-dropdown-item:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.cooking-lab-dropdown-item:active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
