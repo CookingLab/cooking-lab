@@ -79,7 +79,7 @@
 }
 
 .card-body-bg {
-  background-color: var(--color-secondary);
+  background-color: white;
 }
 
 html, body {
@@ -130,37 +130,31 @@ html, body {
 .cooking-lab-btn {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-secondary);
 }
 
 .cooking-lab-btn:hover {
   background-color: var(--color-dark);
   border-color: var(--color-dark);
-  color: var(--color-secondary);
 }
 
 .cooking-lab-btn.active {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-secondary);
 }
 
 .cooking-lab-btn-option {
   background-color: var(--color-light);
   border-color: var(--color-light);
-  color: var(--color-secondary);
 }
 
 .cooking-lab-btn-option:hover {
   background-color: var(--color-dark);
   border-color: var(--color-dark);
-  color: var(--color-secondary);
 }
 
 .cooking-lab-btn-option.active{
   background-color: var(--color-dark);
   border-color: var(--color-dark);
-  color: var(--color-secondary);
 }
 
 /* Links */
