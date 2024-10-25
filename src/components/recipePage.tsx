@@ -2,25 +2,35 @@ import {
   RECIPE_INGREDIENT,
   RECIPE_LINK
 } from '../i18n/constants';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
 import { useNavigate } from 'react-router-dom';
 import { RecipeProps } from '../interfaces/recipeInterface';
+import logo from '../img/cookingLabLogo1.png';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   
-  if (!label && !image && !ingredients && !url) {
-    setLoading(true);
-  }
+  useEffect(() => {
+    if (!label || !image || !ingredients || !url) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [label, image, ingredients, url]);
   
   return (
     <div className="container mt-5">
       <RestartButton />
       <div className="card shadow">
         <div className="card-body card-body-bg">
-          {loading ? ( <h1>Loading...</h1> ) : (
+          {loading ? (
+            <div className="loading-container">
+              <h1>Loading Recipe</h1>
+              <img src={logo} alt="Loading..." className="loading-logo" />
+            </div>
+          ) : (
             <>
               <div className="row mb-4">
                 <div className="col-md-8">
