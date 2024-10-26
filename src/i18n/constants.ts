@@ -15,6 +15,7 @@ export const STEP3 = 'Step 3';
 export const STEP4 = 'Step 4';
 export const SUMMARY = 'Summary Page';
 export const RECIPE = 'Recipe Page';
+export const ERROR_RECIPE = 'Error Recipe';
 
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';

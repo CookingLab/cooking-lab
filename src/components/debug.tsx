@@ -5,7 +5,8 @@ import {
   STEP3,
   STEP4,
   SUMMARY,
-  RECIPE
+  RECIPE,
+  ERROR_RECIPE
 } from '../i18n/constants';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -21,7 +22,8 @@ const Debug = () => {
     cuisine: 'asian',
     mealType: 'lunch',
     diet: 'low-fat',
-    health: 'peanut-free'
+    health: 'peanut-free',
+    error: 'error'
   };
 
   const toggleVisibility = () => {
@@ -72,6 +74,15 @@ const Debug = () => {
     navigate('/recipe');
   }
 
+  function jumpErrorRecipe(){
+    dispatch(CookingLabSlice.setCuisine(DEBUG_CONFIG.error));
+    dispatch(CookingLabSlice.setMealType(DEBUG_CONFIG.error));
+    dispatch(CookingLabSlice.setDiet(DEBUG_CONFIG.error));
+    dispatch(CookingLabSlice.setHealth(DEBUG_CONFIG.error));
+    dispatch(CookingLabSlice.setEditing(true));
+    navigate('/recipe');
+  }
+
   return (
     <div>
       <button className="btn btn-dark cooking-lab-btn" onClick={toggleVisibility}>
@@ -85,6 +96,7 @@ const Debug = () => {
           <p className="debug-item" onClick={jumpStep4}>{STEP4}</p>
           <p className="debug-item" onClick={jumpSummary}>{SUMMARY}</p>
           <p className="debug-item" onClick={jumpRecipe}>{RECIPE}</p>
+          <button className="btn btn-dark cooking-lab-btn" onClick={jumpErrorRecipe}>{ERROR_RECIPE}</button>
         </div>
       )}
     </div>
