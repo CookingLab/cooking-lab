@@ -13,7 +13,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const [loading, setLoading] = useState(false);
   
   useEffect(() => {
-    if (!label || !image || !ingredients || !url) {
+    if (!label) {
       setLoading(true);
     } else {
       setLoading(false);
