@@ -211,3 +211,22 @@ html, body {
     transform: rotate(360deg);
   }
 }
+
+/*DEBUG*/
+.debug-item{
+  color: var(--color-accent);
+ }
+.debug-item:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.debug-content {
+  position: absolute;
+  background-color: white;
+  right: 10px;
+  z-index: 1000;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

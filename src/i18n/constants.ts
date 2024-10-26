@@ -7,6 +7,15 @@ export const HOME_GET_STARTED_BTN = 'Get started!';
 export const RESTART = 'Restart';
 export const CLEAR = 'Clear';
 
+// Debug constants
+export const DEBUG = 'Debug Tool';
+export const STEP1 = 'Step 1';
+export const STEP2 = 'Step 2';
+export const STEP3 = 'Step 3';
+export const STEP4 = 'Step 4';
+export const SUMMARY = 'Summary Page';
+export const RECIPE = 'Recipe Page';
+
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';
 export const TML = 'The Minh Luong';
