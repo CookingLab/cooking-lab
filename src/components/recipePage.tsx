@@ -23,7 +23,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   return (
     <div className="container mt-5">
       <RestartButton />
-      <div className="card shadow">
+      <div className="card shadow mb-5">
         <div className="card-body card-body-bg">
           {loading ? (
             <div className="loading-container">

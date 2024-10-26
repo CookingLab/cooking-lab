@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top background-color footer">
+    <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 border-top background-color footer">
       <div className="col-md-4 d-flex align-items-center mx-3">
         <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
           <img className="bi" src={logo} width="30" height="24" alt="Cooking Lab Logo"/>

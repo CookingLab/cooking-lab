@@ -39,7 +39,7 @@ const SummaryPage = () => {
   return (
     <div className="container mt-5">
       <RestartButton />
-      <div className="card shadow">
+      <div className="card shadow mb-5">
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
