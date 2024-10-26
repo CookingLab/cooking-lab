@@ -43,7 +43,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                   </ul>
                 </div>
                 <div className="col-md-4 text-center">
-                  <img src={image} alt={label} className="img-fluid shadow" />
+                  <img src={image} alt={label} className="img-fluid shadow rounded" />
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center' }}>
