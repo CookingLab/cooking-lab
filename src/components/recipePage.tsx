@@ -18,7 +18,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
     } else {
       setLoading(false);
     }
-  }, [label, image, ingredients, url]);
+  }, [label]);
   
   return (
     <div className="container mt-5">
