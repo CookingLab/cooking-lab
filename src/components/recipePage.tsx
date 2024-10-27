@@ -1,6 +1,10 @@
 import {
   RECIPE_INGREDIENT,
-  RECIPE_LINK
+  RECIPE_LINK,
+  RECIPE_LOADER,
+  RECIPE_ERROR_TITLE,
+  RECIPE_ERROR_MESSAGE,
+  RECIPE_ERROR_SUB_MESSAGE
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -31,14 +35,20 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
         <div className="card-body card-body-bg">
           {loading ? (
             <div className="loading-container">
-              <h1>Loading Recipe</h1>
+              <h1>{RECIPE_LOADER}</h1>
               <img src={logo} alt="Loading..." className="loading-logo" />
             </div>
           ) : (
             error ? (
               <div className="error-container">
-                <h1>Error fetching recipe</h1>
-                <p>Please try again later</p>
+                <h2>{RECIPE_ERROR_TITLE}</h2>
+                <p>{RECIPE_ERROR_MESSAGE}</p>
+                <p>{RECIPE_ERROR_SUB_MESSAGE}</p>
+                <i
+                  className="bi bi-arrow-left-circle-fill me-auto"
+                  style={{ fontSize: '2rem', cursor: 'pointer' }}
+                  onClick={() => navigate('/summary')}
+                />
               </div>
             ) :
               <>
