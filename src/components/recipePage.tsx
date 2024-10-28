@@ -66,18 +66,18 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                     <img src={image} alt={label} className="img-fluid shadow rounded" />
                   </div>
                 </div>
+                <div className="row mb-4">
+                  <div className="col-md-8">
+                    <h3 className="mt-4">{RECIPE_LINK}</h3>
+                    <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
+                  </div>
+                </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <i
                     className="bi bi-arrow-left-circle-fill me-3 ms-3"
                     style={{ fontSize: '2rem', cursor: 'pointer' }}
                     onClick={() => navigate('/summary')}
                   />
-                  <div className="row">
-                    <div className="col">
-                      <h3 className="mt-4">{RECIPE_LINK}</h3>
-                      <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
-                    </div>
-                  </div>
                 </div>
               </>
           )}
