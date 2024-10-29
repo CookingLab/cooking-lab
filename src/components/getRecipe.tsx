@@ -38,6 +38,7 @@ const GetRecipe = () => {
 
   useEffect(() => {
     getRecipes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [diet, health, cuisineType, mealType]);
 
   return (
