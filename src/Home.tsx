@@ -4,7 +4,7 @@ import {
 import React from 'react';
 import './css/App.css';
 import { useNavigate } from 'react-router-dom';
-import IntroductionMsg from 'components/introductionMsg';
+import IntroductionMsg from './components/introductionMsg';
 
 const Home = () => {
   const navigate = useNavigate();
