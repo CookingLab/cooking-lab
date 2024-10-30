@@ -16,6 +16,8 @@ export const STEP4 = 'Step 4';
 export const SUMMARY = 'Summary Page';
 export const RECIPE = 'Recipe Page';
 export const ERROR_RECIPE = 'Error Recipe';
+export const SORRY_MSG = 'Sorry for the delay';
+export const FIRST_RECIPE_DELAY_MESSAGE = 'The first recipe may take more time than expected.';
 
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';

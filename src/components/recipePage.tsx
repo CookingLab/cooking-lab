@@ -4,7 +4,9 @@ import {
   RECIPE_LOADER,
   RECIPE_ERROR_TITLE,
   RECIPE_ERROR_MESSAGE,
-  RECIPE_ERROR_SUB_MESSAGE
+  RECIPE_ERROR_SUB_MESSAGE,
+  FIRST_RECIPE_DELAY_MESSAGE,
+  SORRY_MSG,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -16,10 +18,14 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
   
   useEffect(() => {
     if (!label) {
       setLoading(true);
+      setTimeout(() => {
+        setFirstRecipeDelayMsg(true);
+      }, 10000);
     } else if (label === 'Error') {
       setLoading(false);
       setError(true);
@@ -34,10 +40,18 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
       <div className="card shadow mb-5">
         <div className="card-body card-body-bg">
           {loading ? (
-            <div className="loading-container">
-              <h1>{RECIPE_LOADER}</h1>
-              <img src={logo} alt="Loading..." className="loading-logo" />
-            </div>
+            !firstRecipeDelayMsg ? (
+              <div className="loading-container">
+                <h1>{RECIPE_LOADER}</h1>
+                <img src={logo} alt="Loading..." className="loading-logo" />
+              </div>
+            ) : (
+              <div className="loading-container">
+                <h1>{SORRY_MSG}</h1>
+                <p>{FIRST_RECIPE_DELAY_MESSAGE}</p>
+                <img src={logo} alt="Loading..." className="loading-logo" />
+              </div>
+            )
           ) : (
             error ? (
               <div className="error-container">
