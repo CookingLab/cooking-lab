@@ -30,7 +30,7 @@ Follow these steps to set up and run the Cooking Lab app on your local machine:
 
 1. Clone the repository :
     ```sh
-    git clone https://github.com/ThiiLuu79/cooking-lab.git
+    git clone https://github.com/CookingLab/cooking-lab.git
     ```
 2. Install dependencies :
     ```sh

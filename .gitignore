@@ -25,3 +25,4 @@ yarn-error.log*
 /backend/node_modules
 /dist
 /backend/dist
+package-lock.json
