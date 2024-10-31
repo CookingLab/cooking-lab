@@ -12,5 +12,9 @@
       "*": ["src/*"]
     }
   },
-  "include": ["src", "archives/step1Old.tsx"]
+  "include": [
+    "src",
+    "archives/step1Old.tsx",
+    "src/component/test"
+  ]
 }

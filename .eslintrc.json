@@ -48,5 +48,6 @@
     "react": {
       "version": "detect" // Automatically detect the React version
     }
-  }
+  },
+  "ignorePatterns": ["babel.config.js", "jest.config.js"]
 }
