@@ -13,42 +13,42 @@ const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;
 
 describe('Restart Button component', () => {
-    beforeEach(() => {
-        store = mockStore({
-            cookingLab: {
-            selectedCuisine: '',
-            selectedMealType: '',
-            selectedDiets: [],
-            selectedHealths: [],
-            isEditing: false,
-            },
-        });
+  beforeEach(() => {
+    store = mockStore({
+      cookingLab: {
+        selectedCuisine: '',
+        selectedMealType: '',
+        selectedDiets: [],
+        selectedHealths: [],
+        isEditing: false,
+      },
     });
+  });
 
-    it('should renders Step1 component', () => {
-        render(
-            <Provider store={store}>
-                <Router>
-                    <RestartButton />
-                </Router>
-            </Provider>
-        );
+  it('should renders Step1 component', () => {
+    render(
+      <Provider store={store}>
+        <Router>
+          <RestartButton />
+        </Router>
+      </Provider>
+    );
 
-        expect(screen.getByText(RESTART)).toBeInTheDocument();
-    });
+    expect(screen.getByText(RESTART)).toBeInTheDocument();
+  });
 
-    it('should clear all values on click', () => {
-        render(
-            <Provider store={store}>
-            <Router>
-                <RestartButton />
-            </Router>
-            </Provider>
-        );
+  it('should clear all values on click', () => {
+    render(
+      <Provider store={store}>
+        <Router>
+          <RestartButton />
+        </Router>
+      </Provider>
+    );
 
-        const restart = screen.getByText(RESTART);
-        fireEvent.click(restart);
-        const actions = (store as any).getActions();
-        expect(actions).toEqual([setEditing(false), clearCuisine(), clearMealType(), clearDiets(), clearHealths()]);
-    });
+    const restart = screen.getByText(RESTART);
+    fireEvent.click(restart);
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([setEditing(false), clearCuisine(), clearMealType(), clearDiets(), clearHealths()]);
+  });
 });

@@ -26,3 +26,4 @@ yarn-error.log*
 /dist
 /backend/dist
 package-lock.json
+*.snap
