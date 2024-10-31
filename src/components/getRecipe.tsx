@@ -13,9 +13,19 @@ const GetRecipe = () => {
   const diet = useSelector((state: RootState) => state.cookingLab.selectedDiet);
   const health = useSelector((state: RootState) => state.cookingLab.selectedHealth);
 
+  const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
+
   const getRecipes = async () => {
+    var targetEndpoint = 'https://cooking-lab-api.onrender.com';
+
+    if(endpoint === 'prod'){
+      targetEndpoint = 'https://cooking-lab-api.onrender.com';
+    }else{
+      targetEndpoint = 'http://localhost:3000';
+    }
+
     try {
-      let url = `https://cooking-lab-api.onrender.com/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
+      let url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
   
       if (diet.length > 0) {
         const dietParams = diet.map((d: string) => `diet=${d}`).join('&');

@@ -6,7 +6,10 @@ import {
   STEP4,
   SUMMARY,
   RECIPE,
-  ERROR_RECIPE
+  ERROR_RECIPE,
+  ENDPOINT_SELECTOR,
+  LOCAL,
+  PROD
 } from '../i18n/constants';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -83,6 +86,14 @@ const Debug = () => {
     navigate('/recipe');
   }
 
+  function setEndpoint(endpoint: string){
+    if(endpoint === 'local'){
+      dispatch(CookingLabSlice.setEndpoint('local'));
+    } else {
+      dispatch(CookingLabSlice.setEndpoint('prod'));
+    }
+  }
+
   return (
     <div>
       <button className="btn btn-dark cooking-lab-btn" onClick={toggleVisibility}>
@@ -97,6 +108,15 @@ const Debug = () => {
           <p className="debug-item" onClick={jumpSummary}>{SUMMARY}</p>
           <p className="debug-item" onClick={jumpRecipe}>{RECIPE}</p>
           <button className="btn btn-dark cooking-lab-btn" onClick={jumpErrorRecipe}>{ERROR_RECIPE}</button>
+          <div className="dropdown mt-2">
+            <button className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {ENDPOINT_SELECTOR}
+            </button>
+            <ul className="dropdown-menu">
+                <li key="local"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint("local")}>{LOCAL}</p></li>
+                <li key="prod"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint("prod")}>{PROD}</p></li>
+            </ul>
+          </div>
         </div>
       )}
     </div>
