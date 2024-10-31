@@ -16,7 +16,7 @@ const GetRecipe = () => {
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
   const getRecipes = async () => {
-    var targetEndpoint = 'https://cooking-lab-api.onrender.com';
+    let targetEndpoint = 'https://cooking-lab-api.onrender.com';
 
     if(endpoint === 'prod'){
       targetEndpoint = 'https://cooking-lab-api.onrender.com';

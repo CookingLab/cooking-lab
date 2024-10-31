@@ -113,8 +113,8 @@ const Debug = () => {
               {ENDPOINT_SELECTOR}
             </button>
             <ul className="dropdown-menu">
-                <li key="local"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint("local")}>{LOCAL}</p></li>
-                <li key="prod"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint("prod")}>{PROD}</p></li>
+              <li key="local"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint('local')}>{LOCAL}</p></li>
+              <li key="prod"><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => setEndpoint('prod')}>{PROD}</p></li>
             </ul>
           </div>
         </div>
