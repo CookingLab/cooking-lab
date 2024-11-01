@@ -54,12 +54,12 @@ const Step1 = () => {
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
-              <h2 className="card-title">{STEP1_TITLE}</h2>
+              <h2 className="card-title" data-testid="step1-title">{STEP1_TITLE}</h2>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-md-8 text-center">
-              <p className="lead mb-4">
+              <p className="lead mb-4" data-testid="step1-description">
                 {STEP1_DESCRIPTION}
               </p>
               <div className="mb-4">

@@ -1,3 +1,5 @@
+import { STEP1_CUISINES, STEP1_RANDOM } from '../../src/i18n/constants';
+
 describe('Cooking Lab flow tests', () => {
   it('passes', () => {
     cy.visit('http://localhost:3000/')
@@ -15,7 +17,12 @@ describe('Cooking Lab flow tests', () => {
     cy.get('[data-testid="get-started-btn"]').should('exist').click();
     cy.url().should('include', '/step1');
 
-    //TODO: Check for labels
+    cy.get('[data-testid="step1-title"]').should('exist');
+    cy.get('[data-testid="step1-description"]').should('exist');
+    STEP1_CUISINES.forEach(cuisine => {
+      cy.get('button').contains(cuisine).should('be.visible');
+    });
+    cy.get('button').contains(STEP1_RANDOM).should('be.visible');
 
     cy.get('.bi-arrow-right-circle-fill').should('not.exist');
     cy.get('.bi-arrow-left-circle-fill').should('not.exist');
