@@ -43,39 +43,39 @@ const SummaryPage = () => {
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
-              <h2 className="card-title">{SUMMARY_TITLE}</h2>
+              <h2 className="card-title" data-testid="smr-title">{SUMMARY_TITLE}</h2>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-md-8 text-center">
-              <p className="lead mb-4">
+              <p className="lead mb-4" data-testid="smr-description">
                 {SUMMARY_DESCRIPTION}
               </p>
               <div className="card shadow mb-3">
                 <div className="card-body">
-                  <h3>{SUMMARY_STEP1}</h3>
-                  <p><b>{SUMMARY_STEP1_LABEL}</b>{selectedCuisine}</p>
+                  <h3 data-testid="smr-step1">{SUMMARY_STEP1}</h3>
+                  <p data-testid="smr-step1-label"><b>{SUMMARY_STEP1_LABEL}</b>{selectedCuisine}</p>
                   <button data-testid="cypress-editStep1" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step1')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
-                  <h3>{SUMMARY_STEP2}</h3>
-                  <p><b>{SUMMARY_STEP2_LABEL}</b>{selectedType}</p>
+                  <h3 data-testid="smr-step2">{SUMMARY_STEP2}</h3>
+                  <p data-testid="smr-step2-label"><b>{SUMMARY_STEP2_LABEL}</b>{selectedType}</p>
                   <button data-testid="cypress-editStep2" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step2')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
-                  <h3>{SUMMARY_STEP3}</h3>
-                  <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString ? selectedDietsString : SUMMARY_NONE}</p>
+                  <h3 data-testid="smr-step3">{SUMMARY_STEP3}</h3>
+                  <p data-testid="smr-step3-label"><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString ? selectedDietsString : SUMMARY_NONE}</p>
                   <button data-testid="cypress-editStep3" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
-                  <h3>{SUMMARY_STEP4}</h3>
-                  <p><b>{SUMMARY_STEP4_LABEL}</b>{selectedHealthString ? selectedHealthString : SUMMARY_NONE}</p>
+                  <h3 data-testid="smr-step4">{SUMMARY_STEP4}</h3>
+                  <p data-testid="smr-step4-label"><b>{SUMMARY_STEP4_LABEL}</b>{selectedHealthString ? selectedHealthString : SUMMARY_NONE}</p>
                   <button data-testid="cypress-editStep4" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step4')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>

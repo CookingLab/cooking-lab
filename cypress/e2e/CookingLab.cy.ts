@@ -1,4 +1,4 @@
-import { MEAL_TYPES, STEP1_CUISINES, STEP1_RANDOM } from '../../src/i18n/constants';
+import { MEAL_TYPES, STEP1_CUISINES, STEP1_RANDOM, SUMMARY_GET_RECIPE } from '../../src/i18n/constants';
 
 describe('Cooking Lab flow tests', () => {
   it('passes', () => {
@@ -81,8 +81,17 @@ describe('Cooking Lab flow tests', () => {
     cy.get('.bi-arrow-right-circle-fill').click();
     cy.url().should('include', '/summary');
 
-    //TODO: Check for labels
-    
+    cy.get('[data-testid="smr-title"]').should('exist');
+    cy.get('[data-testid="smr-description"]').should('exist');
+    cy.get('[data-testid="smr-step1"]').should('exist');
+    cy.get('[data-testid="smr-step1-label"]').should('exist');
+    cy.get('[data-testid="smr-step2"]').should('exist');
+    cy.get('[data-testid="smr-step2-label"]').should('exist');
+    cy.get('[data-testid="smr-step3"]').should('exist');
+    cy.get('[data-testid="smr-step3-label"]').should('exist');
+    cy.get('[data-testid="smr-step4"]').should('exist');
+    cy.get('[data-testid="smr-step4-label"]').should('exist');
+    cy.get('button').contains(SUMMARY_GET_RECIPE).should('be.visible');
 
     //Recipe
     cy.get('[data-testid="cypress-getRecipe"]').should('exist');
