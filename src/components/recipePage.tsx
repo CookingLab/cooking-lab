@@ -68,9 +68,9 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
               <>
                 <div className="row mb-4">
                   <div className="col-md-8">
-                    <h1 className="card-title">{label}</h1>
-                    <h3>{RECIPE_INGREDIENT}</h3>
-                    <ul className="list-group">
+                    <h1 className="card-title" data-testid="recipe-label">{label}</h1>
+                    <h3 data-testid="recipe-ingredient">{RECIPE_INGREDIENT}</h3>
+                    <ul className="list-group" data-testid="recipe-ingredient-list">
                       {ingredients?.map(ingredient => (
                         <li className="list-group-item" key={ingredient.text}>{ingredient.text}</li>
                       ))}
@@ -82,7 +82,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                 </div>
                 <div className="row mb-4">
                   <div className="col-md-8">
-                    <h3 className="mt-4">{RECIPE_LINK}</h3>
+                    <h3 className="mt-4" data-testid="recipe-link">{RECIPE_LINK}</h3>
                     <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
                   </div>
                 </div>

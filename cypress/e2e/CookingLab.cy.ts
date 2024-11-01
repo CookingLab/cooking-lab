@@ -98,7 +98,10 @@ describe('Cooking Lab flow tests', () => {
     cy.get('[data-testid="cypress-getRecipe"]').click();
     cy.url().should('include', '/recipe');
 
-    //TODO: Check for labels
+    cy.get('[data-testid="recipe-label"]').should('exist');
+    cy.get('[data-testid="recipe-ingredient"]').should('exist');
+    cy.get('[data-testid="recipe-ingredient-list"]').should('exist');
+    cy.get('[data-testid="recipe-link"]').should('exist');
 
     //Restart
     cy.get('[data-testid="cypress-restart-btn"]').should('exist');
