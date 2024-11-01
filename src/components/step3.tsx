@@ -88,6 +88,7 @@ const Step3 = () => {
             ))}
             {selectedDiets.length > 0 && <div className="d-flex justify-content-center align-items-center w-100">       
               <button
+                data-testid="cypress-clear-btn"
                 type="button"
                 className="btn btn-danger"
                 onClick={handleClearBtn}

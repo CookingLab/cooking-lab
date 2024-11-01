@@ -20,7 +20,7 @@ const RestartButton = () => {
   };
 
   return (
-    <button className="btn btn-danger mb-3" onClick={restartSteps}>
+    <button data-testid="cypress-restart-btn" className="btn btn-danger mb-3" onClick={restartSteps}>
       {RESTART}
     </button>
   )

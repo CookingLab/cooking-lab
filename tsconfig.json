@@ -15,6 +15,7 @@
   "include": [
     "src",
     "archives/step1Old.tsx",
-    "src/component/test"
+    "src/component/test",
+    "cypress"
   ]
 }

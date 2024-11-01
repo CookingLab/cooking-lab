@@ -43,3 +43,12 @@ Follow these steps to set up and run the Cooking Lab app on your local machine:
     ```
 
 4. Access the application locally at http://localhost:3000/
+
+## Cypress Tests 🧪
+
+1. Access the application locally at http://localhost:3000/
+
+2. Open Cypress Test Runner:
+    ```sh
+    npx cypress open
+    ```

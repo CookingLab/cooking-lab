@@ -79,7 +79,7 @@ const SummaryPage = () => {
                   <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step4')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
-              <button className="btn btn-dark cooking-lab-btn mb-2 mt-5"  onClick={() => navigate('/recipe')}>{SUMMARY_GET_RECIPE}</button>
+              <button data-testid="cypress-getRecipe" className="btn btn-dark cooking-lab-btn mb-2 mt-5"  onClick={() => navigate('/recipe')}>{SUMMARY_GET_RECIPE}</button>
             </div>
           </div>
         </div>

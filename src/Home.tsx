@@ -12,7 +12,8 @@ const Home = () => {
     <div className="container mt-4">
       <div className="d-flex flex-column align-items-center">
         <IntroductionMsg/>   
-        <button 
+        <button
+          data-testid="get-started-btn"
           className="btn btn-dark cooking-lab-btn cooking-lab-start-btn mb-3" 
           onClick={() => navigate('/step1')}
         >

@@ -13,11 +13,11 @@ const IntroductionMsg = () => {
         <div className="card shadow p-5">
           <div className="card-body card-body-bg"></div>
           <h1>
-            <strong>{COOKING_LAB_TITLE}</strong>
+            <strong data-testid="intro-title">{COOKING_LAB_TITLE}</strong>
           </h1>
-          <h2><i>{COOKING_LAB_MOTTO}</i></h2>
-          <p>{COOKING_LAB_WELCOME}</p>
-          <p>{COOKING_LAB_OBJECTIVE}</p>
+          <h2 data-testid="intro-motto"><i>{COOKING_LAB_MOTTO}</i></h2>
+          <p data-testid="intro-welcome">{COOKING_LAB_WELCOME}</p>
+          <p data-testid="intro-objective">{COOKING_LAB_OBJECTIVE}</p>
         </div>
       </div>
     </div>

@@ -57,19 +57,19 @@ const Step4 = () => {
               </div>
               <div className="d-flex justify-content-center">
                 <div className="dropdown me-2">
-                  <button className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button data-testid="cypress-allergies" className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {STEP4_DROPDOWN_ALLERGIES}
                   </button>
-                  <ul className="dropdown-menu">
+                  <ul data-testid="cypress-allergies-menu" className="dropdown-menu">
                     {STEP4_ALLERGIES.map((allergy, index) => (
                       <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(allergy)}>{allergy}</p></li>))}
                   </ul>
                 </div>
                 <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button data-testid="cypress-restrictions" className="btn btn-secondary dropdown-toggle cooking-lab-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {STEP4_DROPDOWN_RESTRICTIONS}
                   </button>
-                  <ul className="dropdown-menu">
+                  <ul data-testid="cypress-restrictions-menu" className="dropdown-menu">
                     {STEP4_RESTRICTIONS.map((restriction, index) => (
                       <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(restriction)}>{restriction}</p></li>))}
                   </ul>
@@ -94,6 +94,7 @@ const Step4 = () => {
             ))}
             {selectedHealth.length > 0 && <div className="d-flex justify-content-center align-items-center w-100">       
               <button
+                data-testid="cypress-clear-btn"
                 type="button"
                 className="btn btn-danger"
                 onClick={handleClearBtn}
