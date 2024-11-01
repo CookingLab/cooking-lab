@@ -61,6 +61,8 @@ describe('Cooking Lab flow tests', () => {
     cy.get('[data-testid="cypress-allergies-menu"]').first().click();
     cy.get('[data-testid="cypress-restrictions"]').click();
     cy.get('[data-testid="cypress-restrictions-menu"]').first().click();
+    cy.get('[data-testid="cypress-clear-btn"]').should('exist');
+    cy.get('[data-testid="cypress-clear-btn"]').click();
     cy.get('.list-group').children().should('have.length', 0);
 
     //Summary
