@@ -55,28 +55,28 @@ const SummaryPage = () => {
                 <div className="card-body">
                   <h3>{SUMMARY_STEP1}</h3>
                   <p><b>{SUMMARY_STEP1_LABEL}</b>{selectedCuisine}</p>
-                  <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step1')}>{SUMMARY_EDIT}</button>
+                  <button data-testid="cypress-editStep1" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step1')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP2}</h3>
                   <p><b>{SUMMARY_STEP2_LABEL}</b>{selectedType}</p>
-                  <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step2')}>{SUMMARY_EDIT}</button>
+                  <button data-testid="cypress-editStep2" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step2')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP3}</h3>
                   <p><b>{SUMMARY_STEP3_LABEL}</b>{selectedDietsString ? selectedDietsString : SUMMARY_NONE}</p>
-                  <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
+                  <button data-testid="cypress-editStep3" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step3')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <div className="card shadow mb-3">
                 <div className="card-body">
                   <h3>{SUMMARY_STEP4}</h3>
                   <p><b>{SUMMARY_STEP4_LABEL}</b>{selectedHealthString ? selectedHealthString : SUMMARY_NONE}</p>
-                  <button className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step4')}>{SUMMARY_EDIT}</button>
+                  <button data-testid="cypress-editStep4" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step4')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>
               <button data-testid="cypress-getRecipe" className="btn btn-dark cooking-lab-btn mb-2 mt-5"  onClick={() => navigate('/recipe')}>{SUMMARY_GET_RECIPE}</button>

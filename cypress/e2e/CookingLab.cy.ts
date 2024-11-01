@@ -70,7 +70,6 @@ describe('Cooking Lab flow tests', () => {
     cy.url().should('include', '/summary');
 
     //TODO: Check for labels
-    //TODO: Test functionnalities
 
     //Recipe
     cy.get('[data-testid="cypress-getRecipe"]').should('exist');
