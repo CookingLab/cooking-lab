@@ -1,12 +1,7 @@
 import {
   STEP2_TITLE,
   STEP2_DESCRIPTION,
-  STEP2_BREAKFAST,
-  STEP2_BRUNCH,
-  STEP2_LUNCH,
-  STEP2_DINNER,
-  STEP2_SNACK,
-  STEP2_TEATIME
+  MEAL_TYPES,
 } from '../i18n/constants';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -71,50 +66,23 @@ const Step2 = () => {
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
-              <h2 className="card-title">{STEP2_TITLE}</h2>
-              <p>{STEP2_DESCRIPTION}</p>
+              <h2 className="card-title" data-testid="step2-title">{STEP2_TITLE}</h2>
+              <p data-testid="step2-description">{STEP2_DESCRIPTION}</p>
             </div>
           </div>
 
           <div className="row mb-4">
             <div className="col-md-6 d-flex justify-content-center align-items-center">
               <div className="btn-group-vertical meal-type-btn-group">
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'breakfast' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('breakfast')}
-                >
-                  {STEP2_BREAKFAST}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'brunch' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('brunch')}
-                >
-                  {STEP2_BRUNCH}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'lunch' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('lunch')}
-                >
-                  {STEP2_LUNCH}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'dinner' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('dinner')}
-                >
-                  {STEP2_DINNER}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'snack' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('snack')}
-                >
-                  {STEP2_SNACK}
-                </button>
-                <button
-                  className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === 'teatime' ? 'active' : ''}`}
-                  onClick={() => handleButtonClick('teatime')}
-                >
-                  {STEP2_TEATIME}
-                </button>
+                {MEAL_TYPES.map(({ type, label }) => (
+                  <button
+                    key={type}
+                    className={`btn btn-dark cooking-lab-btn meal-type-btn ${selectedType === type ? 'active' : ''}`}
+                    onClick={() => handleButtonClick(type)}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
             </div>
             <div className="col-md-4 text-center">

@@ -44,6 +44,14 @@ export const STEP2_LUNCH = 'Lunch';
 export const STEP2_DINNER = 'Dinner';
 export const STEP2_SNACK = 'Snack';
 export const STEP2_TEATIME = 'Teatime';
+export const MEAL_TYPES = [
+  { type: 'breakfast', label: STEP2_BREAKFAST },
+  { type: 'brunch', label: STEP2_BRUNCH },
+  { type: 'lunch', label: STEP2_LUNCH },
+  { type: 'dinner', label: STEP2_DINNER },
+  { type: 'snack', label: STEP2_SNACK },
+  { type: 'teatime', label: STEP2_TEATIME },
+];
 
 // Step3 constants
 export const STEP3_TITLE = 'Step 3: Select Diet(s)';
