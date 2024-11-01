@@ -49,14 +49,14 @@ const Step3 = () => {
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">
-              <h2 className="card-title">{STEP3_TITLE}</h2>
-              <p>{STEP_OPTIONAL}</p>
+              <h2 className="card-title" data-testid="step3-title">{STEP3_TITLE}</h2>
+              <p data-testid="step3-optional">{STEP_OPTIONAL}</p>
             </div>
           </div>
           <div className="d-flex justify-content-center">
             <div className="row mb-4">
               <div className="text-center">
-                <h4>{STEP3_SELECT_LABEL}</h4>
+                <h4 data-testid="step3-description">{STEP3_SELECT_LABEL}</h4>
               </div>
               <div className="text-center">
                 <div className="dropdown">
