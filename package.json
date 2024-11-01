@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "npx jest --coverage",
     "test-watch": "npx jest --watch --coverage",
+    "test-cypress": "npx cypress open",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
