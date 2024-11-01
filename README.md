@@ -12,6 +12,8 @@ Welcome to **Cooking Lab**! This app helps you generate recipes based on your pr
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)
 ![Redux](https://img.shields.io/badge/-Redux-764ABC?style=flat&logo=redux&logoColor=white)
+![Cypress](https://img.shields.io/badge/-Cypress-04C38E.svg)
+![Jest](https://img.shields.io/badge/-Jest-C21325.svg)
 
 ## ✨ Features
 
