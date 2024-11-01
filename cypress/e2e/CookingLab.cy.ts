@@ -65,7 +65,9 @@ describe('Cooking Lab flow tests', () => {
     cy.get('.bi-arrow-right-circle-fill').click();
     cy.url().should('include', '/step4');
 
-    //TODO: Check for labels
+    cy.get('[data-testid="step4-title"]').should('exist');
+    cy.get('[data-testid="step4-optional"]').should('exist');
+    cy.get('[data-testid="step4-description"]').should('exist');
 
     cy.get('.bi-arrow-right-circle-fill').should('exist');
     cy.get('.bi-arrow-left-circle-fill').should('exist');
