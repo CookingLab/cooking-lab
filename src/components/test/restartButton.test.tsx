@@ -25,7 +25,7 @@ describe('Restart Button component', () => {
     });
   });
 
-  it('should renders Step1 component', () => {
+  it('should renders RestartButton component', () => {
     render(
       <Provider store={store}>
         <Router>

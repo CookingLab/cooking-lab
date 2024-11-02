@@ -2,7 +2,8 @@ describe('Cooking Lab flow tests', () => {
   beforeEach(() => {
     navigateToSummary();
   })
-  it('should edit Step1 when editing Step1', () => {
+  it('passes', () => {
+    //Step1
     //TODO: For each test, simulate an edit of the corresponding step and check if the value is updated in the summary page
     cy.get('[data-testid="cypress-editStep1"]').click();
     cy.url().should('include', '/step1');
@@ -10,24 +11,24 @@ describe('Cooking Lab flow tests', () => {
     cy.get('.bi-arrow-left-circle-fill').should('not.exist');
     cy.get('.bi-arrow-right-circle-fill').click();
     cy.url().should('include', '/summary');
-  })
-  it('should edit Step2 when editing Step2', () => {
+
+    //Step2
     cy.get('[data-testid="cypress-editStep2"]').click();
     cy.url().should('include', '/step2');
     cy.get('.bi-arrow-right-circle-fill').should('exist');
     cy.get('.bi-arrow-left-circle-fill').should('not.exist');
     cy.get('.bi-arrow-right-circle-fill').click();
     cy.url().should('include', '/summary');
-  })
-  it('should edit Step3 when editing Step3', () => {
+
+    //Step3
     cy.get('[data-testid="cypress-editStep3"]').click();
     cy.url().should('include', '/step3');
     cy.get('.bi-arrow-right-circle-fill').should('exist');
     cy.get('.bi-arrow-left-circle-fill').should('not.exist');
     cy.get('.bi-arrow-right-circle-fill').click();
     cy.url().should('include', '/summary');
-  })
-  it('should edit Step4 when editing Step4', () => {
+
+    //Step4
     cy.get('[data-testid="cypress-editStep4"]').click();
     cy.url().should('include', '/step4');
     cy.get('.bi-arrow-right-circle-fill').should('exist');
