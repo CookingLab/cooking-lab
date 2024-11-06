@@ -20,9 +20,7 @@ describe('Step1 component', () => {
         isEditing: false,
       },
     });
-  });
-
-  it('should renders Step1 component', () => {
+    
     render(
       <Provider store={store}>
         <Router>
@@ -30,7 +28,9 @@ describe('Step1 component', () => {
         </Router>
       </Provider>
     );
+  });
 
+  it('should renders Step1 component', () => {
     expect(screen.getByText(STEP1_TITLE)).toBeInTheDocument();
     expect(screen.getByText(STEP1_DESCRIPTION)).toBeInTheDocument();
     expect(screen.getByText(STEP1_RANDOM)).toBeInTheDocument();
@@ -38,14 +38,6 @@ describe('Step1 component', () => {
   });
 
   it('should set cuisineType to correct value on click', () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Step1 />
-        </Router>
-      </Provider>
-    );
-
     const cuisine = screen.getByText(STEP1_CUISINES[0]);
     fireEvent.click(cuisine);
     const actions = (store as any).getActions();
@@ -53,14 +45,6 @@ describe('Step1 component', () => {
   });
 
   it('should update cuisineType to correct value on click', () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Step1 />
-        </Router>
-      </Provider>
-    );
-
     const actions = (store as any).getActions();
     const cuisine = screen.getByText(STEP1_CUISINES[0]);
     fireEvent.click(cuisine);
@@ -68,5 +52,76 @@ describe('Step1 component', () => {
     const cuisine2 = screen.getByText(STEP1_CUISINES[1]);
     fireEvent.click(cuisine2);
     expect(actions).toEqual([setCuisine(STEP1_CUISINES[0]),setCuisine(STEP1_CUISINES[1])]);
+  });
+  
+  it('should handle random cuisine button click', () => {
+    const randomButton = screen.getByText(STEP1_RANDOM);
+    fireEvent.click(randomButton);
+    const actions = (store as any).getActions();
+    expect(actions[0].type).toBe(setCuisine.type);
+  });
+  
+  it ('should handle next button click to summary', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedCuisine: STEP1_CUISINES[0],
+        isEditing: true,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step1 />
+        </Router>
+      </Provider>
+    );
+    const nextIcon = screen.getByTestId('next-icon');
+
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/summary');
+  });
+  
+  it ('should handle next button click to step2', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedCuisine: STEP1_CUISINES[0],
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step1 />
+        </Router>
+      </Provider>
+    );
+    const nextIcon = screen.getByTestId('next-icon');
+
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/step2');
+  });
+  
+  it('should remove cuisine if double clicked', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedCuisine: STEP1_CUISINES[0],
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step1 />
+        </Router>
+      </Provider>
+    );
+    
+    const cuisineButton = screen.getAllByText(STEP1_CUISINES[0])[0];
+    const actions = (store as any).getActions();
+    fireEvent.click(cuisineButton);
+    expect(actions).toEqual([]);
   });
 });

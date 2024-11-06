@@ -75,6 +75,7 @@ const Step1 = () => {
               </div>
               <button className="btn btn-dark cooking-lab-btn mb-3" onClick={chooseRandomCuisine}>{STEP1_RANDOM}</button>
               {selectedCuisine && <i
+                data-testid="next-icon"
                 className="bi bi-arrow-right-circle-fill ms-3"
                 style={{ fontSize: '2rem', cursor: 'pointer' }}
                 onClick={handleNextButton}
