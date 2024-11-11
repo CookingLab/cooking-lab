@@ -14,6 +14,7 @@ import {
   STEP4_TITLE,
   STEP_OPTIONAL
 } from '../i18n/constants';
+import { formatInputValue } from '../utils/index';
 
 const Step4 = () => {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ const Step4 = () => {
                   </button>
                   <ul data-testid="cypress-allergies-menu" className="dropdown-menu">
                     {STEP4_ALLERGIES.map((allergy, index) => (
-                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(allergy)}>{allergy}</p></li>))}
+                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(allergy)}>{formatInputValue(allergy)}</p></li>))}
                   </ul>
                 </div>
                 <div className="dropdown">
@@ -71,7 +72,7 @@ const Step4 = () => {
                   </button>
                   <ul data-testid="cypress-restrictions-menu" className="dropdown-menu">
                     {STEP4_RESTRICTIONS.map((restriction, index) => (
-                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(restriction)}>{restriction}</p></li>))}
+                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddHealth(restriction)}>{formatInputValue(restriction)}</p></li>))}
                   </ul>
                 </div>
               </div>
@@ -83,7 +84,7 @@ const Step4 = () => {
               <div key={index} className="d-flex align-items-center mb-2">
                 <span className="me-2"><strong>{index + 1}.</strong></span>
                 <li className="list-group-item flex-grow-1 d-flex justify-content-between align-items-center rounded">
-                  <span>{health}</span>
+                  <span>{formatInputValue(health)}</span>
                 </li>
                 <i
                   className="bi bi-trash-fill"

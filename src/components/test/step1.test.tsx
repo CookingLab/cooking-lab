@@ -8,6 +8,7 @@ import Step1 from '../step1';
 import { STEP1_TITLE, STEP1_DESCRIPTION, STEP1_CUISINES, STEP1_RANDOM, RESTART } from '../../i18n/constants';
 import { setCuisine } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
+import {formatInputValue} from '../../utils/index';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;
@@ -38,7 +39,7 @@ describe('Step1 component', () => {
   });
 
   it('should set cuisineType to correct value on click', () => {
-    const cuisine = screen.getByText(STEP1_CUISINES[0]);
+    const cuisine = screen.getByText(formatInputValue(STEP1_CUISINES[0]));
     fireEvent.click(cuisine);
     const actions = (store as any).getActions();
     expect(actions).toEqual([setCuisine(STEP1_CUISINES[0])]);
@@ -46,10 +47,10 @@ describe('Step1 component', () => {
 
   it('should update cuisineType to correct value on click', () => {
     const actions = (store as any).getActions();
-    const cuisine = screen.getByText(STEP1_CUISINES[0]);
+    const cuisine = screen.getByText(formatInputValue(STEP1_CUISINES[0]));
     fireEvent.click(cuisine);
     expect(actions).toEqual([setCuisine(STEP1_CUISINES[0])]);
-    const cuisine2 = screen.getByText(STEP1_CUISINES[1]);
+    const cuisine2 = screen.getByText(formatInputValue(STEP1_CUISINES[1]));
     fireEvent.click(cuisine2);
     expect(actions).toEqual([setCuisine(STEP1_CUISINES[0]),setCuisine(STEP1_CUISINES[1])]);
   });
@@ -119,7 +120,7 @@ describe('Step1 component', () => {
       </Provider>
     );
     
-    const cuisineButton = screen.getAllByText(STEP1_CUISINES[0])[0];
+    const cuisineButton = screen.getAllByText(formatInputValue(STEP1_CUISINES[0]))[0];
     const actions = (store as any).getActions();
     fireEvent.click(cuisineButton);
     expect(actions).toEqual([]);

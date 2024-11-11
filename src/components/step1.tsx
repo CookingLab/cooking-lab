@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { RootState } from '../redux/store';
 import { setCuisine, clearCuisine } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
+import { formatInputValue } from '../utils/index';
 
 const Step1 = () => {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Step1 = () => {
                     className={`btn btn-dark cooking-lab-btn-option m-2 ${selectedCuisine === cuisine ? 'active' : ''}`}
                     onClick={() => handleCuisineClick(cuisine)}
                   >
-                    {cuisine}
+                    {formatInputValue(cuisine)}
                   </button>
                 ))}
               </div>
