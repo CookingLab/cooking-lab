@@ -20,16 +20,17 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { setEditing } from '../redux/cookingLabSlice';
 import { useDispatch } from 'react-redux';
+import { formatInputValue } from '../utils/index';
 
 const SummaryPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedCuisine = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
-  const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+  const selectedCuisine = useSelector((state: RootState) => formatInputValue(state.cookingLab.selectedCuisine));
+  const selectedType = useSelector((state: RootState) => formatInputValue(state.cookingLab.selectedMealType));
   const selectedDiets = useSelector((state: RootState) => state.cookingLab.selectedDiet);
-  const selectedDietsString = selectedDiets.join(', ');
+  const selectedDietsString = formatInputValue(selectedDiets.join(', '));
   const selectedHealth = useSelector((state: RootState) => state.cookingLab.selectedHealth);
-  const selectedHealthString = selectedHealth.join(', ');
+  const selectedHealthString = formatInputValue(selectedHealth.join(', '));
 
   function handleBackButton() {
     dispatch(setEditing(false));

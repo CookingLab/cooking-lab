@@ -12,6 +12,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { clearDiet, setDiet, clearDiets } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
+import { formatInputValue } from '../utils/index';
 
 const Step3 = () => {
   const navigate = useNavigate();
@@ -65,7 +66,7 @@ const Step3 = () => {
                   </button>
                   <ul className="dropdown-menu">
                     {STEP3_DIETS.map((diet, index) => (
-                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet(diet)}>{diet}</p></li>))}
+                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleAddDiet(diet)}>{formatInputValue(diet)}</p></li>))}
                   </ul>
                 </div>
               </div>
@@ -77,7 +78,7 @@ const Step3 = () => {
               <div key={index} className="d-flex align-items-center mb-2">
                 <span className="me-2"><strong>{index + 1}.</strong></span>
                 <li className="list-group-item flex-grow-1 d-flex justify-content-between align-items-center rounded">
-                  <span>{diet}</span>
+                  <span>{formatInputValue(diet)}</span>
                 </li>
                 <i
                   className="bi bi-trash-fill"
