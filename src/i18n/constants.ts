@@ -25,9 +25,9 @@ export const PROD = 'Prod';
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';
 export const TML = 'The Minh Luong';
-export const TML_LINKEDIN = 'https://www.linkedin.com/in/tmluong19/?originalSubdomain=ca';
+export const TML_LINK = 'https://tml-portfolio.netlify.app/';
 export const TC = 'Tien Chung';
-export const TC_LINKEDIN = 'https://www.linkedin.com/in/tchung24';
+export const TC_LINK = 'https://tien-chung.netlify.app/Home';
 
 // Step1 constants
 export const STEP1_TITLE = 'Step 1: Choose the Cooking Cuisine';

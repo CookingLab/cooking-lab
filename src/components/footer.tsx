@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../img/cookingLabLogo1.png';
 import { 
-  TML_LINKEDIN,
-  TC_LINKEDIN,
+  TML_LINK,
+  TC_LINK,
   TML,
   TC,
   COPYRIGHT,
@@ -18,10 +18,10 @@ const Footer = () => {
 
       <ul className="nav col-md-4 justify-content-end list-unstyled d-flex mx-3">
         <li className="ms-3" data-testid="tm-id">
-          <a className="footer-link" href={TML_LINKEDIN} target="_blank" rel="noreferrer">{TML}</a>
+          <a className="footer-link" href={TML_LINK} target="_blank" rel="noreferrer">{TML}</a>
         </li>
         <li className="ms-3" data-testid="tc-id">
-          <a className="footer-link" href={TC_LINKEDIN} target="_blank" rel="noreferrer">{TC}</a>
+          <a className="footer-link" href={TC_LINK} target="_blank" rel="noreferrer">{TC}</a>
         </li>
       </ul>
     </footer>
