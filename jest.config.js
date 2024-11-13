@@ -8,4 +8,8 @@ module.exports = {
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
   ],
+  setupFilesAfterEnv: ['<rootDir>/src/components/test/testConfig/setupTests.ts'],
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/components/test/testConfig/fileMock.ts",
+  }
 };

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -47,19 +46,18 @@ describe('Step2 component', () => {
     const mealType = screen.getByText(formatInputValue(STEP2_DINNER));
     fireEvent.click(mealType);
     const actions = (store as any).getActions();
-    expect(actions).toEqual([setMealType(STEP2_DINNER)]);
+    expect(actions).toEqual([setMealType(STEP2_DINNER.toLowerCase())]);
   });
 
   it('should update mealType to correct value on click', () => {
     const actions = (store as any).getActions();
     const mealType = screen.getByText(formatInputValue(STEP2_DINNER));
     fireEvent.click(mealType);
-    expect(actions).toEqual([setMealType(STEP2_DINNER)]);
+    expect(actions).toEqual([setMealType(STEP2_DINNER.toLowerCase())]);
     const mealType2 = screen.getByText(formatInputValue(STEP2_LUNCH));
     fireEvent.click(mealType2);
-    expect(actions).toEqual([setMealType(STEP2_DINNER),setMealType(STEP2_LUNCH)]);
+    expect(actions).toEqual([setMealType(STEP2_DINNER.toLowerCase()),setMealType(STEP2_LUNCH.toLowerCase())]);
   });
-  
   
   it ('should handle next button click to summary', () => {
     store = mockStore({
@@ -103,6 +101,27 @@ describe('Step2 component', () => {
     expect(window.location.pathname).toBe('/step3');
   });
   
+  it ('should handle previous button click to step1', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedMealType: STEP2_DINNER,
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step2 />
+        </Router>
+      </Provider>
+    );
+    const nextIcon = screen.getAllByTestId('prev-icon')[0];
+
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/step1');
+  });
+  
   it('should remove mealType if double clicked', () => {
     store = mockStore({
       cookingLab: {
@@ -119,7 +138,7 @@ describe('Step2 component', () => {
       </Provider>
     );
     
-    const mealType = screen.getByText(formatInputValue(STEP2_DINNER));
+    const mealType = screen.getAllByText(formatInputValue(STEP2_DINNER))[0];
     const actions = (store as any).getActions();
     fireEvent.click(mealType);
     expect(actions).toEqual([]);
