@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
@@ -27,11 +28,11 @@ describe('GetRecipe Component', () => {
 
   it('should render without crashing', () => {
     render(
-        <Provider store={store}>
-            <BrowserRouter>
-                <GetRecipe />
-            </BrowserRouter>
-        </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <GetRecipe />
+        </BrowserRouter>
+      </Provider>
     );
     expect(screen.getByText(/Loading/i)).toBeInTheDocument();
   });
@@ -47,11 +48,11 @@ describe('GetRecipe Component', () => {
     (axios.get as jest.Mock).mockResolvedValueOnce({ data: mockRecipe });
 
     render(
-        <Provider store={store}>
-            <BrowserRouter>
-                <GetRecipe />
-            </BrowserRouter>
-        </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <GetRecipe />
+        </BrowserRouter>
+      </Provider>
     );
 
     await waitFor(() => {
