@@ -5,7 +5,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'text'],
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}',
+    'src/components/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
   ],
   setupFilesAfterEnv: ['<rootDir>/src/components/test/testConfig/setupTests.ts'],
