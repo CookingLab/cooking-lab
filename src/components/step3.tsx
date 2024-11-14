@@ -100,11 +100,13 @@ const Step3 = () => {
           </ul>
           <div className="d-flex justify-content-between card-body-bg">
             {!isEditingState && <i
+              data-testid="prev-icon"
               className="bi bi-arrow-left-circle-fill me-3 ms-3"
               style={{ fontSize: '2rem', cursor: 'pointer' }}
               onClick={() => navigate('/step2')}
             />}
             <i
+              data-testid="next-icon"
               className={`bi bi-arrow-right-circle-fill me-3 ${!isEditingState ? 'ms-3' : 'ms-auto'}`}
               style={{ fontSize: '2rem', cursor: 'pointer' }}
               onClick={handleNextButton}
