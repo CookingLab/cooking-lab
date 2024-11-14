@@ -1,13 +1,24 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import Step2 from '../step2';
-import { STEP2_TITLE, STEP2_DESCRIPTION, STEP2_BREAKFAST, STEP2_BRUNCH, STEP2_LUNCH, STEP2_DINNER, STEP2_SNACK, STEP2_TEATIME, RESTART } from '../../i18n/constants';
 import { setMealType } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
+import {
+  STEP2_TITLE,
+  STEP2_DESCRIPTION,
+  STEP2_BREAKFAST,
+  STEP2_BRUNCH,
+  STEP2_LUNCH,
+  STEP2_DINNER,
+  STEP2_SNACK,
+  STEP2_TEATIME,
+  RESTART,
+} from '../../i18n/constants';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;

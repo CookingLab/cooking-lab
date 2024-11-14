@@ -87,6 +87,7 @@ const Step4 = () => {
                   <span>{formatInputValue(health)}</span>
                 </li>
                 <i
+                  data-testid="remove-health"
                   className="bi bi-trash-fill"
                   style={{ fontSize: '2rem', cursor: 'pointer' }}
                   onClick={() => handleRemoveHealth(index)}

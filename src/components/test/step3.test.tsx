@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -7,7 +8,14 @@ import { clearDiet, clearDiets, setDiet } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
 import Step3 from '../step3';
-import { STEP3_TITLE, RESTART, STEP3_SELECT_LABEL, STEP_OPTIONAL, STEP3_DIETS, STEP3_DROPDOWN } from '../../i18n/constants';
+import {
+  STEP3_TITLE,
+  RESTART,
+  STEP3_SELECT_LABEL,
+  STEP_OPTIONAL,
+  STEP3_DIETS,
+  STEP3_DROPDOWN,
+} from '../../i18n/constants';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;

@@ -6,17 +6,16 @@ import configureStore from 'redux-mock-store';
 import Debug from '../debug';
 import * as CookingLabSlice from '../../redux/cookingLabSlice';
 import {
-    DEBUG,
-    STEP1,
-    STEP2,
-    STEP3,
-    STEP4,
-    SUMMARY,
-    RECIPE,
-    ERROR_RECIPE,
-    ENDPOINT_SELECTOR,
-    LOCAL,
-    PROD
+  DEBUG,
+  STEP1,
+  STEP2,
+  STEP3,
+  STEP4,
+  SUMMARY,
+  RECIPE,
+  ERROR_RECIPE,
+  LOCAL,
+  PROD
 } from '../../i18n/constants';
 
 const mockStore = configureStore([]);

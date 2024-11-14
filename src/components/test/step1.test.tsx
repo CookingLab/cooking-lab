@@ -1,13 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import Step1 from '../step1';
-import { STEP1_TITLE, STEP1_DESCRIPTION, STEP1_CUISINES, STEP1_RANDOM, RESTART } from '../../i18n/constants';
 import { setCuisine } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
+import {
+  STEP1_TITLE,
+  STEP1_DESCRIPTION,
+  STEP1_CUISINES,
+  STEP1_RANDOM,
+  RESTART,
+} from '../../i18n/constants';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;

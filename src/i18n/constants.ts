@@ -66,7 +66,7 @@ export const STEP3_DIETS = ['balanced', 'high-fiber', 'high-protein', 'low-carb'
 // Step4 constants
 export const STEP4_TITLE = 'Step 4: Select Food Restrictions';
 export const STEP4_DESCRIPTION = 'Do you have any food restrictions? (This step is optional)';
-export const STEP4_DROPDOWN = 'Choose one or many allergies or restrictions: ';
+export const STEP4_DROPDOWN = 'Choose one or many allergies or restrictions:';
 export const STEP4_DROPDOWN_ALLERGIES = 'Allergies';
 export const STEP4_DROPDOWN_RESTRICTIONS = 'Restrictions';
 export const STEP4_ALLERGIES = [
