@@ -86,6 +86,7 @@ const SummaryPage = () => {
         </div>
         <div className="card-body-bg">
           <i
+            data-testid="prev-icon"
             className="bi bi-arrow-left-circle-fill me-3 ms-3"
             style={{ fontSize: '2rem', cursor: 'pointer' }}
             onClick={handleBackButton}
