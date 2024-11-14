@@ -3,12 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import Step3 from '../step3';
-import { STEP3_TITLE, STEP_OPTIONAL, STEP3_SELECT_LABEL, STEP3_DROPDOWN, STEP3_DIETS, RESTART } from '../../i18n/constants';
-
-import { setDiet } from '../../redux/cookingLabSlice';
+import { clearDiet, clearDiets, setDiet } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
+import Step3 from '../step3';
+import { STEP3_TITLE, RESTART, STEP3_SELECT_LABEL, STEP_OPTIONAL, STEP3_DIETS, STEP3_DROPDOWN } from '../../i18n/constants';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;
@@ -18,7 +17,6 @@ describe('Step3 component', () => {
     store = mockStore({
       cookingLab: {
         selectedDiet: [],
-        selectedMealType: [],
         isEditing: false,
       },
     });
@@ -37,6 +35,7 @@ describe('Step3 component', () => {
     expect(screen.getByText(STEP_OPTIONAL)).toBeInTheDocument();
     expect(screen.getByText(STEP3_DROPDOWN)).toBeInTheDocument();
     expect(screen.getByText(RESTART)).toBeInTheDocument();
+    expect(screen.getByText(STEP3_SELECT_LABEL)).toBeInTheDocument();
   });
 
   it('should set diet to correct value on click', () => {
@@ -61,28 +60,28 @@ describe('Step3 component', () => {
     expect(actions).toEqual([setDiet(STEP3_DIETS[0]),setDiet(STEP3_DIETS[1])]);
   });
   
-//   it ('should handle next button click to summary', () => {
-//     store = mockStore({
-//       cookingLab: {
-//         selectedDiet: [STEP3_DIETS[0]],
-//         isEditing: true,
-//       },
-//     });
-
-//     render(
-//       <Provider store={store}>
-//         <Router>
-//           <Step3 />
-//         </Router>
-//       </Provider>
-//     );
-//     const nextIcon = screen.getAllByTestId('next-icon')[0];
-
-//     fireEvent.click(nextIcon);
-//     expect(window.location.pathname).toBe('/summary');
-//   });
+  it ('should handle next button click to summary', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [STEP3_DIETS[0]],
+        isEditing: true,
+      },
+    });
+    
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step3 />
+        </Router>
+      </Provider>
+    );
+    const nextIcon = screen.getAllByTestId('next-icon')[1];
+    
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/summary');
+  });
   
-  it ('should handle next button click to ste4', () => {
+  it ('should handle next button click to step4', () => {
     store = mockStore({
       cookingLab: {
         selectedDiet: [STEP3_DIETS[0]],
@@ -122,5 +121,47 @@ describe('Step3 component', () => {
 
     fireEvent.click(nextIcon);
     expect(window.location.pathname).toBe('/step2');
+  });
+
+  it ('should be able to clear the all selected diets', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [STEP3_DIETS[0]],
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step3 />
+        </Router>
+      </Provider>
+    );
+    const clearBtn = screen.getByTestId('cypress-clear-btn');
+    fireEvent.click(clearBtn);
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([clearDiets()]);
+  });
+
+  it ('should be able to clear the selected diet', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [STEP3_DIETS[0]],
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step3 />
+        </Router>
+      </Provider>
+    );
+    const removeDiet = screen.getByTestId('remove-diet');
+    fireEvent.click(removeDiet);
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([clearDiet(STEP3_DIETS[0])]);
   });
 });

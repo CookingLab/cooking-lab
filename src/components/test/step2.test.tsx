@@ -116,9 +116,9 @@ describe('Step2 component', () => {
         </Router>
       </Provider>
     );
-    const nextIcon = screen.getAllByTestId('prev-icon')[0];
+    const prevIcon = screen.getAllByTestId('prev-icon')[0];
 
-    fireEvent.click(nextIcon);
+    fireEvent.click(prevIcon);
     expect(window.location.pathname).toBe('/step1');
   });
   

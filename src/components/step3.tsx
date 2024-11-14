@@ -81,6 +81,7 @@ const Step3 = () => {
                   <span>{formatInputValue(diet)}</span>
                 </li>
                 <i
+                  data-testid="remove-diet"
                   className="bi bi-trash-fill"
                   style={{ fontSize: '2rem', cursor: 'pointer' }}
                   onClick={() => handleRemoveDiet(index)}

@@ -59,7 +59,7 @@ export const MEAL_TYPES = [
 // Step3 constants
 export const STEP3_TITLE = 'Step 3: Select Diet(s)';
 export const STEP_OPTIONAL = '(This step is optional)';
-export const STEP3_SELECT_LABEL = 'Choose one or many diets: ';
+export const STEP3_SELECT_LABEL = 'Choose one or many diets:';
 export const STEP3_DROPDOWN = 'Diets';
 export const STEP3_DIETS = ['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium'];
 
