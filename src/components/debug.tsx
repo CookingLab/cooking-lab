@@ -96,7 +96,7 @@ const Debug = () => {
 
   return (
     <div>
-      <button className="btn btn-dark cooking-lab-btn" onClick={toggleVisibility}>
+      <button className="btn btn-dark cooking-lab-btn mx-3" onClick={toggleVisibility}>
         {DEBUG}
       </button>
       {isVisible && (
