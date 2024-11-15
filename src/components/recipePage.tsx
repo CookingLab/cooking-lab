@@ -70,6 +70,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                 <p>{RECIPE_ERROR_MESSAGE}</p>
                 <p>{RECIPE_ERROR_SUB_MESSAGE}</p>
                 <i
+                  data-testid="error-back-icon"
                   className="bi bi-arrow-left-circle-fill me-auto"
                   style={{ fontSize: '2rem', cursor: 'pointer' }}
                   onClick={() => navigate('/summary')}
@@ -100,11 +101,13 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                 {!isQuickRecipeState && (
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <i
+                      data-testid="back-icon"
                       className="bi bi-arrow-left-circle-fill me-3 ms-3"
                       style={{ fontSize: '2rem', cursor: 'pointer' }}
                       onClick={() => navigate('/summary')}
                     />
                     <button
+                      data-testid="regenerate-btn"
                       className="btn btn-dark cooking-lab-btn me-3 ms-3"
                       onClick={() => handleRegenerate()}
                     >

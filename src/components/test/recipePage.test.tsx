@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   RECIPE_LOADER,
   RECIPE_ERROR_TITLE,
@@ -7,11 +8,12 @@ import {
 } from '../../i18n/constants';
 import React from 'react';
 import RecipePage from '../recipePage';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
+import { setRecipeGenerate } from '../../redux/cookingLabSlice';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;
@@ -32,6 +34,77 @@ describe('RecipePage component', () => {
         </Router>
       </Provider>
     );
+  });
+  
+  it('should have generate another recipe and back buttons', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [],
+        isEditing: false,
+        isQuickRecipe: false,
+      },
+    });
+        
+    render(
+      <Provider store={store}>
+        <Router>
+          <RecipePage label="Tomato Soup" image="" ingredients={[]} url="" />
+        </Router>
+      </Provider>
+    );
+    
+    const backIcon = screen.getByTestId('back-icon');
+    fireEvent.click(backIcon);
+    expect(window.location.pathname).toBe('/summary');
+    
+    const generateAnotherRecipe = screen.getByTestId('regenerate-btn');
+    fireEvent.click(generateAnotherRecipe);
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([setRecipeGenerate()]);
+  });
+  
+  it('should have generate error msg', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [],
+        isEditing: false,
+        isQuickRecipe: false,
+      },
+    });
+        
+    render(
+      <Provider store={store}>
+        <Router>
+          <RecipePage label="Error" image="" ingredients={[]} url="" />
+        </Router>
+      </Provider>
+    );
+    
+    const backIcon = screen.getByTestId('error-back-icon');
+    fireEvent.click(backIcon);
+    expect(window.location.pathname).toBe('/summary');
+  });
+  
+  it('shoul see loading msg when timeout exceed 10s', () => {
+    jest.useFakeTimers();
+    store = mockStore({
+      cookingLab: {
+        selectedDiet: [],
+        isEditing: false,
+        isQuickRecipe: false,
+      },
+    });
+        
+    render(
+      <Provider store={store}>
+        <Router>
+          <RecipePage label="" image="" ingredients={[]} url="" />
+        </Router>
+      </Provider>
+    );
+    
+    jest.advanceTimersByTime(11000);
+    expect(screen.getAllByText(RECIPE_LOADER)[1]).toBeInTheDocument();
   });
 
   it('should renders RecipePage component loader', () => {
