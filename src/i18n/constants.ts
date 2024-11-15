@@ -6,6 +6,7 @@ export const COOKING_LAB_OBJECTIVE = 'Our objective is to help you find a recipe
 export const HOME_GET_STARTED_BTN = 'Get started!';
 export const RESTART = 'Restart';
 export const CLEAR = 'Clear';
+export const QUICK_RECIPE = 'Quick Recipe';
 
 // Debug constants
 export const DEBUG = 'Debug Tool';
