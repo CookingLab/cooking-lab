@@ -12,6 +12,7 @@ const GetRecipe = () => {
   const mealType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
   const diet = useSelector((state: RootState) => state.cookingLab.selectedDiet);
   const health = useSelector((state: RootState) => state.cookingLab.selectedHealth);
+  const recipeGenerate = useSelector((state: RootState) => state.cookingLab.recipeGenerate);
 
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
@@ -49,7 +50,7 @@ const GetRecipe = () => {
   useEffect(() => {
     getRecipes();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [diet, health, cuisineType, mealType]);
+  }, [diet, health, cuisineType, mealType, recipeGenerate]);
 
   return (
     <div>

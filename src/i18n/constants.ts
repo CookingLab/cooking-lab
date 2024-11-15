@@ -104,3 +104,4 @@ export const RECIPE_LOADER = 'Loading Recipe';
 export const RECIPE_ERROR_TITLE = 'Error fetching recipe';
 export const RECIPE_ERROR_MESSAGE = 'It looks like there was an error fetching the recipe. Please try again later.';
 export const RECIPE_ERROR_SUB_MESSAGE = 'Click the back button to change your selections.';
+export const RECIPE_GENERATE = 'Generate another recipe';

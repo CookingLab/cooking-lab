@@ -8,6 +8,7 @@ interface CookingLabStates {
   selectedDiet: string[];
   selectedHealth: string[];
   backEndEndpoint: string;
+  recipeGenerate: number;
 }
 
 const initialState: CookingLabStates = {
@@ -18,6 +19,7 @@ const initialState: CookingLabStates = {
   selectedDiet: [],
   selectedHealth: [],
   backEndEndpoint: 'prod',
+  recipeGenerate: 0,
 };
 
 const cookingLabSlice = createSlice({
@@ -26,6 +28,9 @@ const cookingLabSlice = createSlice({
   reducers: {
     setQuickRecipe: (state, action: PayloadAction<boolean>) => {
       state.isQuickRecipe = action.payload;
+    },
+    setRecipeGenerate: (state) => {
+      state.recipeGenerate = state.recipeGenerate + 1;
     },
     setEditing: (state, action: PayloadAction<boolean>) => {
       state.isEditing = action.payload;
@@ -72,6 +77,7 @@ const cookingLabSlice = createSlice({
 
 export const {
   setQuickRecipe,
+  setRecipeGenerate,
   setEditing,
   setCuisine, clearCuisine,
   setMealType, clearMealType,

@@ -7,21 +7,29 @@ import {
   RECIPE_ERROR_SUB_MESSAGE,
   FIRST_RECIPE_DELAY_MESSAGE,
   SORRY_MSG,
+  RECIPE_GENERATE,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
 import { useNavigate } from 'react-router-dom';
 import { RecipeProps } from '../interfaces/recipeInterface';
 import logo from '../img/cookingLabLogo1.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
+import { setRecipeGenerate } from '../redux/cookingLabSlice';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
   const isQuickRecipeState = useSelector((state: RootState) => state.cookingLab.isQuickRecipe);
+  
+  const handleRegenerate = () => {
+    dispatch(setRecipeGenerate());
+  }
   
   useEffect(() => {
     if (!label) {
@@ -96,6 +104,12 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                       style={{ fontSize: '2rem', cursor: 'pointer' }}
                       onClick={() => navigate('/summary')}
                     />
+                    <button
+                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                      onClick={() => handleRegenerate()}
+                    >
+                      {RECIPE_GENERATE}
+                    </button>
                   </div>
                 )}
               </>
