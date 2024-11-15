@@ -13,12 +13,15 @@ import RestartButton from './restartButton';
 import { useNavigate } from 'react-router-dom';
 import { RecipeProps } from '../interfaces/recipeInterface';
 import logo from '../img/cookingLabLogo1.png';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
+  const isQuickRecipeState = useSelector((state: RootState) => state.cookingLab.isQuickRecipe);
   
   useEffect(() => {
     if (!label) {
@@ -86,13 +89,15 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                     <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <i
-                    className="bi bi-arrow-left-circle-fill me-3 ms-3"
-                    style={{ fontSize: '2rem', cursor: 'pointer' }}
-                    onClick={() => navigate('/summary')}
-                  />
-                </div>
+                {!isQuickRecipeState && (
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <i
+                      className="bi bi-arrow-left-circle-fill me-3 ms-3"
+                      style={{ fontSize: '2rem', cursor: 'pointer' }}
+                      onClick={() => navigate('/summary')}
+                    />
+                  </div>
+                )}
               </>
           )}
         </div>
