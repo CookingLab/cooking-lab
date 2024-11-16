@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import RestartButton from '../restartButton';
 import { RESTART } from '../../i18n/constants';
-import { clearCuisine, clearMealType, clearDiets, clearHealths, setEditing, setQuickRecipe } from '../../redux/cookingLabSlice';
+import { clearCuisine, clearMealType, clearMeat, clearDiets, clearHealths, setEditing, setQuickRecipe } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 
 const mockStore = configureStore([]);
@@ -18,6 +18,7 @@ describe('Restart Button component', () => {
       cookingLab: {
         selectedCuisine: '',
         selectedMealType: '',
+        selectedMeat: '',
         selectedDiets: [],
         selectedHealths: [],
         isEditing: false,
@@ -50,6 +51,6 @@ describe('Restart Button component', () => {
     const restart = screen.getByText(RESTART);
     fireEvent.click(restart);
     const actions = (store as any).getActions();
-    expect(actions).toEqual([setQuickRecipe(false), setEditing(false), clearCuisine(), clearMealType(), clearDiets(), clearHealths()]);
+    expect(actions).toEqual([setQuickRecipe(false), setEditing(false), clearCuisine(), clearMealType(), clearMeat(), clearDiets(), clearHealths()]);
   });
 });

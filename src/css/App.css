@@ -78,6 +78,16 @@
   border-color: var(--color-dark) !important;
 }
 
+.meat-dropdown-item{
+  margin: 10px;
+}
+
+.meat-list-item:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
 .background-color {
   background-color: var(--color-dark);
 }
@@ -159,6 +169,12 @@ html, body {
 .cooking-lab-btn-option.active{
   background-color: var(--color-dark);
   border-color: var(--color-dark);
+}
+
+.meat-btn {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
 }
 
 /* Links */

@@ -5,6 +5,7 @@ interface CookingLabStates {
   isEditing: boolean;
   selectedCuisine: string;
   selectedMealType: string;
+  selectedMeat: string;
   selectedDiet: string[];
   selectedHealth: string[];
   backEndEndpoint: string;
@@ -16,6 +17,7 @@ const initialState: CookingLabStates = {
   isEditing: false,
   selectedCuisine: '',
   selectedMealType: '',
+  selectedMeat: '',
   selectedDiet: [],
   selectedHealth: [],
   backEndEndpoint: 'prod',
@@ -46,6 +48,12 @@ const cookingLabSlice = createSlice({
     },
     clearMealType: (state) => {
       state.selectedMealType = '';
+    },
+    setMeat: (state, action: PayloadAction<string>) => {
+      state.selectedMeat = action.payload;
+    },
+    clearMeat: (state) => {
+      state.selectedMeat = '';
     },
     setDiet: (state, action: PayloadAction<string>) => {
       if(!state.selectedDiet.includes(action.payload)) {
@@ -81,6 +89,7 @@ export const {
   setEditing,
   setCuisine, clearCuisine,
   setMealType, clearMealType,
+  setMeat, clearMeat,
   setDiet, clearDiet, clearDiets,
   setHealth, clearHealth, clearHealths,
   setEndpoint,

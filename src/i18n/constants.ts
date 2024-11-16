@@ -56,6 +56,8 @@ export const MEAL_TYPES = [
   { type: 'snack', label: STEP2_SNACK },
   { type: 'teatime', label: STEP2_TEATIME },
 ];
+export const MEAT_DROPDOWN = 'Choose a protein (optional)';
+export const MEAT_VALUES = ['Chicken', 'Pork', 'Beef', 'Fish'];
 
 // Step3 constants
 export const STEP3_TITLE = 'Step 3: Select Diet(s)';
@@ -93,6 +95,7 @@ export const SUMMARY_STEP4 = 'Step 4';
 export const SUMMARY_GET_RECIPE = 'Get Recipe';
 export const SUMMARY_STEP1_LABEL = 'Selected cuisine: ';
 export const SUMMARY_STEP2_LABEL = 'Selected meal type: ';
+export const SUMMARY_STEP2_LABEL_MEAT = 'Selected protein: ';
 export const SUMMARY_STEP3_LABEL = 'Selected diets: ';
 export const SUMMARY_STEP4_LABEL = 'Selected food restrictions: ';
 export const SUMMARY_EDIT = 'Edit';

@@ -10,6 +10,7 @@ const GetRecipe = () => {
   
   const cuisineType = useSelector((state: RootState) => state.cookingLab.selectedCuisine);
   const mealType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+  const meat = useSelector((state: RootState) => state.cookingLab.selectedMeat);
   const diet = useSelector((state: RootState) => state.cookingLab.selectedDiet);
   const health = useSelector((state: RootState) => state.cookingLab.selectedHealth);
   const recipeGenerate = useSelector((state: RootState) => state.cookingLab.recipeGenerate);
@@ -36,6 +37,10 @@ const GetRecipe = () => {
       if (health.length > 0) {
         const healthParams = health.map((h: string) => `health=${h}`).join('&');
         url += `&${healthParams}`;
+      }
+
+      if(meat){
+        url += `&meat=${meat}`;
       }
   
       const response = await axios.get(url);
