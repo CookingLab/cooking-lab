@@ -8,6 +8,7 @@ import {
   SUMMARY_GET_RECIPE,
   SUMMARY_STEP1_LABEL,
   SUMMARY_STEP2_LABEL,
+  SUMMARY_STEP2_LABEL_MEAT,
   SUMMARY_STEP3_LABEL,
   SUMMARY_STEP4_LABEL,
   SUMMARY_EDIT,
@@ -27,6 +28,7 @@ const SummaryPage = () => {
   const dispatch = useDispatch();
   const selectedCuisine = useSelector((state: RootState) => formatInputValue(state.cookingLab.selectedCuisine));
   const selectedType = useSelector((state: RootState) => formatInputValue(state.cookingLab.selectedMealType));
+  const selectedMeatValue = useSelector((state: RootState) => state.cookingLab.selectedMeat);
   const selectedDiets = useSelector((state: RootState) => state.cookingLab.selectedDiet);
   const selectedDietsString = formatInputValue(selectedDiets.join(', '));
   const selectedHealth = useSelector((state: RootState) => state.cookingLab.selectedHealth);
@@ -63,6 +65,7 @@ const SummaryPage = () => {
                 <div className="card-body">
                   <h3 data-testid="smr-step2">{SUMMARY_STEP2}</h3>
                   <p data-testid="smr-step2-label"><b>{SUMMARY_STEP2_LABEL}</b>{selectedType}</p>
+                  {selectedMeatValue && <p data-testid="smr-step2-label-meat"><b>{SUMMARY_STEP2_LABEL_MEAT}</b>{selectedMeatValue}</p>}
                   <button data-testid="cypress-editStep2" className="btn btn-dark cooking-lab-btn mb-3"  onClick={() => navigate('/step2')}>{SUMMARY_EDIT}</button>
                 </div>
               </div>

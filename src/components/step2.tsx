@@ -2,12 +2,14 @@ import {
   STEP2_TITLE,
   STEP2_DESCRIPTION,
   MEAL_TYPES,
+  MEAT_VALUES,
+  MEAT_DROPDOWN
 } from '../i18n/constants';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { setMealType, clearMealType } from '../redux/cookingLabSlice';
+import { setMealType, clearMealType, setMeat, clearMeat } from '../redux/cookingLabSlice';
 import RestartButton from './restartButton';
 import breakfast from '../img/breakfast.png';
 import brunch from '../img/brunch.png';
@@ -21,9 +23,16 @@ const Step2 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedType = useSelector((state: RootState) => state.cookingLab.selectedMealType);
+  const selectedMeatValue = useSelector((state: RootState) => state.cookingLab.selectedMeat);
   const isEditingState = useSelector((state: RootState) => state.cookingLab.isEditing);
+  const isMeatSelectable = selectedType === 'lunch' || selectedType === 'dinner';
 
   const handleButtonClick = (mealType: string) => {
+
+    if(mealType === 'breakfast' || mealType === 'brunch' || mealType === 'snack' || mealType === 'teatime'){
+      dispatch(clearMeat());
+    }
+
     if (selectedType === mealType) {
       dispatch(clearMealType());
     } else {
@@ -38,6 +47,10 @@ const Step2 = () => {
     else{
       navigate('/step3');
     }
+  }
+
+  function handleMeatSelector(meat: string) {
+    dispatch(setMeat(meat));
   }
 
   const getImage = (): string => {
@@ -83,6 +96,15 @@ const Step2 = () => {
                     {label}
                   </button>
                 ))}
+                {isMeatSelectable && <div className="dropdown">
+                  <button className="btn btn-secondary dropdown-toggle cooking-lab-btn meat-dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {selectedMeatValue || MEAT_DROPDOWN}
+                  </button>
+                  <ul className="dropdown-menu">
+                    {MEAT_VALUES.map((meat, index) => (
+                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleMeatSelector(meat)}>{meat}</p></li>))}
+                  </ul>
+                </div>}
               </div>
             </div>
             <div className="col-md-4 text-center">

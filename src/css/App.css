@@ -78,6 +78,10 @@
   border-color: var(--color-dark) !important;
 }
 
+.meat-dropdown-item{
+  margin: 10px;
+}
+
 .background-color {
   background-color: var(--color-dark);
 }
