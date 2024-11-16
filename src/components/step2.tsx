@@ -97,7 +97,7 @@ const Step2 = () => {
                   </button>
                 ))}
                 {isMeatSelectable && <div className="dropdown">
-                  <button className="btn btn-secondary meat-btn dropdown-toggle cooking-lab-btn meat-dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button data-testid="cypress-meat-dropdown" className="btn btn-secondary meat-btn dropdown-toggle cooking-lab-btn meat-dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {selectedMeatValue || MEAT_DROPDOWN}
                   </button>
                   <ul className="dropdown-menu">
