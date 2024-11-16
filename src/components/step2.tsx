@@ -97,12 +97,12 @@ const Step2 = () => {
                   </button>
                 ))}
                 {isMeatSelectable && <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle cooking-lab-btn meat-dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="btn btn-secondary meat-btn dropdown-toggle cooking-lab-btn meat-dropdown-item" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {selectedMeatValue || MEAT_DROPDOWN}
                   </button>
                   <ul className="dropdown-menu">
                     {MEAT_VALUES.map((meat, index) => (
-                      <li key={index}><p className="dropdown-item cooking-lab-dropdown-item" onClick={() => handleMeatSelector(meat)}>{meat}</p></li>))}
+                      <li key={index}><p className="dropdown-item meat-list-item" onClick={() => handleMeatSelector(meat)}>{meat}</p></li>))}
                   </ul>
                 </div>}
               </div>
