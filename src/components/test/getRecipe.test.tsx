@@ -90,6 +90,7 @@ describe('GetRecipe Component', () => {
       cookingLab: {
         selectedCuisine: 'Italian',
         selectedMealType: 'Dinner',
+        selectedMeat: 'Chicken',
         selectedDiet: ['Vegetarian'],
         selectedHealth: ['Peanut-Free'],
         backEndEndpoint: 'dev',
@@ -115,7 +116,7 @@ describe('GetRecipe Component', () => {
   
     await waitFor(() => {
       expect(axios.get).toHaveBeenCalledWith(
-        'http://localhost:3000/api/recipes?cuisineType=Italian&mealType=Dinner&diet=Vegetarian&health=Peanut-Free'
+        'http://localhost:3000/api/recipes?cuisineType=Italian&mealType=Dinner&diet=Vegetarian&health=Peanut-Free&meat=Chicken'
       );
     });
   });

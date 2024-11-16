@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import Step2 from '../step2';
-import { setMealType } from '../../redux/cookingLabSlice';
+import { clearMeat, setMealType, setMeat } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
 import {
@@ -18,6 +18,8 @@ import {
   STEP2_SNACK,
   STEP2_TEATIME,
   RESTART,
+  MEAT_DROPDOWN,
+  MEAT_VALUES
 } from '../../i18n/constants';
 
 const mockStore = configureStore([]);
@@ -154,4 +156,74 @@ describe('Step2 component', () => {
     fireEvent.click(mealType);
     expect(actions).toEqual([]);
   });
+
+  it('should handle meat selector correctly', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedMealType: 'lunch',
+        selectedMeat: '',
+        isEditing: false,
+      },
+    });
+  
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step2 />
+        </Router>
+      </Provider>
+    );
+  
+    const meatDropdown = screen.getByText(MEAT_DROPDOWN);
+    fireEvent.click(meatDropdown);
+  
+    const meatOption = screen.getByText(MEAT_VALUES[0]);
+    fireEvent.click(meatOption);
+  
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([setMeat(MEAT_VALUES[0])]);
+  });
+  
+  it('should navigate to step3 on next button click when not editing', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedMealType: STEP2_DINNER,
+        isEditing: false,
+      },
+    });
+  
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step2 />
+        </Router>
+      </Provider>
+    );
+  
+    const nextIcon = screen.getByTestId('next-icon');
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/step3');
+  });
+  
+  it('should navigate to summary on next button click when editing', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedMealType: STEP2_DINNER,
+        isEditing: true,
+      },
+    });
+  
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step2 />
+        </Router>
+      </Provider>
+    );
+  
+    const nextIcon = screen.getByTestId('next-icon');
+    fireEvent.click(nextIcon);
+    expect(window.location.pathname).toBe('/summary');
+  });
+
 });
