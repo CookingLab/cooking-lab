@@ -6,6 +6,7 @@ import {
 } from '../i18n/constants';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
+import { useNavigate } from 'react-router-dom';
 
 interface Recipe {
   id: number;
@@ -15,20 +16,21 @@ interface Recipe {
 }
 
 const PersonalRecipes = () => {
+  const navigate = useNavigate();
   const [tcRecipes, setTcRecipes] = useState<Recipe[]>([]);
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
+  var targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+
+  if(endpoint === 'prod'){
+    targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+  }else{
+    targetEndpoint = 'http://localhost:8080';
+  }
+
   useEffect(() => {
     const fetchRecipes = async (owner: string) => {
-      let targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
-
-      if(endpoint === 'prod'){
-        targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
-      }else{
-        targetEndpoint = 'http://localhost:8080';
-      }
-
       try {
         const response = await fetch(`${targetEndpoint}/api/recipes/personal?owner=${owner}`);
         const data = await response.json();
@@ -48,6 +50,10 @@ const PersonalRecipes = () => {
     fetchAllRecipes();
   }, []);
 
+  function navigateToRecipe(id: number){
+    navigate('/personalRecipe/recipe/' + id);
+  }
+
   return (
     <div className="App">
       <div className="container mt-5">
@@ -56,7 +62,7 @@ const PersonalRecipes = () => {
           <div className="col-md-6">
             <h2>{TC_RECIPE}</h2>
             {tcRecipes.map(recipe => (
-              <div key={recipe.id} className="card mb-3 recipe-card">
+              <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                 <div className="card-body">
                   <h3 className="card-title">{recipe.title}</h3>
                 </div>
@@ -69,7 +75,7 @@ const PersonalRecipes = () => {
           <div className="col-md-5">
             <h2>{TM_RECIPE}</h2>
             {tmRecipes.map(recipe => (
-              <div key={recipe.id} className="card mb-3 recipe-card">
+              <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                 <div className="card-body">
                   <h3 className="card-title">{recipe.title}</h3>
                 </div>
