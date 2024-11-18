@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { useParams } from 'react-router-dom';
-import RecipePage from './recipePage';
 import { PersonalRecipe } from '../interfaces/recipeInterface';
+import PersonalRecipePage from './personalRecipePage';
 
 const GetPersonalRecipe = () => {
 
@@ -38,10 +38,9 @@ const GetPersonalRecipe = () => {
 
     return (
         <div>
-            {/*TODO: Create a separate Personal Recipe page*/}
-            <RecipePage
-            key={recipe.id}
-            label={recipe.title}
+            <PersonalRecipePage
+            id={recipe.id}
+            title={recipe.title}
             ingredients={recipe.ingredients}
             instructions={recipe.instructions}
             />

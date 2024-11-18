@@ -322,3 +322,11 @@ html, body {
   background-color: var(--color-accent);
   cursor: pointer;
 }
+
+.instructions-ordered-list {
+  padding-left: 20px;
+}
+
+.instructions-ordered-list .list-group-item {
+  display: list-item;
+}

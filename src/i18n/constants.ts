@@ -118,3 +118,4 @@ export const RECIPE_GENERATE = 'Generate another recipe';
 export const PERSONAL_RECIPES_TITLE = 'Our Recipes';
 export const TC_RECIPE = 'Tien\'s Recipe';
 export const TM_RECIPE = 'The Minh\'s Recipe';
+export const RECIPE_INSTRUCTIONS = 'Instructions';

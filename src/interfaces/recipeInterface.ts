@@ -9,7 +9,7 @@ export interface RecipeProps {
 export interface PersonalRecipe {
   id: number;
   title: string;
-  ingredients: Ingredient[];
+  ingredients: string[];
   instructions: string[];
 }
 
