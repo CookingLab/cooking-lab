@@ -313,3 +313,12 @@ html, body {
   background-color: black;
   height: 100%;
 }
+
+.recipe-card {
+  transition: background-color 0.3s ease;
+}
+
+.recipe-card:hover {
+  background-color: var(--color-accent);
+  cursor: pointer;
+}
