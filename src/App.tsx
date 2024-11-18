@@ -11,7 +11,7 @@ import Step2 from './components/step2';
 import Step3 from './components/step3';
 import Step4 from './components/step4';
 import PersonalRecipes from 'components/personalRecipes';
-import PersonalRecipe from 'components/personalRecipe';
+import GetPersonalRecipe from 'components/getPersonalRecipe';
 
 const App = () => {
   return (
@@ -29,7 +29,7 @@ const App = () => {
           <Route path="/step4" element={<Step4 />} />
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/personalRecipe" element={<PersonalRecipes />} />
-          <Route path="/personalRecipe/recipe/:id" element={<PersonalRecipe />} />
+          <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
         </Routes>
       </div>
       <Footer />

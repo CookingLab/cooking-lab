@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import RecipePage from './recipePage';
 import { PersonalRecipe } from '../interfaces/recipeInterface';
 
-const PersonalRecipe = () => {
+const GetPersonalRecipe = () => {
 
     const [recipe, setRecipe] = useState<PersonalRecipe>({ id: 0, title: '', ingredients: [], instructions: [] });
 
@@ -49,4 +49,4 @@ const PersonalRecipe = () => {
     );
 };
 
-export default PersonalRecipe;
+export default GetPersonalRecipe;
