@@ -4,6 +4,8 @@ import {
   TC_RECIPE,
   TM_RECIPE,
 } from '../i18n/constants';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
 
 interface Recipe {
   id: number;
@@ -15,11 +17,20 @@ interface Recipe {
 const PersonalRecipes = () => {
   const [tcRecipes, setTcRecipes] = useState<Recipe[]>([]);
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
+  const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
   useEffect(() => {
     const fetchRecipes = async (owner: string) => {
+      let targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+
+      if(endpoint === 'prod'){
+        targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+      }else{
+        targetEndpoint = 'http://localhost:8080';
+      }
+
       try {
-        const response = await fetch(`https://cooking-lab-personal-recipe-api.onrender.com/api/recipes/personal?owner=${owner}`);
+        const response = await fetch(`${targetEndpoint}/api/recipes/personal?owner=${owner}`);
         const data = await response.json();
         return data;
       } catch (error) {
