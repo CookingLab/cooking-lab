@@ -4,9 +4,19 @@ import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
 import { PERSONAL_RECIPE, RECIPE_GENERATOR } from '../i18n/constants';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { restartSteps } from '../utils/index';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const handleRestart = () => {
+    restartSteps(dispatch, navigate);
+  }
 
   return (
     <Navbar expand="md" className="navbar background-color">
@@ -28,6 +38,7 @@ const NavBar = () => {
               smooth 
               to="/" 
               className="navbar-link"
+              onClick={() => handleRestart()}
             >
               {RECIPE_GENERATOR}
             </Nav.Link>
@@ -36,6 +47,7 @@ const NavBar = () => {
               smooth 
               to="/personalRecipe" 
               className="navbar-link"
+              onClick={() => handleRestart()}
             >
               {PERSONAL_RECIPE}
             </Nav.Link>
