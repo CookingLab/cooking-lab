@@ -11,6 +11,7 @@ export interface PersonalRecipe {
   title: string;
   ingredients: string[];
   instructions: string[];
+  imageURL: string;
 }
 
 export interface Ingredient {

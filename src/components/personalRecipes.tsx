@@ -21,7 +21,7 @@ const PersonalRecipes = () => {
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
-  var targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+  let targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
 
   if(endpoint === 'prod'){
     targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
