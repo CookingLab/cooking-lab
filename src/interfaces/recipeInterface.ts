@@ -1,9 +1,19 @@
 export interface RecipeProps {
   label: string;
-  image: string;
+  image?: string;
   ingredients: Ingredient[];
-  url: string;
+  url?: string;
+  instructions?: string[];
 }
+
+export interface PersonalRecipe {
+  id: number;
+  title: string;
+  ingredients: string[];
+  instructions: string[];
+  imageURL: string;
+}
+
 export interface Ingredient {
   text: string;
 }

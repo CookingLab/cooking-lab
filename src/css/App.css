@@ -54,6 +54,59 @@
   height: 100px;
 }
 
+/* Navbar */
+
+.navbar-link {
+  color: var(--color-secondary) !important;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.navbar-link:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+.navbar-link.active {
+  color: var(--color-secondary);
+}
+
+.navbar-toggler {
+  background-color: var(--color-secondary);
+}
+nav.navbar .navbar-toggler:active,
+nav.navbar .navbar-toggler:focus {
+	outline: none;
+    box-shadow: none;
+}
+nav.navbar .navbar-toggler-icon {
+  width: 24px;
+  height: 17px;
+  background-image: none;
+  position: relative;
+  border-bottom: 2px solid var(--color-light);;
+  transition: all 300ms linear;
+  top: -2px;
+}
+nav.navbar .navbar-toggler-icon:focus {
+	border-bottom: 2px solid var(--color-light);;
+}
+nav.navbar .navbar-toggler-icon:after,
+nav.navbar .navbar-toggler-icon:before {
+	width: 24px;
+	position: absolute;
+	height: 2px;
+	background-color: var(--color-light);;
+	top: 0;
+	left: 0;
+	content: '';
+	z-index: 2;
+	transition: all 300ms linear;
+}
+nav.navbar .navbar-toggler-icon:after {
+	top: 8px;
+}
+
 /* Step 2 */
 
 .meal-type-img{
@@ -252,4 +305,28 @@ html, body {
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Personal Recipes */
+.vertical-line {
+  width: 1px;
+  background-color: black;
+  height: 100%;
+}
+
+.recipe-card {
+  transition: background-color 0.3s ease;
+}
+
+.recipe-card:hover {
+  background-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.instructions-ordered-list {
+  padding-left: 20px;
+}
+
+.instructions-ordered-list .list-group-item {
+  display: list-item;
 }
