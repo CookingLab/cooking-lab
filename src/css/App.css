@@ -316,10 +316,12 @@ html, body {
 
 .recipe-card {
   transition: background-color 0.3s ease;
+  background-color: var(--color-accent);
+  color: white;
 }
 
 .recipe-card:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-dark);
   cursor: pointer;
 }
 

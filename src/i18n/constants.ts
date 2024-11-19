@@ -116,6 +116,7 @@ export const RECIPE_GENERATE = 'Generate another recipe';
 
 // PersonalRecipes constants
 export const PERSONAL_RECIPES_TITLE = 'Our Recipes';
+export const PERSONAL_RECIPES_MSG = 'Check out our recipes below! Click on a recipe to view more details.';
 export const TC_RECIPE = 'Tien\'s Recipes';
 export const TM_RECIPE = 'The Minh\'s Recipes';
 export const RECIPE_INSTRUCTIONS = 'Instructions';
