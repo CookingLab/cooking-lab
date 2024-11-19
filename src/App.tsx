@@ -10,8 +10,8 @@ import Step1 from './components/step1';
 import Step2 from './components/step2';
 import Step3 from './components/step3';
 import Step4 from './components/step4';
-import PersonalRecipes from 'components/personalRecipes';
-import GetPersonalRecipe from 'components/getPersonalRecipe';
+import PersonalRecipes from './components/personalRecipes';
+import GetPersonalRecipe from './components/getPersonalRecipe';
 
 const App = () => {
   return (
