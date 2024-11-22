@@ -10,6 +10,7 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface Recipe {
   id: number;
@@ -35,8 +36,8 @@ const PersonalRecipes = () => {
   useEffect(() => {
     const fetchRecipes = async (owner: string) => {
       try {
-        const response = await fetch(`${targetEndpoint}/api/recipes/personal?owner=${owner}`);
-        const data = await response.json();
+        const response = await axios(`${targetEndpoint}/api/recipes/personal?owner=${owner}`);
+        const data = response.data;
         return data;
       } catch (error) {
         console.error(`Error fetching ${owner} recipes:`, error);
