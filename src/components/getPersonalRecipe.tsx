@@ -5,6 +5,7 @@ import { RootState } from 'redux/store';
 import { useParams } from 'react-router-dom';
 import { PersonalRecipe } from '../interfaces/recipeInterface';
 import PersonalRecipePage from './personalRecipePage';
+import axios from 'axios';
 
 const GetPersonalRecipe = () => {
 
@@ -23,8 +24,8 @@ const GetPersonalRecipe = () => {
 
   async function handlePersonalRecipeClick() {
     try {
-      const response = await fetch(`${targetEndpoint}/api/recipes/personal?id=${id}`);
-      const data = await response.json();
+      const response = await axios.get(`${targetEndpoint}/api/recipes/personal?id=${id}`);
+      const data = response.data;
       setRecipe({id: data[0].id, title: data[0].title, ingredients: data[0].ingredients, instructions: data[0].instructions, imageURL: data[0].imageURL});
       return data;
     } catch (error) {
