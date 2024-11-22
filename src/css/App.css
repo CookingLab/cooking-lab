@@ -332,11 +332,3 @@ html, body {
 .instructions-ordered-list .list-group-item {
   display: list-item;
 }
-
-/* Recipe images */
-.personal-recipe-img{
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  padding: 10px;
-}

@@ -12,7 +12,6 @@ import Step3 from './components/step3';
 import Step4 from './components/step4';
 import PersonalRecipes from './components/personalRecipes';
 import GetPersonalRecipe from './components/getPersonalRecipe';
-import RecipeImg from './recipeImg';
 
 const App = () => {
   return (
@@ -31,7 +30,6 @@ const App = () => {
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/personalRecipe" element={<PersonalRecipes />} />
           <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
-          <Route path="/recipeImage" element={<RecipeImg />} />
         </Routes>
       </div>
       <Footer />
