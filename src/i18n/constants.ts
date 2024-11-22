@@ -121,3 +121,28 @@ export const PERSONAL_RECIPES_MSG = 'Check out our recipes below! Click on a rec
 export const TC_RECIPE = 'Tien\'s Recipes';
 export const TM_RECIPE = 'The Minh\'s Recipes';
 export const RECIPE_INSTRUCTIONS = 'Instructions';
+
+// RecipeImg constants
+import TIRAMISU from '../img/recipeImg/tiramisu.jpeg';
+import BANANA_BREAD from '../img/recipeImg/banana_bread.jpeg';
+import FRENCH_TOAST from '../img/recipeImg/french_toast.jpeg';
+import SPAGHETTI from '../img/recipeImg/spaghetti.JPG';
+
+export const RECIPE_IMAGES = [
+  {
+    src: TIRAMISU,
+    alt: 'TM\'s Tiramisu'
+  },
+  {
+    src: BANANA_BREAD,
+    alt: 'TC\'s Banana Bread'
+  },
+  {
+    src: FRENCH_TOAST,
+    alt: 'TM\'s French Toast'
+  },
+  {
+    src: SPAGHETTI,
+    alt: 'TC\'s Spaghetti'
+  }
+];
