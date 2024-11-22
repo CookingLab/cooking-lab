@@ -68,7 +68,7 @@ const PersonalRecipePage = ({title, ingredients, instructions, imageURL}: Person
               <>
                 <div className="row mb-4">
                   <div className="col-md-8">
-                    <h1 className="card-title" data-testid="recipe-label">{title}</h1>
+                    <h1 className="card-title" data-testid="recipe-title">{title}</h1>
                     <h3 data-testid="recipe-ingredient">{RECIPE_INGREDIENT}</h3>
                     <ul className="list-group" data-testid="recipe-ingredient-list">
                       {ingredients?.map(ingredient => (
