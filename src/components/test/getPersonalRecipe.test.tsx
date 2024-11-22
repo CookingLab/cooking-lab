@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import axios from 'axios';
-import { RecipeProps } from '../../interfaces/recipeInterface';
 import GetPersonalRecipe from '../getPersonalRecipe';
 
 jest.mock('axios');
 const mockStore = configureStore([]);
 
-describe('GetRecipe Component', () => {
+describe('GetPersonalRecipe Component', () => {
   let store: any;
 
   beforeEach(() => {
