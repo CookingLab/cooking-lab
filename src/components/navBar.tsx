@@ -43,6 +43,7 @@ const NavBar = () => {
               {RECIPE_GENERATOR}
             </Nav.Link>
             <Nav.Link 
+              data-testid="cypress-personalRecipe"
               as={HashLink} 
               smooth 
               to="/personalRecipe" 
