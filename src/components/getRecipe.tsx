@@ -23,12 +23,16 @@ const GetRecipe = () => {
     if(endpoint === 'prod'){
       targetEndpoint = 'https://cooking-lab-api.onrender.com';
     }else{
-      targetEndpoint = 'http://localhost:3000';
+      targetEndpoint = 'http://localhost:3001';
     }
 
     try {
       let url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
   
+      if(mealType === 'desserts'){
+        url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&mealType=dinner&dishType=desserts`;
+      }
+
       if (diet.length > 0) {
         const dietParams = diet.map((d: string) => `diet=${d}`).join('&');
         url += `&${dietParams}`;

@@ -18,6 +18,7 @@ import dinner from '../img/dinner.png';
 import snack from '../img/snack.png';
 import kitchen from '../img/kitchen.png';
 import teatime from '../img/teatime.png';
+import dessert from '../img/dessert.png';
 
 const Step2 = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Step2 = () => {
 
   const handleButtonClick = (mealType: string) => {
 
-    if(mealType === 'breakfast' || mealType === 'brunch' || mealType === 'snack' || mealType === 'teatime'){
+    if(mealType === 'breakfast' || mealType === 'brunch' || mealType === 'snack' || mealType === 'teatime' || mealType === 'desserts'){
       dispatch(clearMeat());
     }
 
@@ -67,6 +68,8 @@ const Step2 = () => {
       return snack;
     case 'teatime':
       return teatime;
+    case 'desserts':
+      return dessert;
     default:
       return kitchen;
     }

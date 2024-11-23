@@ -52,6 +52,7 @@ export const STEP2_LUNCH = 'Lunch';
 export const STEP2_DINNER = 'Dinner';
 export const STEP2_SNACK = 'Snack';
 export const STEP2_TEATIME = 'Teatime';
+export const DESSERT = 'Desserts';
 export const MEAL_TYPES = [
   { type: 'breakfast', label: STEP2_BREAKFAST },
   { type: 'brunch', label: STEP2_BRUNCH },
@@ -59,6 +60,7 @@ export const MEAL_TYPES = [
   { type: 'dinner', label: STEP2_DINNER },
   { type: 'snack', label: STEP2_SNACK },
   { type: 'teatime', label: STEP2_TEATIME },
+  { type: 'desserts', label: DESSERT }
 ];
 export const MEAT_DROPDOWN = 'Choose a protein (optional)';
 export const MEAT_VALUES = ['Chicken', 'Pork', 'Beef', 'Fish'];
