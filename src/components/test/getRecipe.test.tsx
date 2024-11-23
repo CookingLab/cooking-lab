@@ -116,7 +116,7 @@ describe('GetRecipe Component', () => {
   
     await waitFor(() => {
       expect(axios.get).toHaveBeenCalledWith(
-        'http://localhost:3000/api/recipes?cuisineType=Italian&mealType=Dinner&diet=Vegetarian&health=Peanut-Free&meat=Chicken'
+        'http://localhost:3001/api/recipes?cuisineType=Italian&mealType=Dinner&diet=Vegetarian&health=Peanut-Free&meat=Chicken'
       );
     });
   });
