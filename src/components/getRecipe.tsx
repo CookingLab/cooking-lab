@@ -30,7 +30,7 @@ const GetRecipe = () => {
       let url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&mealType=${mealType}`;
   
       if(mealType === 'desserts'){
-        url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&mealType=dinner&dishType=desserts`;
+        url = `${targetEndpoint}/api/recipes?cuisineType=${cuisineType}&dishType=desserts`;
       }
 
       if (diet.length > 0) {
