@@ -229,6 +229,12 @@ html, body {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: white;
+  width: 250px !important;
+}
+
+.dropdown-menu .dropdown-item {
+  width: 250px !important;
+  text-align: center;
 }
 
 /* Links */
