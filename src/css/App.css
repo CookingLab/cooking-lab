@@ -124,6 +124,7 @@ nav.navbar .navbar-toggler-icon:after {
   padding: 10px 20px;
   border-radius: 10px;
   margin: 10px;
+  width: 250px !important;
 }
 
 .meal-type-btn.active {
