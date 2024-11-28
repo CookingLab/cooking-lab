@@ -48,7 +48,7 @@ describe('GetPersonalRecipe Component', () => {
     );
   
     await waitFor(() => {
-      expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/api/recipes/personal?id=undefined');
+      expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/api/recipes/personal/undefined');
     });
   });
   
@@ -67,7 +67,7 @@ describe('GetPersonalRecipe Component', () => {
   
     await waitFor(() => {
       expect(axios.get).toHaveBeenCalledWith(
-        'https://cooking-lab-personal-recipe-api.onrender.com/api/recipes/personal?id=1'
+        'https://cooking-lab-personal-recipe-api.onrender.com/api/recipes/personal/1'
       );
     });
   });
