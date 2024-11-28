@@ -24,7 +24,7 @@ const GetPersonalRecipe = () => {
 
   async function handlePersonalRecipeClick() {
     try {
-      const response = await axios.get(`${targetEndpoint}/api/recipes/personal?id=${id}`);
+      const response = await axios.get(`${targetEndpoint}/api/recipes/personal/${id}`);
       const data = response.data;
       setRecipe({id: data[0].id, title: data[0].title, ingredients: data[0].ingredients, instructions: data[0].instructions, imageURL: data[0].imageURL});
       return data;
