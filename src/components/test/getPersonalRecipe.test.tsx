@@ -53,8 +53,12 @@ describe('GetPersonalRecipe Component', () => {
   });
   
   it('should handle response correctly with id from param', async () => {
-    (axios.get as jest.Mock).mockResolvedValueOnce({ data: {} });
-
+    (axios.get as jest.Mock).mockRejectedValueOnce({
+      response: {
+        status: 200,
+      },
+    });
+    
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/personalRecipe/recipe/1']}>
@@ -71,5 +75,72 @@ describe('GetPersonalRecipe Component', () => {
       );
     });
   });
+  
+  it('should handle 404 errors', async () => {
+    (axios.get as jest.Mock).mockRejectedValueOnce({
+      response: {
+        status: 404,
+        data: 'No recipes found for the given ID.',
+      },
+    });
 
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/personalRecipe/recipe/10']}>
+          <Routes>
+            <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
+          </Routes>
+        </MemoryRouter>
+      </Provider>
+    );
+  
+    await waitFor(() => {
+      expect(screen.getByText('404 - No recipes found for the given ID.')).toBeInTheDocument();
+    });
+  });
+  
+  it('should handle 400 errors', async () => {
+    (axios.get as jest.Mock).mockRejectedValueOnce({
+      response: {
+        status: 400,
+        data: {
+          error: 'Bad Request',
+        }
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/personalRecipe/recipe/dfdf']}>
+          <Routes>
+            <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
+          </Routes>
+        </MemoryRouter>
+      </Provider>
+    );
+  
+    await waitFor(() => {
+      expect(screen.getByText('400 - Bad Request')).toBeInTheDocument();
+    });
+  });
+  
+  it('should handle network error correctly', async () => {
+    (axios.get as jest.Mock).mockRejectedValueOnce({
+      request: {},
+    });
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/personalRecipe/recipe/dfdf']}>
+          <Routes>
+            <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
+          </Routes>
+        </MemoryRouter>
+      </Provider>
+    );
+  
+    await waitFor(() => {
+      expect(screen.getByText('500 - No response received from server')).toBeInTheDocument();
+    });
+  });
 });

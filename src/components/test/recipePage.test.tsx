@@ -85,7 +85,7 @@ describe('RecipePage component', () => {
     expect(window.location.pathname).toBe('/summary');
   });
   
-  it('shoul see loading msg when timeout exceed 10s', () => {
+  it('should see loading msg when timeout exceed 10s', () => {
     jest.useFakeTimers();
     store = mockStore({
       cookingLab: {

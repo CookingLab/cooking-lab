@@ -17,3 +17,8 @@ export interface PersonalRecipe {
 export interface Ingredient {
   text: string;
 }
+
+export interface ApiError {
+  statusCode: number;
+  statusMsg: string;
+}
