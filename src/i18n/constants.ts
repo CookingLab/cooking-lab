@@ -123,3 +123,7 @@ export const PERSONAL_RECIPES_MSG = 'Check out our recipes below! Click on a rec
 export const TC_RECIPE = 'Tien\'s Recipes';
 export const TM_RECIPE = 'The Minh\'s Recipes';
 export const RECIPE_INSTRUCTIONS = 'Instructions';
+
+// PersonalRecipePage constants
+export const NO_RESPONSE_500 = 'No response received from server';
+export const ERROR_500 = 'An error occurred';
