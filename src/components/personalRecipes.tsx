@@ -84,18 +84,18 @@ const PersonalRecipes = () => {
                     <div className="col-md-6">
                       <h2><strong data-testid="tc-recipes-title">{TC_RECIPE}</strong></h2>
                       {!tienExpanded && tcRecipes.slice(0, 3).map(recipe => (
-                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                        <button key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
-                        </div>
+                        </button>
                       ))}
                       {tienExpanded && tcRecipes.map(recipe => (
-                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                        <button key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
-                        </div>
+                        </button>
                       ))}
                       <button className="btn btn-dark" onClick={toggleExpandTienRecipes}>
                         {tienExpanded ? 'See Less' : 'See More'}
@@ -107,18 +107,18 @@ const PersonalRecipes = () => {
                     <div className="col-md-5">
                       <h2><strong data-testid="tm-recipes-title">{TM_RECIPE}</strong></h2>
                       {!tmExpanded && tmRecipes.slice(0, 3).map(recipe => (
-                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                        <button key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
-                        </div>
+                        </button>
                       ))}
                       {tmExpanded && tmRecipes.map(recipe => (
-                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                        <button key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
-                        </div>
+                        </button>
                       ))}
                       <button className="btn btn-dark" onClick={toggleExpandTmRecipes}>
                         {tmExpanded ? 'See Less' : 'See More'}
