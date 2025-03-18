@@ -10,6 +10,8 @@ interface CookingLabStates {
   selectedHealth: string[];
   backEndEndpoint: string;
   recipeGenerate: number;
+  isTienRecipesExpanded: boolean;
+  isTmRecipesExpanded: boolean;
 }
 
 const initialState: CookingLabStates = {
@@ -22,6 +24,8 @@ const initialState: CookingLabStates = {
   selectedHealth: [],
   backEndEndpoint: 'prod',
   recipeGenerate: 0,
+  isTienRecipesExpanded: false,
+  isTmRecipesExpanded: false,
 };
 
 const cookingLabSlice = createSlice({
@@ -80,6 +84,12 @@ const cookingLabSlice = createSlice({
     setEndpoint: (state, action: PayloadAction<string>) => {
       state.backEndEndpoint = action.payload;
     },
+    setTienRecipesExtended: (state, action: PayloadAction<boolean>) => {
+      state.isTienRecipesExpanded = action.payload;
+    },
+    setTmRecipesExtended: (state, action: PayloadAction<boolean>) => {
+      state.isTmRecipesExpanded = action.payload;
+    },
   },
 });
 
@@ -93,5 +103,7 @@ export const {
   setDiet, clearDiet, clearDiets,
   setHealth, clearHealth, clearHealths,
   setEndpoint,
+  setTienRecipesExtended,
+  setTmRecipesExtended
 } = cookingLabSlice.actions;
 export default cookingLabSlice.reducer;

@@ -7,6 +7,7 @@ import { PERSONAL_RECIPE, RECIPE_GENERATOR } from '../i18n/constants';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
+import * as CookingLabSlice from '../redux/cookingLabSlice';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
@@ -16,6 +17,8 @@ const NavBar = () => {
   
   const handleRestart = () => {
     restartSteps(dispatch, navigate);
+    dispatch(CookingLabSlice.setTienRecipesExtended(false));
+    dispatch(CookingLabSlice.setTmRecipesExtended(false));
   }
 
   return (

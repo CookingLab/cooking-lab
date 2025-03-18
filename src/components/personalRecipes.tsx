@@ -7,10 +7,11 @@ import {
   TM_RECIPE,
   RECIPE_LOADING,
 } from '../i18n/constants';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import * as CookingLabSlice from '../redux/cookingLabSlice';
 
 interface Recipe {
   id: number;
@@ -20,10 +21,10 @@ interface Recipe {
 }
 
 const PersonalRecipes = () => {
-  const [tienExpanded, setTienExpanded] = useState(false);
-  const [tmExpanded, setTmExpanded] = useState(false);
-  
+  const tienExpanded = useSelector((state: RootState) => state.cookingLab.isTienRecipesExpanded);
+  const tmExpanded = useSelector((state: RootState) => state.cookingLab.isTmRecipesExpanded);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [tcRecipes, setTcRecipes] = useState<Recipe[]>([]);
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
@@ -61,6 +62,14 @@ const PersonalRecipes = () => {
     navigate('/personalRecipe/recipe/' + id);
   }
 
+  function toggleExpandTienRecipes(){
+    dispatch(CookingLabSlice.setTienRecipesExtended(!tienExpanded));
+  }
+
+  function toggleExpandTmRecipes(){
+    dispatch(CookingLabSlice.setTmRecipesExtended(!tmExpanded));
+  }
+
   return (
     <div className="App">
       <div className="container mt-5">
@@ -88,7 +97,7 @@ const PersonalRecipes = () => {
                           </div>
                         </div>
                       ))}
-                      <button className="btn btn-dark" onClick={() => setTienExpanded(!tienExpanded)}>
+                      <button className="btn btn-dark" onClick={toggleExpandTienRecipes}>
                         {tienExpanded ? 'See Less' : 'See More'}
                       </button>
                     </div>
@@ -111,7 +120,7 @@ const PersonalRecipes = () => {
                           </div>
                         </div>
                       ))}
-                      <button className="btn btn-dark" onClick={() => setTmExpanded(!tmExpanded)}>
+                      <button className="btn btn-dark" onClick={toggleExpandTmRecipes}>
                         {tmExpanded ? 'See Less' : 'See More'}
                       </button>
                     </div>
