@@ -89,7 +89,7 @@ const PersonalRecipes = () => {
                         </div>
                       ))}
                       <button className="btn btn-dark" onClick={() => setTienExpanded(!tienExpanded)}>
-                        {tienExpanded ? "See Less" : "See More"}
+                        {tienExpanded ? 'See Less' : 'See More'}
                       </button>
                     </div>
                     <div className="col-md-1 text-center">
@@ -112,7 +112,7 @@ const PersonalRecipes = () => {
                         </div>
                       ))}
                       <button className="btn btn-dark" onClick={() => setTmExpanded(!tmExpanded)}>
-                        {tmExpanded ? "See Less" : "See More"}
+                        {tmExpanded ? 'See Less' : 'See More'}
                       </button>
                     </div>
                   </div>
