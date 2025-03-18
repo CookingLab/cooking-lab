@@ -20,6 +20,9 @@ interface Recipe {
 }
 
 const PersonalRecipes = () => {
+  const [tienExpanded, setTienExpanded] = useState(false);
+  const [tmExpanded, setTmExpanded] = useState(false);
+  
   const navigate = useNavigate();
   const [tcRecipes, setTcRecipes] = useState<Recipe[]>([]);
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
@@ -71,26 +74,46 @@ const PersonalRecipes = () => {
                   <p className="mb-5" data-testid="personal-recipes-msg">{PERSONAL_RECIPES_MSG}</p><div className="row">
                     <div className="col-md-6">
                       <h2><strong data-testid="tc-recipes-title">{TC_RECIPE}</strong></h2>
-                      {tcRecipes.map(recipe => (
+                      {!tienExpanded && tcRecipes.slice(0, 3).map(recipe => (
                         <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
                         </div>
                       ))}
+                      {tienExpanded && tcRecipes.map(recipe => (
+                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                          <div className="card-body">
+                            <h3 className="card-title">{recipe.title}</h3>
+                          </div>
+                        </div>
+                      ))}
+                      <button className="btn btn-dark" onClick={() => setTienExpanded(!tienExpanded)}>
+                        {tienExpanded ? "See Less" : "See More"}
+                      </button>
                     </div>
                     <div className="col-md-1 text-center">
                       <div className="vertical-line"></div>
                     </div>
                     <div className="col-md-5">
                       <h2><strong data-testid="tm-recipes-title">{TM_RECIPE}</strong></h2>
-                      {tmRecipes.map(recipe => (
+                      {!tmExpanded && tmRecipes.slice(0, 3).map(recipe => (
                         <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
                           <div className="card-body">
                             <h3 className="card-title">{recipe.title}</h3>
                           </div>
                         </div>
                       ))}
+                      {tmExpanded && tmRecipes.map(recipe => (
+                        <div key={recipe.id} className="card mb-3 recipe-card" onClick={() => navigateToRecipe(recipe.id)}>
+                          <div className="card-body">
+                            <h3 className="card-title">{recipe.title}</h3>
+                          </div>
+                        </div>
+                      ))}
+                      <button className="btn btn-dark" onClick={() => setTmExpanded(!tmExpanded)}>
+                        {tmExpanded ? "See Less" : "See More"}
+                      </button>
                     </div>
                   </div>
                 </>
