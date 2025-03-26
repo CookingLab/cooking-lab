@@ -25,7 +25,7 @@ export const PROD = 'Prod';
 
 // NavBar constants
 export const RECIPE_GENERATOR = 'Recipe generator';
-export const PERSONAL_RECIPE = 'See our recipes';
+export const PERSONAL_RECIPE = 'Our personal recipes';
 
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';
