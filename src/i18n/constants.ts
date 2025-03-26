@@ -33,7 +33,7 @@ export const TML = 'The Minh Luong';
 export const TML_LINK = 'https://tml-portfolio.netlify.app/';
 export const TC = 'Tien Chung';
 export const TC_LINK = 'https://tien-chung.netlify.app/Home';
-export const PROVIDER = 'Edamam';
+export const PROVIDER = 'Edamam API';
 export const POWERED_BY = 'Powered by: ';
 export const POWERED_BY_LINK = 'https://www.edamam.com/';
 
