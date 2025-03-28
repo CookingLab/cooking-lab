@@ -1,6 +1,6 @@
 // Constants for introduction message
 export const COOKING_LAB_TITLE = 'Welcome to CookingLab!';
-export const COOKING_LAB_MOTTO = 'Experiment with new flavors!';
+export const COOKING_LAB_MOTTO = 'Experiment new flavors!';
 export const COOKING_LAB_WELCOME = 'Welcome to CookingLab! Discover a recipe and new dishes to try. Let\'s make cooking fun and easy!';
 export const COOKING_LAB_OBJECTIVE = 'Our objective is to help you find a recipe that suits your taste and dietary needs.';
 export const HOME_GET_STARTED_BTN = 'Get started!';
