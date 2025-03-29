@@ -4,13 +4,15 @@ import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
 import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT } from '../i18n/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
 import * as CookingLabSlice from '../redux/cookingLabSlice';
+import { RootState } from 'redux/store';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
+  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,7 +63,7 @@ const NavBar = () => {
               {PERSONAL_RECIPE}
             </Nav.Link>
             <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGenerateTxtFile()}>
-              {GENERATE_TXT}
+              {`${GENERATE_TXT}(${Object.keys(savedRecipes).length})`}
             </button>
           </Nav>
         </div>
