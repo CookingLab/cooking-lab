@@ -33,10 +33,11 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   }
 
   const handleSaveRecipe = () => {
-    // TODO
-    console.log('Saving recipe');
-    dispatch(addSavedRecipe({ name: 'Hamburger', url: 'www.blablabla' }));
-    dispatch(addSavedRecipe({ name: 'Pizza', url: 'www.blablabla' }));
+    if (label && url) {
+      dispatch(addSavedRecipe({ name: label, url }));
+    } else {
+      console.error('Label or URL is undefined');
+    }
   }
   
   useEffect(() => {
