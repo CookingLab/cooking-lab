@@ -24,9 +24,26 @@ const NavBar = () => {
   }
 
   const handleGenerateTxtFile = () => {
-    // TODO
-    console.log('Generating text file');
-  }
+    const recipes = Object.entries(savedRecipes);
+    if (recipes.length === 0) {
+      alert('No recipes saved to generate a file.');
+      return;
+    }
+  
+    let fileContent = 'Here are your saved CookingLab recipes!\n\n';
+    recipes.forEach(([name, url]) => {
+      fileContent += `${name} : ${url}\n`;
+    });
+    fileContent += '\nThank you for using CookingLab!';
+  
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'cooking_lab_recipes.txt';
+    link.click();
+  
+    URL.revokeObjectURL(link.href);
+  };
 
   return (
     <Navbar expand="md" className="navbar background-color">
