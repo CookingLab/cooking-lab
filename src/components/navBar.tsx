@@ -12,7 +12,7 @@ import { RootState } from 'redux/store';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
-  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes);
+  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
