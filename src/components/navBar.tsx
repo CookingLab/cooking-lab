@@ -25,41 +25,41 @@ const NavBar = () => {
   }
 
   const handleGeneratePdfFile = () => {
-      const recipes = Object.entries(savedRecipes);
-      if (recipes.length === 0) {
-          alert('No recipes saved to generate a file.');
-          return;
-      }
+    const recipes = Object.entries(savedRecipes);
+    if (recipes.length === 0) {
+        alert('No recipes saved to generate a file.');
+        return;
+    }
 
-      const doc = new jsPDF();
+    const doc = new jsPDF();
 
-      doc.setFontSize(18);
-      doc.text('CookingLab Recipes', 105, 20, { align: 'center' });
+    doc.setFontSize(18);
+    doc.text('CookingLab Recipes', 105, 20, { align: 'center' });
 
-      const imgWidth = 50;
-      const imgHeight = 50;
-      doc.addImage(logo, 'PNG', 80, 30, imgWidth, imgHeight);
+    const imgWidth = 50;
+    const imgHeight = 50;
+    doc.addImage(logo, 'PNG', 80, 30, imgWidth, imgHeight);
 
-      doc.setFontSize(14);
-      doc.text('Here are your saved recipes:', 105, 90, { align: 'center' });
+    doc.setFontSize(14);
+    doc.text('Here are your saved recipes:', 105, 90, { align: 'center' });
 
-      doc.setFontSize(12);
-      let yPosition = 100;
-      recipes.forEach(([name, url], index) => {
-          doc.text(`${index + 1}. ${name}: ${url}`, 10, yPosition);
-          yPosition += 10;
+    doc.setFontSize(12);
+    let yPosition = 100;
+    recipes.forEach(([name, url], index) => {
+        doc.text(`${index + 1}. ${name}: ${url}`, 10, yPosition);
+        yPosition += 10;
 
-          if (yPosition > 280) {
-              doc.addPage();
-              yPosition = 20;
-          }
-      });
+        if (yPosition > 280) {
+            doc.addPage();
+            yPosition = 20;
+        }
+    });
 
-      doc.setFontSize(10);
-      doc.text('Thank you for using CookingLab!', 105, 280, { align: 'center' });
-      doc.text('Visit us at: https://cooking-lab.netlify.app/', 105, 290, { align: 'center' });
+    doc.setFontSize(10);
+    doc.text('Thank you for using CookingLab!', 105, 280, { align: 'center' });
+    doc.text('Visit us at: https://cooking-lab.netlify.app/', 105, 290, { align: 'center' });
 
-      doc.save('cooking_lab_recipes.pdf');
+    doc.save('cooking_lab_recipes.pdf');
   };
 
   return (
