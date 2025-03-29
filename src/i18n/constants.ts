@@ -26,6 +26,7 @@ export const PROD = 'Prod';
 // NavBar constants
 export const RECIPE_GENERATOR = 'Recipe generator';
 export const PERSONAL_RECIPE = 'Our personal recipes';
+export const GENERATE_TXT = 'Download recipes to a text file';
 
 // Footer constants
 export const COPYRIGHT = '© Copyright 2024 Cooking Lab - ALL RIGHTS RESERVED';
@@ -116,6 +117,7 @@ export const RECIPE_ERROR_TITLE = 'Error fetching recipe';
 export const RECIPE_ERROR_MESSAGE = 'It looks like there was an error fetching the recipe. Please try again later.';
 export const RECIPE_ERROR_SUB_MESSAGE = 'Click the back button to change your selections.';
 export const RECIPE_GENERATE = 'Generate another recipe';
+export const SAVE_RECIPE = 'Save this recipe';
 
 // PersonalRecipes constants
 export const PERSONAL_RECIPES_TITLE = 'Our Recipes';

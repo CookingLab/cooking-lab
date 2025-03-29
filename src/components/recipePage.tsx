@@ -8,6 +8,7 @@ import {
   FIRST_RECIPE_DELAY_MESSAGE,
   SORRY_MSG,
   RECIPE_GENERATE,
+  SAVE_RECIPE,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -29,6 +30,11 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   
   const handleRegenerate = () => {
     dispatch(setRecipeGenerate());
+  }
+
+  const handleSaveRecipe = () => {
+    // TODO
+    console.log("Saving recipe");
   }
   
   useEffect(() => {
@@ -112,6 +118,24 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                       onClick={() => handleRegenerate()}
                     >
                       {RECIPE_GENERATE}
+                    </button>
+                    <button
+                      data-testid="save-recipe-btn"
+                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                      onClick={() => handleSaveRecipe()}
+                    >
+                      {SAVE_RECIPE}
+                    </button>
+                  </div>
+                )}
+                {isQuickRecipeState && (
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button
+                      data-testid="save-recipe-btn"
+                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                      onClick={() => handleSaveRecipe()}
+                    >
+                      {SAVE_RECIPE}
                     </button>
                   </div>
                 )}

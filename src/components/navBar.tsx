@@ -3,7 +3,7 @@ import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
-import { PERSONAL_RECIPE, RECIPE_GENERATOR } from '../i18n/constants';
+import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT } from '../i18n/constants';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
@@ -19,6 +19,11 @@ const NavBar = () => {
     restartSteps(dispatch, navigate);
     dispatch(CookingLabSlice.setTienRecipesExtended(false));
     dispatch(CookingLabSlice.setTmRecipesExtended(false));
+  }
+
+  const handleGenerateTxtFile = () => {
+    // TODO
+    console.log("Generating text file");
   }
 
   return (
@@ -55,6 +60,9 @@ const NavBar = () => {
             >
               {PERSONAL_RECIPE}
             </Nav.Link>
+            <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGenerateTxtFile()}>
+              {GENERATE_TXT}
+            </button>
           </Nav>
         </div>
       </Navbar.Collapse>
