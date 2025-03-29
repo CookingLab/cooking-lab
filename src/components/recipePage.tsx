@@ -17,7 +17,7 @@ import { RecipeProps } from '../interfaces/recipeInterface';
 import logo from '../img/cookingLabLogo1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
-import { setRecipeGenerate } from '../redux/cookingLabSlice';
+import { addSavedRecipe, setRecipeGenerate } from '../redux/cookingLabSlice';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
@@ -35,6 +35,8 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const handleSaveRecipe = () => {
     // TODO
     console.log('Saving recipe');
+    dispatch(addSavedRecipe({ name: 'Hamburger', url: 'www.blablabla' }));
+    dispatch(addSavedRecipe({ name: 'Pizza', url: 'www.blablabla' }));
   }
   
   useEffect(() => {
