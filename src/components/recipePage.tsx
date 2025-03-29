@@ -8,6 +8,7 @@ import {
   FIRST_RECIPE_DELAY_MESSAGE,
   SORRY_MSG,
   RECIPE_GENERATE,
+  SAVE_RECIPE,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -16,7 +17,7 @@ import { RecipeProps } from '../interfaces/recipeInterface';
 import logo from '../img/cookingLabLogo1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
-import { setRecipeGenerate } from '../redux/cookingLabSlice';
+import { addSavedRecipe, setRecipeGenerate } from '../redux/cookingLabSlice';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
@@ -29,6 +30,14 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   
   const handleRegenerate = () => {
     dispatch(setRecipeGenerate());
+  }
+
+  const handleSaveRecipe = () => {
+    if (label && url) {
+      dispatch(addSavedRecipe({ name: label, url }));
+    } else {
+      console.error('Label or URL is undefined');
+    }
   }
   
   useEffect(() => {
@@ -112,6 +121,24 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                       onClick={() => handleRegenerate()}
                     >
                       {RECIPE_GENERATE}
+                    </button>
+                    <button
+                      data-testid="save-recipe-btn"
+                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                      onClick={() => handleSaveRecipe()}
+                    >
+                      {SAVE_RECIPE}
+                    </button>
+                  </div>
+                )}
+                {isQuickRecipeState && (
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button
+                      data-testid="save-recipe-btn"
+                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                      onClick={() => handleSaveRecipe()}
+                    >
+                      {SAVE_RECIPE}
                     </button>
                   </div>
                 )}

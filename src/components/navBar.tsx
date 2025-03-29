@@ -3,14 +3,16 @@ import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
-import { PERSONAL_RECIPE, RECIPE_GENERATOR } from '../i18n/constants';
-import { useDispatch } from 'react-redux';
+import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT } from '../i18n/constants';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
 import * as CookingLabSlice from '../redux/cookingLabSlice';
+import { RootState } from 'redux/store';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
+  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +22,28 @@ const NavBar = () => {
     dispatch(CookingLabSlice.setTienRecipesExtended(false));
     dispatch(CookingLabSlice.setTmRecipesExtended(false));
   }
+
+  const handleGenerateTxtFile = () => {
+    const recipes = Object.entries(savedRecipes);
+    if (recipes.length === 0) {
+      alert('No recipes saved to generate a file.');
+      return;
+    }
+  
+    let fileContent = 'Here are your saved CookingLab recipes!\n\n';
+    recipes.forEach(([name, url]) => {
+      fileContent += `${name} : ${url}\n`;
+    });
+    fileContent += '\nThank you for using CookingLab!';
+  
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'cooking_lab_recipes.txt';
+    link.click();
+  
+    URL.revokeObjectURL(link.href);
+  };
 
   return (
     <Navbar expand="md" className="navbar background-color">
@@ -55,6 +79,9 @@ const NavBar = () => {
             >
               {PERSONAL_RECIPE}
             </Nav.Link>
+            <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGenerateTxtFile()}>
+              {`${GENERATE_TXT}(${Object.keys(savedRecipes).length})`}
+            </button>
           </Nav>
         </div>
       </Navbar.Collapse>
