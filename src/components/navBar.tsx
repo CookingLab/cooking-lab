@@ -23,7 +23,7 @@ const NavBar = () => {
 
   const handleGenerateTxtFile = () => {
     // TODO
-    console.log("Generating text file");
+    console.log('Generating text file');
   }
 
   return (

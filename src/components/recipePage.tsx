@@ -34,7 +34,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
 
   const handleSaveRecipe = () => {
     // TODO
-    console.log("Saving recipe");
+    console.log('Saving recipe');
   }
   
   useEffect(() => {
