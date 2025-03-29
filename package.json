@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.27.0",
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
@@ -10,6 +11,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "jspdf": "^3.0.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
