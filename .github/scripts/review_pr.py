@@ -3,7 +3,7 @@ import re
 import requests
 
 # Get repository name (OWNER/REPO)
-REPO = os.getenv("GITHUB_REPOSITORY")  # Example: "CookingLabOrg/RecipeRoulette"
+REPO = os.getenv("GITHUB_REPOSITORY")
 
 # Extract PR number correctly from GitHub ref
 GITHUB_REF = os.getenv("GITHUB_REF", "")
