@@ -7,8 +7,8 @@ import configureStore from 'redux-mock-store';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import NavBar from '../navBar';
 import {
-    DEBUG
-  } from '../../i18n/constants';
+  DEBUG
+} from '../../i18n/constants';
 
 const mockStore = configureStore([]);
 let store: Store<unknown, UnknownAction, unknown>;
