@@ -31,7 +31,6 @@ if IS_FORK:
     print("❌ PR is from a fork. GitHub Actions cannot post comments due to permission restrictions.")
     exit(1)
 
-# Fun cooking-themed comments
 COOKING_COMMENTS = [
     "👨‍🍳 This PR looks delicious! Ready to be served! 🍽",
     "🥄 This PR is good, but maybe it needs a bit more seasoning! 🌿",
