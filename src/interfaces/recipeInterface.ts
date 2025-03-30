@@ -22,3 +22,10 @@ export interface ApiError {
   statusCode: number;
   statusMsg: string;
 }
+
+export interface CustomModalProps {
+  modalTitle: string;
+  modalText: string;
+  show: boolean;
+  handleClose: () => void;
+}
