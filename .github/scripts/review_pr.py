@@ -10,7 +10,6 @@ GITHUB_REF = os.getenv("GITHUB_REF", "")
 match = re.search(r"refs/pull/(\d+)/", GITHUB_REF)
 PR_NUMBER = match.group(1) if match else None
 
-# Debugging logs
 print(f"🔍 REPO: {REPO}")
 print(f"🔍 GITHUB_REF: {GITHUB_REF}")
 print(f"🔍 Extracted PR_NUMBER: {PR_NUMBER}")
