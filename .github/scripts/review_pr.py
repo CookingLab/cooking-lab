@@ -29,27 +29,17 @@ messages = {
 }
 
 
-# Function to analyze code quality
+# Function to analyze TypeScript code quality with ESLint
 def analyze_code():
-    # Run flake8 for linting
-    flake8_result = subprocess.run(
-        ['flake8', '--max-line-length=80'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
-    
-    # Run radon for complexity analysis
-    radon_result = subprocess.run(
-        ['radon', 'cc', '.', '--max', '10'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    # Run ESLint for linting TypeScript code
+    eslint_result = subprocess.run(
+        ['npx', 'eslint', '--max-warnings=0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
     
     # Check for linting issues
-    lint_output = flake8_result.stdout.decode()
-    if lint_output:
-        return "needs_improvement", lint_output
-    
-    # Check for code complexity
-    complexity_output = radon_result.stdout.decode()
-    if complexity_output:
-        return "needs_improvement", complexity_output
+    eslint_output = eslint_result.stdout.decode()
+    if eslint_output:
+        return "needs_improvement", eslint_output
     
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."
