@@ -51,7 +51,6 @@ data = {"body": comment_body}
 
 response = requests.post(url, headers=headers, json=data)
 
-# Debugging response
 if response.status_code == 201:
     print("✅ Successfully posted comment:", comment_body)
 else:
