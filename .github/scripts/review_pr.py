@@ -2,8 +2,6 @@ import os
 import random
 import requests
 import subprocess
-import tempfile
-import sys
 
 # Get GitHub token from environment variable
 token = os.getenv("GITHUB_TOKEN")
