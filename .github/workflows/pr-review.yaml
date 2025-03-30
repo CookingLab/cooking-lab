@@ -18,7 +18,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies (Node.js)
+        run: |
+          npm install -g eslint
+          npm install
+          
+      - name: Run ESLint (TypeScript)
+        run: |
+          npx eslint '**/*.ts' '**/*.tsx' --max-warnings=0  # Runs ESLint on TypeScript files
+
+      - name: Install dependencies (Python)
         run: |
           python -m pip install --upgrade pip
           pip install flake8 radon requests
@@ -29,4 +43,3 @@ jobs:
           GITHUB_EVENT_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python .github/scripts/review_pr.py
-
