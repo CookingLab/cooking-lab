@@ -18,48 +18,39 @@ messages = {
         "This PR looks delicious! 😋🍴",
         "This PR is well-seasoned and cooked to perfection! 🔥👌",
         "Yum! This PR is just right! 😍🍲",
-        "The code is a gourmet masterpiece! 👨‍🍳🌟",
-        "This PR is a Michelin-star dish! ⭐🍽️",
-        "Perfectly balanced flavors—uh, I mean, code! 🏆👨‍💻",
-        "Like a well-baked soufflé, this PR has risen to perfection! 🍮🎉",
-        "The ingredients blend together beautifully! 🍲💖",
-        "This PR is as smooth as melted butter! 🧈✨",
-        "Delicious! This code deserves a chef’s kiss! 👨‍🍳💋",
-        "This PR is as satisfying as a perfectly brewed coffee! ☕✅",
-        "No bugs, no mess—just clean, elegant code! 🍷🖥️"
+        "The code is a gourmet masterpiece! 👨‍🍳🌟"
     ],
     "needs_improvement": [
         "This PR could use a little more spice! 🌶️⚡",
         "The code is almost perfect, just add a pinch of salt! 🧂💡",
         "Tasty code, but let’s add some extra flavor! 🍛✨",
-        "It’s a bit undercooked, let’s reheat it! 🍕🔥",
-        "This PR needs a little more simmering! ⏳🔥",
-        "It's missing a key ingredient—let's season it with some fixes! 🧂🔧",
-        "Almost there! Just needs a pinch of code cleanup! ✨🍽️",
-        "This PR is like a half-baked cake—good start, but needs more time! 🎂⏳",
-        "The flavors (code) are a bit off—let’s adjust the recipe! 📖👨‍🍳",
-        "A few burned edges—let’s trim them off! 🔥✂️",
-        "A little too salty, let’s balance it out! ⚖️🧂",
-        "Let’s add some garnish—aka, code improvements! 🍃💻"
+        "It’s a bit undercooked, let’s reheat it! 🍕🔥"
     ]
 }
 
 
-
 # Function to analyze TypeScript code quality with ESLint
 def analyze_code():
-    # Run ESLint for linting TypeScript code with quiet mode so it doesn't exit with a non-zero code
+    # Run ESLint without fixing issues
     eslint_result = subprocess.run(
-        ['npx', 'eslint', '--max-warnings=0', '--quiet', '**/*.ts', '**/*.tsx'], 
+        ['npx', 'eslint', '--max-warnings=0', '--quiet', '**/*.ts', '**/*.tsx'],
         stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
-    
-    # Get the ESLint output
+
     eslint_output = eslint_result.stdout.decode()
 
-    # If there are any ESLint errors, return them
+    # Run ESLint with --fix --dry-run to get fix suggestions
+    eslint_fix_result = subprocess.run(
+        ['npx', 'eslint', '--fix', '--dry-run', '--format', 'stylish', '**/*.ts', '**/*.tsx'],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+
+    eslint_fix_output = eslint_fix_result.stdout.decode()
+
+    # If there are any ESLint errors, return them along with fix suggestions
     if eslint_output:
-        return "needs_improvement", eslint_output
+        return "needs_improvement", f"### ESLint Issues Found:\n```\n{eslint_output}\n```\n" \
+                                    f"### Suggested Fixes:\n```\n{eslint_fix_output}\n```"
     
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."

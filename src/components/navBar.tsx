@@ -12,6 +12,8 @@ import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
 import CustomModal from './modal';
 
+const unsusedVar = ""; // This variable is unused and can be removed
+
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
   const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
