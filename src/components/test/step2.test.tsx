@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import Step2 from '../step2';
-import { clearMeat, setMealType, setMeat } from '../../redux/cookingLabSlice';
+import { setMealType, setMeat } from '../../redux/cookingLabSlice';
 import { Store, UnknownAction } from '@reduxjs/toolkit';
 import {formatInputValue} from '../../utils/index';
 import {
