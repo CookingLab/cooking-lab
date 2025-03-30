@@ -51,8 +51,7 @@ def analyze_code():
     eslint_output = eslint_result.stdout.decode()
 
     if eslint_output:
-        eslint_output = f"🍽️ **The PR needs a bit more work and tasting!** 🍽️\n\n" \
-                        f"Here's a list of what we need to fix before serving this PR:\n\n" \
+        eslint_output = f"Here's a list of what we need to fix before serving this PR:\n\n" \
                         f"```bash\n{eslint_output}\n```\n" \
                         f"Let's spice it up and perfect this code—like a fine dish! 👨‍🍳✨"
 
