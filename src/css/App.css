@@ -107,6 +107,25 @@ nav.navbar .navbar-toggler-icon:after {
 	top: 8px;
 }
 
+.position-relative {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Step 2 */
 
 .meal-type-img{

@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
-import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT } from '../i18n/constants';
+import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT } from '../i18n/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
 import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
+import CustomModal from './modal';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
@@ -18,16 +19,23 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+  
   const handleRestart = () => {
     restartSteps(dispatch, navigate);
     dispatch(CookingLabSlice.setTienRecipesExtended(false));
     dispatch(CookingLabSlice.setTmRecipesExtended(false));
   }
+  
 
   const handleGeneratePdfFile = () => {
+  
     const recipes = Object.entries(savedRecipes);
     if (recipes.length === 0) {
-      alert('No recipes saved to generate a file.');
+      handleShow();
+      setShowModal(true);
       return;
     }
   
@@ -63,47 +71,58 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar expand="md" className="navbar background-color">
-      <Navbar.Brand>
-        <a href="/">
-          <img className="mx-3 logo" src={logo} alt="Cooking Lab Logo"/>
-        </a>
-      </Navbar.Brand>
-      <div className="mx-3">
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <span className="navbar-toggler-icon"></span>
-        </Navbar.Toggle>
-      </div>
-      <Navbar.Collapse id="basic-navbar-nav">
+    <>
+      <Navbar expand="md" className="navbar background-color">
+        <Navbar.Brand>
+          <a href="/">
+            <img className="mx-3 logo" src={logo} alt="Cooking Lab Logo" />
+          </a>
+        </Navbar.Brand>
         <div className="mx-3">
-          <Nav>
-            <Nav.Link 
-              as={HashLink} 
-              smooth 
-              to="/" 
-              className="navbar-link"
-              onClick={() => handleRestart()}
-            >
-              {RECIPE_GENERATOR}
-            </Nav.Link>
-            <Nav.Link 
-              data-testid="cypress-personalRecipe"
-              as={HashLink} 
-              smooth 
-              to="/personalRecipe" 
-              className="navbar-link"
-              onClick={() => handleRestart()}
-            >
-              {PERSONAL_RECIPE}
-            </Nav.Link>
-            <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGeneratePdfFile()}>
-              {`${GENERATE_TXT}(${Object.keys(savedRecipes).length})`}
-            </button>
-          </Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
         </div>
-      </Navbar.Collapse>
-      {isLocalhost && <Debug />}
-    </Navbar>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <div className="mx-3">
+            <Nav>
+              <Nav.Link
+                as={HashLink}
+                smooth
+                to="/"
+                className="navbar-link"
+                onClick={() => handleRestart()}
+              >
+                {RECIPE_GENERATOR}
+              </Nav.Link>
+              <Nav.Link
+                data-testid="cypress-personalRecipe"
+                as={HashLink}
+                smooth
+                to="/personalRecipe"
+                className="navbar-link"
+                onClick={() => handleRestart()}
+              >
+                {PERSONAL_RECIPE}
+              </Nav.Link>
+            </Nav>
+          </div>
+        </Navbar.Collapse>
+        {isLocalhost && <Debug />}
+        <div className="position-relative">
+          <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGeneratePdfFile()}>
+            {GENERATE_TXT}
+          </button>
+          <span className="badge">{Object.keys(savedRecipes).length}</span>
+        </div>
+      </Navbar>
+      <CustomModal
+        modalTitle={MODAL_TITLE}
+        modalText={MODAL_TEXT}
+        show={showModal}
+        handleClose={handleClose}
+      />
+    </>
   )
 }
 

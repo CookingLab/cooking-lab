@@ -129,3 +129,8 @@ export const RECIPE_INSTRUCTIONS = 'Instructions';
 // PersonalRecipePage constants
 export const NO_RESPONSE_500 = 'No response received from server';
 export const ERROR_500 = 'An error occurred';
+
+// Modal constants
+export const MODAL_TITLE = 'No recipes saved';
+export const MODAL_TEXT = 'Please save some recipes before generating a file.';
+export const MODAL_CLOSE = 'Close';
