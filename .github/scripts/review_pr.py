@@ -57,8 +57,7 @@ def analyze_code():
 
         return "needs_improvement", eslint_output
 
-    return "good", "🍰 **This code is a five-star dessert!** 🍰\n\n" \
-                   "Everything is perfectly baked and ready to serve! 🍽️🌟"
+    return "good", "🍽️ **This code ready for serving!** 🍽️\n\n"
 
 def post_comment(message):
     comment_url = f"https://api.github.com/repos/{os.getenv('GITHUB_REPOSITORY')}/issues/{pr_number}/comments"
@@ -69,7 +68,7 @@ def main():
     status, analysis_result = analyze_code()
 
     if status == "good":
-        message = random.choice(messages["good"])
+        message = random.choice(messages["good"]) + "\n\n" + analysis_result
     else:
         message = random.choice(messages["needs_improvement"]) + "\n\n" + analysis_result
 
