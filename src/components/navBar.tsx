@@ -11,8 +11,6 @@ import { restartSteps } from '../utils/index';
 import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
 
-// Introducing an unused variable to provoke ESLint error
-const unusedVariable = 'This will trigger an ESLint warning for unused variables';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
