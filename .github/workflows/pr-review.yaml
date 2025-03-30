@@ -1,4 +1,4 @@
-name: PR Review Bot
+name: CookingLab PR Bot
 
 on:
   pull_request:
