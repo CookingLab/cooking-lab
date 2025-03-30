@@ -44,7 +44,6 @@ messages = {
     ]
 }
 
-
 # Function to analyze TypeScript code quality with ESLint
 def analyze_code():
     # Run ESLint without fixing issues
@@ -57,16 +56,26 @@ def analyze_code():
 
     # Run ESLint with --fix --dry-run to get fix suggestions
     eslint_fix_result = subprocess.run(
-        ['npx', 'eslint', '--fix', '--dry-run', '--format', 'stylish', '**/*.ts', '**/*.tsx'],
+        ['npx', 'eslint', '--fix', '--dry-run', '--format', 'json', '**/*.ts', '**/*.tsx'],
         stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
 
     eslint_fix_output = eslint_fix_result.stdout.decode()
-
-    # If there are any ESLint errors, return them along with fix suggestions
+    
+    # Check if there are errors and potential fixes
     if eslint_output:
+        if eslint_fix_output:
+            try:
+                fix_suggestions = [f"Fix: {item['message']} at {item['filePath']}:{item['line']}:{item['column']}"
+                                   for item in eval(eslint_fix_output)]
+                fix_suggestions_text = "\n".join(fix_suggestions)
+            except Exception as e:
+                fix_suggestions_text = f"Error parsing ESLint fix suggestions: {str(e)}"
+        else:
+            fix_suggestions_text = "No fixes found."
+
         return "needs_improvement", f"### ESLint Issues Found:\n```\n{eslint_output}\n```\n" \
-                                    f"### Suggested Fixes:\n```\n{eslint_fix_output}\n```"
+                                    f"### Suggested Fixes:\n```\n{fix_suggestions_text}\n```"
     
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."
