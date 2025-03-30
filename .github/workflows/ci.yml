@@ -42,5 +42,5 @@ jobs:
 
     - name: Run PR Review Bot
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
       run: python .github/scripts/review_pr.py
