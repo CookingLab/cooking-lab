@@ -39,6 +39,16 @@ messages = {
         "# **A few burned edges. Let’s trim them off! 🔥✂️**",
         "# **A little too salty, let’s balance it out! ⚖️🧂**",
         "# **Let’s add some garnish, aka, code improvements! 🍃💻**"
+    ],
+    "encouragement": [
+        "**Keep stirring the pot! Your code is almost there! 🍲💪**",
+        "**You’re on the right track! Just a few tweaks needed! 🚂🔧**",
+        "**Every chef has room for improvement. Keep it up! 👨‍🍳💖**",
+        "**You’re cooking up something great! Keep up the good work! 🔥👨‍🍳**",
+        "**You’re doing great! Just a few more ingredients to add! 🍲💪**",
+        "**You’ve got this! Let’s make your PR shine!🌟**",
+        "**You’re almost there! Just a few more touches needed! 🎨✨**",
+        "**You're on the right path! Just a few more spices to add! 🌶️🔧**",
     ]
 }
 
@@ -51,9 +61,10 @@ def analyze_code():
     eslint_output = eslint_result.stdout.decode()
 
     if eslint_output:
+        encouragement_message = random.choice(messages["encouragement"])
         eslint_output = f"Here's a list of what we need to fix before serving this PR:\n\n" \
                         f"```bash\n{eslint_output}\n```\n" \
-                        f"Let's spice it up and perfect this code like a fine dish! 👨‍🍳✨"
+                        f"{encouragement_message}"
 
         return "needs_improvement", eslint_output
 
