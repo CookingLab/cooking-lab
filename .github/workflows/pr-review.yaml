@@ -31,4 +31,4 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_EVENT_PULL_REQUEST_URL: ${{ github.event.pull_request.url }}
           GITHUB_EVENT_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
-        run: python scripts/review_pr.py
+        run: python .github/scripts/review_pr.py
