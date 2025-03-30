@@ -28,6 +28,10 @@ jobs:
           npm install -g eslint
           npm install
           
+      - name: Fetch full commit history
+        run: |
+          git fetch --prune --unshallow
+
       - name: Get modified files in the PR
         id: modified_files
         run: |
