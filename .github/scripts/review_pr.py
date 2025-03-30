@@ -54,20 +54,19 @@ def analyze_code():
 
     eslint_output = eslint_result.stdout.decode()
 
-    # Run ESLint with --fix --dry-run to get fix suggestions
-    eslint_fix_result = subprocess.run(
-        ['npx', 'eslint', '--fix', '--dry-run', '--format', 'json', '**/*.ts', '**/*.tsx'],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
-
-    eslint_fix_result.stdout.decode()
-
     # Check if there are errors
     if eslint_output:
-        return "needs_improvement", f"### ESLint Issues Found:\n```\n{eslint_output}\n```"
+        # Enhance the ESLint output with more fun and food-related terms
+        eslint_output = f"🍽️ **The PR needs a bit more seasoning!** 🍽️\n\n" \
+                        f"Here's a list of what we need to fix before serving this PR:\n\n" \
+                        f"```bash\n{eslint_output}\n```\n" \
+                        f"Let's spice it up and perfect this code—like a fine dish! 👨‍🍳✨"
+
+        return "needs_improvement", eslint_output
 
     # If there are no issues, consider the code good
-    return "good", "Code is clean and easy to follow."
+    return "good", "🍰 **This code is a five-star dessert!** 🍰\n\n" \
+                   "Everything is perfectly baked and ready to serve! 🍽️🌟"
 
 # Function to post a comment on the PR
 def post_comment(message):
