@@ -45,7 +45,6 @@ comment_body = random.choice(COOKING_COMMENTS)
 # GitHub API endpoint for PR comments
 url = f"https://api.github.com/repos/{REPO}/issues/{PR_NUMBER}/comments"
 
-# Post comment
 headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
 data = {"body": comment_body}
 
