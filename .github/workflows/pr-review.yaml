@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '17'
 
       - name: Install dependencies (Node.js)
         run: |
@@ -30,7 +30,7 @@ jobs:
           
       - name: Run ESLint (TypeScript)
         run: |
-          npx eslint '**/*.ts' '**/*.tsx' --max-warnings=0  # Runs ESLint on TypeScript files
+          npx eslint --no-cache '**/*.ts' '**/*.tsx' --max-warnings=0
 
       - name: Install dependencies (Python)
         run: |
