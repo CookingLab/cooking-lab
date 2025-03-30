@@ -12,10 +12,14 @@ import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
 import CustomModal from './modal';
 
-const unsusedVar = ""; // This variable is unused and can be removed
+// Error 1: Unused variable
+const unsusedVar = ""; // This variable is unused and should be removed
 
+// Error 2: Missing prop type for function component
 const NavBar = () => {
   const isLocalhost = window.location.hostname === "localhost";
+
+  // Error 3: Missing type for state
   const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
   
   const dispatch = useDispatch();
@@ -56,7 +60,8 @@ const NavBar = () => {
     doc.setFontSize(12);
     let yPosition = 100;
     recipes.forEach(([name, url], index) => {
-      doc.text(`${index + 1}. ${name}: ${url}`, 10, yPosition);
+      // Error 4: String concatenation instead of template literals
+      doc.text(index + 1 + ". " + name + ": " + url, 10, yPosition); 
       yPosition += 10;
   
       if (yPosition > 280) {
