@@ -28,9 +28,22 @@ jobs:
           npm install -g eslint
           npm install
           
-      - name: Run ESLint (TypeScript)
+      - name: Get modified files in the PR
+        id: modified_files
         run: |
-          npx eslint --max-warnings=0 --quiet '**/*.ts' '**/*.tsx' || true
+          # Fetch the list of modified files in the PR
+          files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(ts|tsx)$')
+          echo "Modified files: $files"
+          echo "::set-output name=files::$files"
+
+      - name: Run ESLint on modified files
+        run: |
+          # Run ESLint only on the files changed in the PR
+          if [[ -n "${{ steps.modified_files.outputs.files }}" ]]; then
+            npx eslint --max-warnings=0 --quiet ${{ steps.modified_files.outputs.files }} || true
+          else
+            echo "No TypeScript files modified in this PR."
+          fi
 
       - name: Install dependencies (Python)
         run: |
