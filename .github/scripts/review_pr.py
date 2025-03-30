@@ -61,25 +61,13 @@ def analyze_code():
     )
 
     eslint_fix_output = eslint_fix_result.stdout.decode()
-    
-    # Check if there are errors and potential fixes
-    if eslint_output:
-        if eslint_fix_output:
-            try:
-                fix_suggestions = [f"Fix: {item['message']} at {item['filePath']}:{item['line']}:{item['column']}"
-                                   for item in eval(eslint_fix_output)]
-                fix_suggestions_text = "\n".join(fix_suggestions)
-            except Exception as e:
-                fix_suggestions_text = f"Error parsing ESLint fix suggestions: {str(e)}"
-        else:
-            fix_suggestions_text = "No fixes found."
 
-        return "needs_improvement", f"### ESLint Issues Found:\n```\n{eslint_output}\n```\n" \
-                                    f"### Suggested Fixes:\n```\n{fix_suggestions_text}\n```"
-    
+    # Check if there are errors
+    if eslint_output:
+        return "needs_improvement", f"### ESLint Issues Found:\n```\n{eslint_output}\n```"
+
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."
-
 
 # Function to post a comment on the PR
 def post_comment(message):
@@ -87,27 +75,25 @@ def post_comment(message):
     response = requests.post(comment_url, json={"body": message}, headers=headers)
     return response
 
-
 # Main logic
 def main():
     # Analyze the code quality
     status, analysis_result = analyze_code()
-    
+
     # Select an appropriate message based on the analysis result
     if status == "good":
         message = random.choice(messages["good"])
     else:
         message = random.choice(messages["needs_improvement"]) + "\n\n" + analysis_result
-    
+
     # Post the message to the PR
     response = post_comment(message)
-    
+
     # Check if the comment was successfully posted
     if response.status_code == 201:
         print("Comment posted successfully!")
     else:
         print(f"Failed to post comment. Status code: {response.status_code}, Response: {response.text}")
-
 
 if __name__ == "__main__":
     main()

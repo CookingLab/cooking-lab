@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
@@ -12,19 +12,10 @@ import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
 import CustomModal from './modal';
 
-// Error 1: Unused variable
-const unsusedVar = ""; // This should trigger ESLint for unused variable
-
-// Error 2: Missing dependency in useEffect
-useEffect(() => {
-  // Perform side effect here, but missed a dependency
-  console.log('Component mounted');
-}, []); // ESLint will warn about missing dependencies (if any state is used)
+const unsusedVar = "";
 
 const NavBar = () => {
-  const isLocalhost = window.location.hostname === "localhost";
-
-  // Error 3: Missing type for state (useSelector with implicit any)
+  const isLocalhost = window.location.hostname === 'localhost';
   const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
   
   const dispatch = useDispatch();
@@ -39,9 +30,10 @@ const NavBar = () => {
     dispatch(CookingLabSlice.setTienRecipesExtended(false));
     dispatch(CookingLabSlice.setTmRecipesExtended(false));
   }
+  
 
-  // Error 4: No 'key' prop when rendering list items
   const handleGeneratePdfFile = () => {
+  
     const recipes = Object.entries(savedRecipes);
     if (recipes.length === 0) {
       handleShow();
@@ -64,8 +56,7 @@ const NavBar = () => {
     doc.setFontSize(12);
     let yPosition = 100;
     recipes.forEach(([name, url], index) => {
-      // Error 5: String concatenation instead of template literals
-      doc.text(index + 1 + ". " + name + ": " + url, 10, yPosition); 
+      doc.text(`${index + 1}. ${name}: ${url}`, 10, yPosition);
       yPosition += 10;
   
       if (yPosition > 280) {
@@ -83,7 +74,6 @@ const NavBar = () => {
 
   return (
     <>
-      {/* Error 6: Unnecessary Fragment */}
       <Navbar expand="md" className="navbar background-color">
         <Navbar.Brand>
           <a href="/">
@@ -135,7 +125,7 @@ const NavBar = () => {
         handleClose={handleClose}
       />
     </>
-  );
+  )
 }
 
 export default NavBar;
