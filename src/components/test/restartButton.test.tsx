@@ -7,10 +7,9 @@ import configureStore from 'redux-mock-store';
 import RestartButton from '../restartButton';
 import { RESTART } from '../../i18n/constants';
 import { clearCuisine, clearMealType, clearMeat, clearDiets, clearHealths, setEditing, setQuickRecipe } from '../../redux/cookingLabSlice';
-import { Store, UnknownAction } from '@reduxjs/toolkit';
 
 const mockStore = configureStore([]);
-let store: Store<unknown, UnknownAction, unknown>;
+let store: ReturnType<typeof mockStore>;
 
 describe('Restart Button component', () => {
   beforeEach(() => {
@@ -27,7 +26,7 @@ describe('Restart Button component', () => {
     });
   });
 
-  it('should renders RestartButton component', () => {
+  it('should render RestartButton component', () => {
     render(
       <Provider store={store}>
         <Router>
@@ -50,7 +49,7 @@ describe('Restart Button component', () => {
 
     const restart = screen.getByText(RESTART);
     fireEvent.click(restart);
-    const actions = (store as any).getActions();
+    const actions = store.getActions();
     expect(actions).toEqual([setQuickRecipe(false), setEditing(false), clearCuisine(), clearMealType(), clearMeat(), clearDiets(), clearHealths()]);
   });
 });
