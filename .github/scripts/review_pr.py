@@ -60,7 +60,7 @@ def analyze_code():
         stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
 
-    eslint_fix_output = eslint_fix_result.stdout.decode()
+    eslint_fix_result.stdout.decode()
 
     # Check if there are errors
     if eslint_output:
