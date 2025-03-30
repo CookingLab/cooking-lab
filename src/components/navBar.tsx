@@ -11,7 +11,6 @@ import { restartSteps } from '../utils/index';
 import * as CookingLabSlice from '../redux/cookingLabSlice';
 import { RootState } from 'redux/store';
 
-
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
   const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
