@@ -18,13 +18,29 @@ messages = {
         "This PR looks delicious! 😋🍴",
         "This PR is well-seasoned and cooked to perfection! 🔥👌",
         "Yum! This PR is just right! 😍🍲",
-        "The code is a gourmet masterpiece! 👨‍🍳🌟"
+        "The code is a gourmet masterpiece! 👨‍🍳🌟",
+        "This PR is a Michelin-star dish! ⭐🍽️",
+        "Perfectly balanced flavors—uh, I mean, code! 🏆👨‍💻",
+        "Like a well-baked soufflé, this PR has risen to perfection! 🍮🎉",
+        "The ingredients blend together beautifully! 🍲💖",
+        "This PR is as smooth as melted butter! 🧈✨",
+        "Delicious! This code deserves a chef’s kiss! 👨‍🍳💋",
+        "This PR is as satisfying as a perfectly brewed coffee! ☕✅",
+        "No bugs, no mess—just clean, elegant code! 🍷🖥️"
     ],
     "needs_improvement": [
         "This PR could use a little more spice! 🌶️⚡",
         "The code is almost perfect, just add a pinch of salt! 🧂💡",
         "Tasty code, but let’s add some extra flavor! 🍛✨",
-        "It’s a bit undercooked, let’s reheat it! 🍕🔥"
+        "It’s a bit undercooked, let’s reheat it! 🍕🔥",
+        "This PR needs a little more simmering! ⏳🔥",
+        "It's missing a key ingredient—let's season it with some fixes! 🧂🔧",
+        "Almost there! Just needs a pinch of code cleanup! ✨🍽️",
+        "This PR is like a half-baked cake—good start, but needs more time! 🎂⏳",
+        "The flavors (code) are a bit off—let’s adjust the recipe! 📖👨‍🍳",
+        "A few burned edges—let’s trim them off! 🔥✂️",
+        "A little too salty, let’s balance it out! ⚖️🧂",
+        "Let’s add some garnish—aka, code improvements! 🍃💻"
     ]
 }
 
