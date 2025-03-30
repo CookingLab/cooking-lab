@@ -28,13 +28,18 @@ messages = {
     ]
 }
 
+
 # Function to analyze code quality
 def analyze_code():
     # Run flake8 for linting
-    flake8_result = subprocess.run(['flake8', '--max-line-length=80'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    flake8_result = subprocess.run(
+        ['flake8', '--max-line-length=80'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
     
     # Run radon for complexity analysis
-    radon_result = subprocess.run(['radon', 'cc', '.', '--max', '10'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    radon_result = subprocess.run(
+        ['radon', 'cc', '.', '--max', '10'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
     
     # Check for linting issues
     lint_output = flake8_result.stdout.decode()
@@ -49,11 +54,13 @@ def analyze_code():
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."
 
+
 # Function to post a comment on the PR
 def post_comment(message):
     comment_url = f"https://api.github.com/repos/{os.getenv('GITHUB_REPOSITORY')}/issues/{pr_number}/comments"
     response = requests.post(comment_url, json={"body": message}, headers=headers)
     return response
+
 
 # Main logic
 def main():
@@ -74,6 +81,7 @@ def main():
         print("Comment posted successfully!")
     else:
         print(f"Failed to post comment. Status code: {response.status_code}, Response: {response.text}")
+
 
 if __name__ == "__main__":
     main()
