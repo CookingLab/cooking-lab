@@ -25,6 +25,7 @@ const NavBar = () => {
   }
 
   const handleGeneratePdfFile = () => {
+    console.log("TEST ESLINT");
     const recipes = Object.entries(savedRecipes);
     if (recipes.length === 0) {
       alert('No recipes saved to generate a file.');
