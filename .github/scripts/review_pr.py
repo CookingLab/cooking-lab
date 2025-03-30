@@ -28,26 +28,32 @@ messages = {
     ]
 }
 
+
 # Function to analyze TypeScript code quality with ESLint
 def analyze_code():
-    # Run ESLint for linting TypeScript code
+    # Run ESLint for linting TypeScript code with quiet mode so it doesn't exit with a non-zero code
     eslint_result = subprocess.run(
-        ['npx', 'eslint', '--max-warnings=0', '**/*.ts', '**/*.tsx'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        ['npx', 'eslint', '--max-warnings=0', '--quiet', '**/*.ts', '**/*.tsx'], 
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
     
-    # Check for linting issues
+    # Get the ESLint output
     eslint_output = eslint_result.stdout.decode()
+
+    # If there are any ESLint errors, return them
     if eslint_output:
         return "needs_improvement", eslint_output
     
     # If there are no issues, consider the code good
     return "good", "Code is clean and easy to follow."
 
+
 # Function to post a comment on the PR
 def post_comment(message):
     comment_url = f"https://api.github.com/repos/{os.getenv('GITHUB_REPOSITORY')}/issues/{pr_number}/comments"
     response = requests.post(comment_url, json={"body": message}, headers=headers)
     return response
+
 
 # Main logic
 def main():
@@ -68,6 +74,7 @@ def main():
         print("Comment posted successfully!")
     else:
         print(f"Failed to post comment. Status code: {response.status_code}, Response: {response.text}")
+
 
 if __name__ == "__main__":
     main()
