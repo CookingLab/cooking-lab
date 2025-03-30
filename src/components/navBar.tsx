@@ -96,13 +96,16 @@ const NavBar = () => {
             >
               {PERSONAL_RECIPE}
             </Nav.Link>
-            <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGeneratePdfFile()}>
-              {`${GENERATE_TXT}(${Object.keys(savedRecipes).length})`}
-            </button>
           </Nav>
         </div>
       </Navbar.Collapse>
       {isLocalhost && <Debug />}
+      <div className="position-relative">
+        <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={() => handleGeneratePdfFile()}>
+          {GENERATE_TXT}
+        </button>
+        <span className="badge">{Object.keys(savedRecipes).length}</span>
+      </div>
     </Navbar>
   )
 }
