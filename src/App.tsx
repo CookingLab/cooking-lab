@@ -18,12 +18,12 @@ import { useEffect } from 'react';
 
 const App = () => {
 
-    useEffect(() => {
-      AOS.init({
-        duration: 1000,  // Animation duration in ms
-        once: true,      // Ensures the animation runs only once
-      });
-    }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // Animation duration in ms
+      once: true,      // Ensures the animation runs only once
+    });
+  }, []);
 
   return (
     <div className="app-container">
