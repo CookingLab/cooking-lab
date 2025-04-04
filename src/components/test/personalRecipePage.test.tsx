@@ -4,9 +4,9 @@ import {
   RECIPE_ERROR_TITLE,
   RECIPE_ERROR_MESSAGE,
   RECIPE_ERROR_SUB_MESSAGE,
-} from '../i18n/constants'
+} from '../../i18n/constants'
 import React from 'react';
-import PersonalRecipePage from '../components/personalRecipePage';
+import PersonalRecipePage from '../personalRecipePage';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 

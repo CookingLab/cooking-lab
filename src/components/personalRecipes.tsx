@@ -72,7 +72,7 @@ const PersonalRecipes = () => {
 
   return (
     <div className="App">
-      <div className="container mt-5">
+      <div className="container mt-5" data-aos="fade-right">
         <div className="card shadow mb-5">
           <div className="card-body card-body-bg">
             <h1><strong data-testid="personal-recipes-title">{PERSONAL_RECIPES_TITLE}</strong></h1>
