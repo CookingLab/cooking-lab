@@ -57,7 +57,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   return (
     <div className="container mt-5">
       <RestartButton />
-      <div className="card shadow mb-5">
+      <div className="card shadow mb-5" data-aos="fade-right">
         <div className="card-body card-body-bg">
           {loading ? (
             !firstRecipeDelayMsg ? (

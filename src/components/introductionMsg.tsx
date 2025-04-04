@@ -9,7 +9,7 @@ import React from 'react';
 const IntroductionMsg = () => {
   return (
     <div className="App">
-      <div className="container my-5">
+      <div className="container my-5" data-aos="fade-right">
         <div className="card shadow p-5">
           <div className="card-body card-body-bg"></div>
           <h1>

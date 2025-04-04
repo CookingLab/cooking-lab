@@ -35,7 +35,7 @@ const PersonalRecipePage = ({title, ingredients, instructions, imageURL}: Person
   }, [title]);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" data-aos="fade-right">
       <div className="card shadow mb-5">
         <div className="card-body card-body-bg">
           {loading ? (

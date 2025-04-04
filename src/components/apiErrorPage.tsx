@@ -14,7 +14,7 @@ const ApiErrorPage = ({ statusCode, statusMsg }: ApiError) => {
   
   return (
     <div className="container mt-5">
-      <div className="card shadow mb-5">
+      <div className="card shadow mb-5" data-aos="fade-right">
         <div className="card-body card-body-bg">
           {statusCode === 0 ? (
             <div className="loading-container">

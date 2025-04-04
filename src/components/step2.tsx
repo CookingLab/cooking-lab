@@ -78,7 +78,7 @@ const Step2 = () => {
   return (
     <div className="container mt-5">
       <RestartButton />
-      <div className="card shadow mb-5">
+      <div className="card shadow mb-5" data-aos="fade-right">
         <div className="card-body card-body-bg">
           <div className="row mb-4">
             <div className="col text-center">

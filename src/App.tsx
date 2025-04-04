@@ -1,5 +1,7 @@
 import React from 'react';
 import './css/App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import NavBar from './components/navBar';
 import Footer from './components/footer';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -12,8 +14,17 @@ import Step3 from './components/step3';
 import Step4 from './components/step4';
 import PersonalRecipes from './components/personalRecipes';
 import GetPersonalRecipe from './components/getPersonalRecipe';
+import { useEffect } from 'react';
 
 const App = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // Animation duration in ms
+      once: true,      // Ensures the animation runs only once
+    });
+  }, []);
+
   return (
     <div className="app-container">
       <NavBar />
