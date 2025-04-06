@@ -49,7 +49,7 @@ jobs:
       - name: Send Lint Result to Discord
         if: always()  # ensure this step runs even if previous one fails
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_OPENED_PR_WEBHOOK_URL: ${{ secrets.DISCORD_OPENED_PR_WEBHOOK_URL }}
         run: |
           if [ "${{ steps.lint_ts.outcome }}" = "success" ]; then
             STATUS="✅ Linting passed!"
