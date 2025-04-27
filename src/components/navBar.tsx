@@ -49,8 +49,8 @@ const NavBar = () => {
     doc.addImage(logo, 'PNG', 80, 30, imgWidth, imgHeight);
   
     doc.setFontSize(14);
-    doc.text('Here are your saved recipes:', 105, 90, { align: 'center' });
-  
+    doc.text('Here are your saved recipes, click on the recipe name to view it:', 105, 90, { align: 'center' });
+    
     doc.setFontSize(12);
     let yPosition = 100;
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -58,12 +58,23 @@ const NavBar = () => {
     const maxWidth = pageWidth - margin * 2;
 
     recipes.forEach(([name, url], index) => {
-      const text = `${index + 1}. ${name}:`;
+      const text = `${index + 1}. ${name}`;
       
       // Render the recipe name (split into multiple lines if necessary)
       const splitText = doc.splitTextToSize(text, maxWidth);
-      splitText.forEach((line: string) => {
-        doc.text(line, margin, yPosition);
+      splitText.forEach((line: string, lineIndex: number) => {
+        doc.textWithLink(line, margin, yPosition, { url });
+    
+        // Only draw the underline starting after the number (index + 1) on the first line
+        if (lineIndex === 0) {
+          const numberWidth = doc.getTextWidth(`${index + 1}. `); // Calculate the width of the number
+          const textWidth = doc.getTextWidth(line) - numberWidth; // Calculate the width of the remaining text
+          doc.line(margin + numberWidth, yPosition + 1, margin + numberWidth + textWidth, yPosition + 1); // Draw underline only for the text
+        } else {
+          const textWidth = doc.getTextWidth(line); // For subsequent lines, underline the entire line
+          doc.line(margin, yPosition + 1, margin + textWidth, yPosition + 1);
+        }
+    
         yPosition += 10;
     
         // Handle page overflow
@@ -72,22 +83,6 @@ const NavBar = () => {
           yPosition = 20;
         }
       });
-    
-      // Render the URL as plain text (split into multiple lines if necessary)
-      const splitUrl = doc.splitTextToSize(url, maxWidth);
-      splitUrl.forEach((line: string) => {
-        doc.text(line, margin, yPosition);
-        yPosition += 10;
-    
-        // Handle page overflow
-        if (yPosition > 280) {
-          doc.addPage();
-          yPosition = 20;
-        }
-      });
-
-      // Add a clickable link for the entire URL
-      doc.link(margin, yPosition - (splitUrl.length * 10), maxWidth, 10, { url });
     });
 
     doc.setFontSize(10);
