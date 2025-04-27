@@ -53,16 +53,43 @@ const NavBar = () => {
   
     doc.setFontSize(12);
     let yPosition = 100;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 10;
+    const maxWidth = pageWidth - margin * 2;
+
     recipes.forEach(([name, url], index) => {
-      doc.text(`${index + 1}. ${name}: ${url}`, 10, yPosition);
-      yPosition += 10;
-  
-      if (yPosition > 280) {
-        doc.addPage();
-        yPosition = 20;
-      }
+      const text = `${index + 1}. ${name}:`;
+      
+      // Render the recipe name (split into multiple lines if necessary)
+      const splitText = doc.splitTextToSize(text, maxWidth);
+      splitText.forEach((line: string) => {
+        doc.text(line, margin, yPosition);
+        yPosition += 10;
+    
+        // Handle page overflow
+        if (yPosition > 280) {
+          doc.addPage();
+          yPosition = 20;
+        }
+      });
+    
+      // Render the URL as plain text (split into multiple lines if necessary)
+      const splitUrl = doc.splitTextToSize(url, maxWidth);
+      splitUrl.forEach((line: string) => {
+        doc.text(line, margin, yPosition);
+        yPosition += 10;
+    
+        // Handle page overflow
+        if (yPosition > 280) {
+          doc.addPage();
+          yPosition = 20;
+        }
+      });
+
+      // Add a clickable link for the entire URL
+      doc.link(margin, yPosition - (splitUrl.length * 10), maxWidth, 10, { url });
     });
-  
+
     doc.setFontSize(10);
     doc.text('Thank you for using CookingLab!', 105, 280, { align: 'center' });
     doc.text('Visit us at: https://cooking-lab.netlify.app/', 105, 290, { align: 'center' });
