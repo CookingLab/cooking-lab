@@ -34,11 +34,15 @@ const SavedRecipes = () => {
                       <a href={url} target="_blank" rel="noopener noreferrer">
                         {name}
                       </a>
-                      <i
-                        className="bi bi-trash-fill float-end"
-                        style={{ fontSize: '1.5rem', cursor: 'pointer' }}
+                      <button
                         onClick={() => handleRemoveSavedRecipe(name)}
-                      ></i>
+                        className="btn p-0 float-end"
+                        style={{ fontSize: '1.5rem' }}
+                        aria-label="Remove saved recipe"
+                      >
+                        <i className="bi bi-trash-fill" aria-hidden="true"></i>
+                     </button>
+
                     </li>
                   ))}
                 </ul>
