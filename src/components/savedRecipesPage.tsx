@@ -1,11 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { SAVED_RECIPES_TITLE, SAVED_RECIPES_MSG, NO_SAVED_RECIPES } from '../i18n/constants';
+import { removeSavedRecipe } from '../redux/cookingLabSlice';
 
 const SavedRecipes = () => {
   const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
   let isSavedRecipesEmpty = Object.entries(savedRecipes).length === 0;
+  const dispatch = useDispatch();
+
+  const handleRemoveSavedRecipe = (name: string) => {
+    dispatch(removeSavedRecipe(name));
+  };
+
   return (
     <div className="App">
       <div className="container mt-5" data-aos="fade-right">
@@ -21,6 +28,11 @@ const SavedRecipes = () => {
                     {Object.entries(savedRecipes).map(([name, url]) => (
                     <li key={name} className="list-group-item">
                         <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
+                        <i
+                        className="bi bi-trash-fill float-end"
+                        style={{ fontSize: '1.5rem', cursor: 'pointer' }}
+                        onClick={() => handleRemoveSavedRecipe(name)}
+                        ></i>
                     </li>
                     ))}
                 </ul>
