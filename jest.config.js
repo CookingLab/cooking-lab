@@ -4,6 +4,10 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'text'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   collectCoverageFrom: [
     'src/components/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
