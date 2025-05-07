@@ -15,6 +15,7 @@ import Step4 from './components/step4';
 import PersonalRecipes from './components/personalRecipes';
 import GetPersonalRecipe from './components/getPersonalRecipe';
 import { useEffect } from 'react';
+import SavedRecipes from 'components/savedRecipesPage';
 
 const App = () => {
 
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/personalRecipe" element={<PersonalRecipes />} />
           <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
+          <Route path="/savedRecipes" element={<SavedRecipes/>} />
         </Routes>
       </div>
       <Footer />

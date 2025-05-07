@@ -26,6 +26,7 @@ export const PROD = 'Prod';
 // NavBar constants
 export const RECIPE_GENERATOR = 'Recipe generator';
 export const PERSONAL_RECIPE = 'Our personal recipes';
+export const SAVED_RECIPES = 'Saved Recipes';
 export const GENERATE_TXT = 'Download recipes to a PDF file';
 
 // Footer constants
@@ -129,6 +130,11 @@ export const RECIPE_INSTRUCTIONS = 'Instructions';
 // PersonalRecipePage constants
 export const NO_RESPONSE_500 = 'No response received from server';
 export const ERROR_500 = 'An error occurred';
+
+// Saved Recipes
+export const SAVED_RECIPES_TITLE = 'Saved Recipes';
+export const SAVED_RECIPES_MSG = 'Click on a recipe to view it.';
+export const NO_SAVED_RECIPES = 'No saved recipes yet.';
 
 // Modal constants
 export const MODAL_TITLE = 'No recipes saved';
