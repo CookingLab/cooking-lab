@@ -41,7 +41,7 @@ const SavedRecipes = () => {
                         aria-label="Remove saved recipe"
                       >
                         <i className="bi bi-trash-fill" aria-hidden="true"></i>
-                     </button>
+                      </button>
 
                     </li>
                   ))}
