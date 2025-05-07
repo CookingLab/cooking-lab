@@ -14,8 +14,8 @@ import Step3 from './components/step3';
 import Step4 from './components/step4';
 import PersonalRecipes from './components/personalRecipes';
 import GetPersonalRecipe from './components/getPersonalRecipe';
+import SavedRecipes from './components/savedRecipesPage';
 import { useEffect } from 'react';
-import SavedRecipes from 'components/savedRecipesPage';
 
 const App = () => {
 
