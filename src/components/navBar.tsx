@@ -4,7 +4,7 @@ import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
-import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT } from '../i18n/constants';
+import { PERSONAL_RECIPE, RECIPE_GENERATOR, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT, SAVED_RECIPES } from '../i18n/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { restartSteps } from '../utils/index';
@@ -126,6 +126,16 @@ const NavBar = () => {
                 onClick={() => handleRestart()}
               >
                 {PERSONAL_RECIPE}
+              </Nav.Link>
+              <Nav.Link
+                data-testid="cypress-savedRecipes"
+                as={HashLink}
+                smooth
+                to="/savedRecipes"
+                className="navbar-link"
+                onClick={() => handleRestart()}
+              >
+                {SAVED_RECIPES}
               </Nav.Link>
             </Nav>
           </div>

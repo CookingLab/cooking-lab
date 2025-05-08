@@ -4,6 +4,10 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'text'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   collectCoverageFrom: [
     'src/components/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
@@ -11,5 +15,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/components/test/testConfig/setupTests.ts'],
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/components/test/testConfig/fileMock.ts",
-  }
+  },
+  transformIgnorePatterns: [
+    "node_modules/(?!(redux|@reduxjs/toolkit)/)"
+  ]
 };
