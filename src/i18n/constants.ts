@@ -111,7 +111,7 @@ export const SUMMARY_NONE = 'Not selected';
 // RecipePage constants
 export const RECIPE_INGREDIENT = 'Ingredients';
 export const RECIPE_LINK = 'Recipe here:';
-export const RECIPE_LOADER = 'Loading Recipe';
+export const RECIPE_LOADER = 'Loading Recipe...';
 export const RECIPE_LOADING = 'Loading...';
 export const RECIPE_ERROR_TITLE = 'Error fetching recipe';
 export const RECIPE_ERROR_MESSAGE = 'It looks like there was an error fetching the recipe. Please try again later.';
