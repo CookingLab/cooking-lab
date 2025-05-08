@@ -15,5 +15,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/components/test/testConfig/setupTests.ts'],
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/components/test/testConfig/fileMock.ts",
-  }
+  },
+  transformIgnorePatterns: [
+    "node_modules/(?!(redux|@reduxjs/toolkit)/)"
+  ]
 };
