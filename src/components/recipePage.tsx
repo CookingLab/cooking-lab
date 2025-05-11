@@ -46,7 +46,7 @@ const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
   const handleSaveRecipe = () => {
     if (label && url) {
       const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes') || '{}');
-      const isAlreadySaved = savedRecipes.hasOwnProperty(label);
+      const isAlreadySaved = Object.prototype.hasOwnProperty.call(savedRecipes, label);
   
       if (isAlreadySaved) {
         setModalTitle(ALREADY_SAVED_MODAL_TITLE);
