@@ -99,8 +99,8 @@ const SavedRecipes = () => {
                 <p className="text-center">{NO_SAVED_RECIPES}</p>
               ) : (
                 <ul className="list-group">
-                    {Object.entries(savedRecipes).map(([name, url]) => (
-                    <li key={name} className="list-group-item">
+                  {Object.entries(savedRecipes).map(([name, url]) => (
+                      <li key={name} className="list-group-item">
                       <a href={url} target="_blank" rel="noopener noreferrer">
                         {name}
                       </a>
@@ -113,7 +113,7 @@ const SavedRecipes = () => {
                         <i className="bi bi-trash-fill" aria-hidden="true"></i>
                       </button>
                     </li>
-                    ))}
+                  ))}
                 </ul>
               )}
               <div className="position-relative">
