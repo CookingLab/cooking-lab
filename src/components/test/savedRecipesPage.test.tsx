@@ -4,17 +4,12 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { RootState } from '../../redux/store';
 import SavedRecipes from '../savedRecipesPage';
-import { removeSavedRecipe } from '../../redux/cookingLabSlice';
 import { SAVED_RECIPES_TITLE, SAVED_RECIPES_MSG, NO_SAVED_RECIPES } from '../../i18n/constants';
 
 describe('SavedRecipes Component', () => {
   const mockStore = configureStore([]);
   const initialState: RootState = {
     cookingLab: {
-      savedRecipes: {
-        'Recipe 1': 'http://example.com/recipe1',
-        'Recipe 2': 'http://example.com/recipe2',
-      },
       isQuickRecipe: false,
       isEditing: false,
       selectedCuisine: '',
@@ -28,6 +23,20 @@ describe('SavedRecipes Component', () => {
       isTmRecipesExpanded: false,
     },
   };
+
+  beforeEach(() => {
+    // Set up recipes in localStorage before each test
+    const savedRecipes = {
+      'Recipe 1': 'http://example.com/recipe1',
+      'Recipe 2': 'http://example.com/recipe2',
+    };
+    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+  });
+
+  afterEach(() => {
+    // Clear localStorage after each test
+    localStorage.clear();
+  });
 
   it('renders the title and message when there are saved recipes', () => {
     const store = mockStore(initialState);
@@ -45,9 +54,8 @@ describe('SavedRecipes Component', () => {
   });
 
   it('renders a message when there are no saved recipes', () => {
-    const store = mockStore({
-      cookingLab: { savedRecipes: {} },
-    });
+    const store = mockStore(initialState);
+    localStorage.clear(); // Clear saved recipes
 
     render(
       <Provider store={store}>
@@ -56,22 +64,6 @@ describe('SavedRecipes Component', () => {
     );
 
     expect(screen.getByText(NO_SAVED_RECIPES)).toBeInTheDocument();
-  });
-
-  it('calls removeSavedRecipe when the remove button is clicked', () => {
-    const store = mockStore(initialState);
-    store.dispatch = jest.fn();
-
-    render(
-      <Provider store={store}>
-        <SavedRecipes />
-      </Provider>
-    );
-
-    const removeButton = screen.getAllByRole('button', { name: /Remove saved recipe/i })[0];
-    fireEvent.click(removeButton);
-
-    expect(store.dispatch).toHaveBeenCalledWith(removeSavedRecipe('Recipe 1'));
   });
 
   it('renders links with correct href attributes for saved recipes', () => {

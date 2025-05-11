@@ -21,7 +21,7 @@ import { RecipeProps } from '../interfaces/recipeInterface';
 import logo from '../img/cookingLabLogo1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
-import { addSavedRecipe, setRecipeGenerate } from '../redux/cookingLabSlice';
+import { setRecipeGenerate } from '../redux/cookingLabSlice';
 import CustomModal from './modal';
 
 const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
@@ -32,16 +32,16 @@ const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
   const [error, setError] = useState(false);
   const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
   const isQuickRecipeState = useSelector((state: RootState) => state.cookingLab.isQuickRecipe);
-  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
 
   const [modalTitle, setModalTitle] = useState('');
   const [modalText, setModalText] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const handleShow = () => {
-    // verify if the recipe is already in the state
-    const isRecipeAlreadySaved = Object.keys(savedRecipes).some((recipe) => recipe === label);
-    if (isRecipeAlreadySaved) {
+    const savedRecipesFromLocalStorage = JSON.parse(localStorage.getItem('savedRecipes') || '{}');
+    
+    const isRecipeAlreadySavedInLocalStorage = savedRecipesFromLocalStorage.hasOwnProperty(label);
+    if (isRecipeAlreadySavedInLocalStorage) {
       setShowModal(true);
       return 'SAVED_STATE';
     } else {
@@ -58,15 +58,20 @@ const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
 
   const handleSaveRecipe = () => {
     if (label && url) {
-      dispatch(addSavedRecipe({ name: label, url }));
-      const isSaved = handleShow();
-      if (isSaved === 'NOT_SAVED_STATE') {
-        setModalTitle(SAVED_MODAL_TITLE);
-        setModalText(SAVED_MODAL_TEXT);
-      } else if (isSaved === 'SAVED_STATE') {
+      const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes') || '{}');
+      const isAlreadySaved = savedRecipes.hasOwnProperty(label);
+  
+      if (isAlreadySaved) {
         setModalTitle(ALREADY_SAVED_MODAL_TITLE);
         setModalText(ALREADY_SAVED_MODAL_TEXT);
+      } else {
+        savedRecipes[label] = url;
+        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        setModalTitle(SAVED_MODAL_TITLE);
+        setModalText(SAVED_MODAL_TEXT);
       }
+  
+      setShowModal(true);
     } else {
       console.error('Label or URL is undefined');
     }

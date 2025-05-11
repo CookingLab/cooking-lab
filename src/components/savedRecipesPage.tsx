@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import jsPDF from 'jspdf';
 import logo from '../img/cookingLabLogo2.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 import { SAVED_RECIPES_TITLE, SAVED_RECIPES_MSG, NO_SAVED_RECIPES, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT } from '../i18n/constants';
-import { removeSavedRecipe } from '../redux/cookingLabSlice';
 import CustomModal from './modal';
 
 const SavedRecipes = () => {
-  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
+  const [savedRecipes, setSavedRecipes] = useState<Record<string, string>>(() => {
+    return JSON.parse(localStorage.getItem('savedRecipes') || '{}');
+  });
   const isSavedRecipesEmpty = Object.entries(savedRecipes).length === 0;
-  const dispatch = useDispatch();
 
   const handleRemoveSavedRecipe = (name: string) => {
-    dispatch(removeSavedRecipe(name));
+    const updatedRecipes = { ...savedRecipes };
+    delete updatedRecipes[name];
+    localStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
+    setSavedRecipes(updatedRecipes);
   };
 
   const [showModal, setShowModal] = useState(false);
@@ -97,7 +98,7 @@ const SavedRecipes = () => {
               {isSavedRecipesEmpty ? (
                 <p className="text-center">{NO_SAVED_RECIPES}</p>
               ) : (
-                <ul className="list-group">
+                  <ul className="list-group">
                   {Object.entries(savedRecipes).map(([name, url]) => (
                     <li key={name} className="list-group-item">
                       <a href={url} target="_blank" rel="noopener noreferrer">
@@ -111,7 +112,6 @@ const SavedRecipes = () => {
                       >
                         <i className="bi bi-trash-fill" aria-hidden="true"></i>
                       </button>
-
                     </li>
                   ))}
                 </ul>
