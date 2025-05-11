@@ -11,7 +11,6 @@ import * as CookingLabSlice from '../redux/cookingLabSlice';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
-  const savedRecipesFromLocalStorage = JSON.parse(localStorage.getItem('savedRecipes') || '{}');
   
   const dispatch = useDispatch();
   const navigate = useNavigate();

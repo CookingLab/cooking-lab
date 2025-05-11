@@ -37,19 +37,6 @@ const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
   const [modalText, setModalText] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const handleShow = () => {
-    const savedRecipesFromLocalStorage = JSON.parse(localStorage.getItem('savedRecipes') || '{}');
-    
-    const isRecipeAlreadySavedInLocalStorage = savedRecipesFromLocalStorage.hasOwnProperty(label);
-    if (isRecipeAlreadySavedInLocalStorage) {
-      setShowModal(true);
-      return 'SAVED_STATE';
-    } else {
-      setShowModal(true);
-      return 'NOT_SAVED_STATE';
-    }
-  };
-
   const handleClose = () => setShowModal(false);
 
   const handleRegenerate = () => {
