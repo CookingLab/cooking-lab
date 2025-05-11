@@ -9,6 +9,10 @@ import {
   SORRY_MSG,
   RECIPE_GENERATE,
   SAVE_RECIPE,
+  SAVED_MODAL_TITLE,
+  SAVED_MODAL_TEXT,
+  ALREADY_SAVED_MODAL_TITLE,
+  ALREADY_SAVED_MODAL_TEXT,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -18,6 +22,7 @@ import logo from '../img/cookingLabLogo1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { addSavedRecipe, setRecipeGenerate } from '../redux/cookingLabSlice';
+import CustomModal from './modal';
 
 const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const navigate = useNavigate();
@@ -27,6 +32,25 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const [error, setError] = useState(false);
   const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
   const isQuickRecipeState = useSelector((state: RootState) => state.cookingLab.isQuickRecipe);
+  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
+
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalText, setModalText] = useState('');
+
+    const [showModal, setShowModal] = useState(false);
+    const handleShow = () => {
+      // verify if the recipe is already in the state
+      const isRecipeAlreadySaved = Object.keys(savedRecipes).some((recipe) => recipe === label);
+      if (isRecipeAlreadySaved) {
+        setShowModal(true);
+        return "SAVED_STATE";
+      } else {
+        setShowModal(true);
+        return "NOT_SAVED_STATE";
+      }
+
+    }
+    const handleClose = () => setShowModal(false);
   
   const handleRegenerate = () => {
     dispatch(setRecipeGenerate());
@@ -35,10 +59,18 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
   const handleSaveRecipe = () => {
     if (label && url) {
       dispatch(addSavedRecipe({ name: label, url }));
+      let isSaved = handleShow();
+      if (isSaved === "NOT_SAVED_STATE") {
+        setModalTitle(SAVED_MODAL_TITLE);
+        setModalText(SAVED_MODAL_TEXT);
+      } else if (isSaved === "SAVED_STATE") {
+        setModalTitle(ALREADY_SAVED_MODAL_TITLE);
+        setModalText(ALREADY_SAVED_MODAL_TEXT);
+      }
     } else {
       console.error('Label or URL is undefined');
     }
-  }
+  };
   
   useEffect(() => {
     if (!label) {
@@ -144,6 +176,12 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                 )}
               </>
           )}
+            <CustomModal
+              modalTitle={modalTitle}
+              modalText={modalText}
+              show={showModal}
+              handleClose={handleClose}
+            />
         </div>
       </div>
     </div>
