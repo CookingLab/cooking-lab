@@ -140,3 +140,7 @@ export const NO_SAVED_RECIPES = 'No saved recipes yet.';
 export const MODAL_TITLE = 'No recipes saved';
 export const MODAL_TEXT = 'Please save some recipes before generating a file.';
 export const MODAL_CLOSE = 'Close';
+export const SAVED_MODAL_TITLE = 'Recipe saved!';
+export const SAVED_MODAL_TEXT = 'Your recipe has been saved successfully!';
+export const ALREADY_SAVED_MODAL_TITLE = 'Recipe already saved!';
+export const ALREADY_SAVED_MODAL_TEXT = 'This recipe is already saved.';

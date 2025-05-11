@@ -9,6 +9,10 @@ import {
   SORRY_MSG,
   RECIPE_GENERATE,
   SAVE_RECIPE,
+  SAVED_MODAL_TITLE,
+  SAVED_MODAL_TEXT,
+  ALREADY_SAVED_MODAL_TITLE,
+  ALREADY_SAVED_MODAL_TEXT,
 } from '../i18n/constants';
 import React, { useEffect, useState } from 'react';
 import RestartButton from './restartButton';
@@ -18,28 +22,56 @@ import logo from '../img/cookingLabLogo1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/store';
 import { addSavedRecipe, setRecipeGenerate } from '../redux/cookingLabSlice';
+import CustomModal from './modal';
 
-const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
+const RecipePage = ({ label, image, ingredients, url }: RecipeProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [firstRecipeDelayMsg, setFirstRecipeDelayMsg] = useState(false);
   const isQuickRecipeState = useSelector((state: RootState) => state.cookingLab.isQuickRecipe);
-  
+  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
+
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalText, setModalText] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShow = () => {
+    // verify if the recipe is already in the state
+    const isRecipeAlreadySaved = Object.keys(savedRecipes).some((recipe) => recipe === label);
+    if (isRecipeAlreadySaved) {
+      setShowModal(true);
+      return 'SAVED_STATE';
+    } else {
+      setShowModal(true);
+      return 'NOT_SAVED_STATE';
+    }
+  };
+
+  const handleClose = () => setShowModal(false);
+
   const handleRegenerate = () => {
     dispatch(setRecipeGenerate());
-  }
+  };
 
   const handleSaveRecipe = () => {
     if (label && url) {
       dispatch(addSavedRecipe({ name: label, url }));
+      const isSaved = handleShow();
+      if (isSaved === 'NOT_SAVED_STATE') {
+        setModalTitle(SAVED_MODAL_TITLE);
+        setModalText(SAVED_MODAL_TEXT);
+      } else if (isSaved === 'SAVED_STATE') {
+        setModalTitle(ALREADY_SAVED_MODAL_TITLE);
+        setModalText(ALREADY_SAVED_MODAL_TEXT);
+      }
     } else {
       console.error('Label or URL is undefined');
     }
-  }
-  
+  };
+
   useEffect(() => {
     if (!label) {
       setLoading(true);
@@ -53,7 +85,7 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
       setLoading(false);
     }
   }, [label]);
-  
+
   return (
     <div className="container mt-5">
       <RestartButton />
@@ -72,82 +104,87 @@ const RecipePage = ({label, image, ingredients, url}: RecipeProps) => {
                 <img src={logo} alt="Loading..." className="loading-logo" />
               </div>
             )
+          ) : error ? (
+            <div className="error-container">
+              <h2>{RECIPE_ERROR_TITLE}</h2>
+              <p>{RECIPE_ERROR_MESSAGE}</p>
+              <p>{RECIPE_ERROR_SUB_MESSAGE}</p>
+              <i
+                data-testid="error-back-icon"
+                className="bi bi-arrow-left-circle-fill me-auto"
+                style={{ fontSize: '2rem', cursor: 'pointer' }}
+                onClick={() => navigate('/summary')}
+              />
+            </div>
           ) : (
-            error ? (
-              <div className="error-container">
-                <h2>{RECIPE_ERROR_TITLE}</h2>
-                <p>{RECIPE_ERROR_MESSAGE}</p>
-                <p>{RECIPE_ERROR_SUB_MESSAGE}</p>
-                <i
-                  data-testid="error-back-icon"
-                  className="bi bi-arrow-left-circle-fill me-auto"
-                  style={{ fontSize: '2rem', cursor: 'pointer' }}
-                  onClick={() => navigate('/summary')}
-                />
+            <>
+              <div className="row mb-4">
+                <div className="col-md-8">
+                  <h1 className="card-title" data-testid="recipe-label">{label}</h1>
+                  <h3 data-testid="recipe-ingredient">{RECIPE_INGREDIENT}</h3>
+                  <ul className="list-group" data-testid="recipe-ingredient-list">
+                    {ingredients?.map((ingredient) => (
+                      <li className="list-group-item" key={ingredient.text}>{ingredient.text}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="col-md-4 text-center">
+                  <img src={image} alt={label} className="img-fluid shadow rounded" />
+                </div>
               </div>
-            ) :
-              <>
-                <div className="row mb-4">
-                  <div className="col-md-8">
-                    <h1 className="card-title" data-testid="recipe-label">{label}</h1>
-                    <h3 data-testid="recipe-ingredient">{RECIPE_INGREDIENT}</h3>
-                    <ul className="list-group" data-testid="recipe-ingredient-list">
-                      {ingredients?.map(ingredient => (
-                        <li className="list-group-item" key={ingredient.text}>{ingredient.text}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="col-md-4 text-center">
-                    <img src={image} alt={label} className="img-fluid shadow rounded" />
-                  </div>
+              <div className="row mb-4">
+                <div className="col-md-8">
+                  <h3 className="mt-4" data-testid="recipe-link">{RECIPE_LINK}</h3>
+                  <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
                 </div>
-                <div className="row mb-4">
-                  <div className="col-md-8">
-                    <h3 className="mt-4" data-testid="recipe-link">{RECIPE_LINK}</h3>
-                    <a className="cooking-lab-link" href={url} target="_blank" rel="noreferrer">{url}</a>
-                  </div>
+              </div>
+              {!isQuickRecipeState && (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <i
+                    data-testid="back-icon"
+                    className="bi bi-arrow-left-circle-fill me-3 ms-3"
+                    style={{ fontSize: '2rem', cursor: 'pointer' }}
+                    onClick={() => navigate('/summary')}
+                  />
+                  <button
+                    data-testid="regenerate-btn"
+                    className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                    onClick={() => handleRegenerate()}
+                  >
+                    {RECIPE_GENERATE}
+                  </button>
+                  <button
+                    data-testid="save-recipe-btn"
+                    className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                    onClick={() => handleSaveRecipe()}
+                  >
+                    {SAVE_RECIPE}
+                  </button>
                 </div>
-                {!isQuickRecipeState && (
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <i
-                      data-testid="back-icon"
-                      className="bi bi-arrow-left-circle-fill me-3 ms-3"
-                      style={{ fontSize: '2rem', cursor: 'pointer' }}
-                      onClick={() => navigate('/summary')}
-                    />
-                    <button
-                      data-testid="regenerate-btn"
-                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
-                      onClick={() => handleRegenerate()}
-                    >
-                      {RECIPE_GENERATE}
-                    </button>
-                    <button
-                      data-testid="save-recipe-btn"
-                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
-                      onClick={() => handleSaveRecipe()}
-                    >
-                      {SAVE_RECIPE}
-                    </button>
-                  </div>
-                )}
-                {isQuickRecipeState && (
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <button
-                      data-testid="save-recipe-btn"
-                      className="btn btn-dark cooking-lab-btn me-3 ms-3"
-                      onClick={() => handleSaveRecipe()}
-                    >
-                      {SAVE_RECIPE}
-                    </button>
-                  </div>
-                )}
-              </>
+              )}
+              {isQuickRecipeState && (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <button
+                    data-testid="save-recipe-btn"
+                    className="btn btn-dark cooking-lab-btn me-3 ms-3"
+                    onClick={() => handleSaveRecipe()}
+                  >
+                    {SAVE_RECIPE}
+                  </button>
+                </div>
+              )}
+            </>
           )}
+          <CustomModal
+            modalTitle={modalTitle}
+            modalText={modalText}
+            show={showModal}
+            handleClose={handleClose}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default RecipePage;
