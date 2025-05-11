@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import logo from '../img/cookingLabLogo2.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 import { SAVED_RECIPES_TITLE, SAVED_RECIPES_MSG, NO_SAVED_RECIPES, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT } from '../i18n/constants';
-import { removeSavedRecipe } from '../redux/cookingLabSlice';
 import CustomModal from './modal';
 
 const SavedRecipes = () => {
-  const savedRecipes = useSelector((state: RootState) => state.cookingLab.savedRecipes || {});
+  const [savedRecipes, setSavedRecipes] = useState<Record<string, string>>(() => {
+    return JSON.parse(localStorage.getItem('savedRecipes') || '{}');
+  });
   const isSavedRecipesEmpty = Object.entries(savedRecipes).length === 0;
-  const dispatch = useDispatch();
 
   const handleRemoveSavedRecipe = (name: string) => {
-    dispatch(removeSavedRecipe(name));
+    const updatedRecipes = { ...savedRecipes };
+    delete updatedRecipes[name];
+    localStorage.setItem('savedRecipes', JSON.stringify(updatedRecipes));
+    setSavedRecipes(updatedRecipes);
   };
 
   const [showModal, setShowModal] = useState(false);
@@ -21,26 +22,25 @@ const SavedRecipes = () => {
   const handleClose = () => setShowModal(false);
 
   const handleGeneratePdfFile = () => {
-  
     const recipes = Object.entries(savedRecipes);
     if (recipes.length === 0) {
       handleShow();
       setShowModal(true);
       return;
     }
-  
+
     const doc = new jsPDF();
-  
+
     doc.setFontSize(18);
     doc.text('CookingLab Recipes', 105, 20, { align: 'center' });
-  
+
     const imgWidth = 50;
     const imgHeight = 50;
     doc.addImage(logo, 'PNG', 80, 30, imgWidth, imgHeight);
-  
+
     doc.setFontSize(14);
     doc.text('Here are your saved recipes, click on the recipe name to view it:', 105, 90, { align: 'center' });
-    
+
     doc.setFontSize(12);
     let yPosition = 100;
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -49,12 +49,12 @@ const SavedRecipes = () => {
 
     recipes.forEach(([name, url], index) => {
       const text = `${index + 1}. ${name}`;
-      
+
       // Render the recipe name (split into multiple lines if necessary)
       const splitText = doc.splitTextToSize(text, maxWidth);
       splitText.forEach((line: string, lineIndex: number) => {
         doc.textWithLink(line, margin, yPosition, { url });
-    
+
         // Only draw the underline starting after the number (index + 1) on the first line
         if (lineIndex === 0) {
           const numberWidth = doc.getTextWidth(`${index + 1}. `); // Calculate the width of the number
@@ -64,9 +64,9 @@ const SavedRecipes = () => {
           const textWidth = doc.getTextWidth(line); // For subsequent lines, underline the entire line
           doc.line(margin, yPosition + 1, margin + textWidth, yPosition + 1);
         }
-    
+
         yPosition += 10;
-    
+
         // Handle page overflow
         if (yPosition > 280) {
           doc.addPage();
@@ -78,7 +78,7 @@ const SavedRecipes = () => {
     doc.setFontSize(10);
     doc.text('Thank you for using CookingLab!', 105, 280, { align: 'center' });
     doc.text('Visit us at: https://cooking-lab.netlify.app/', 105, 290, { align: 'center' });
-  
+
     doc.save('cooking_lab_recipes.pdf');
   };
 
@@ -111,13 +111,16 @@ const SavedRecipes = () => {
                       >
                         <i className="bi bi-trash-fill" aria-hidden="true"></i>
                       </button>
-
                     </li>
                   ))}
                 </ul>
               )}
               <div className="position-relative">
-                <button data-testid="save-recipe-btn" className="btn btn-dark cooking-lab-btn me-3 ms-3 mt-3" onClick={() => handleGeneratePdfFile()}>
+                <button
+                  data-testid="save-recipe-btn"
+                  className="btn btn-dark cooking-lab-btn me-3 ms-3 mt-3"
+                  onClick={() => handleGeneratePdfFile()}
+                >
                   {GENERATE_TXT}
                 </button>
               </div>
