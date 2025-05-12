@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../img/cookingLabLogo2.png';
 import Debug from './debug';
 import { Navbar, Nav } from 'react-bootstrap';
@@ -11,15 +11,18 @@ import * as CookingLabSlice from '../redux/cookingLabSlice';
 
 const NavBar = () => {
   const isLocalhost = window.location.hostname === 'localhost';
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  const handleRestart = () => {
+
+  const [activeLink, setActiveLink] = useState('/'); // Default active link
+
+  const handleRestart = (link: string) => {
+    setActiveLink(link); // Set the active link
     restartSteps(dispatch, navigate);
     dispatch(CookingLabSlice.setTienRecipesExtended(false));
     dispatch(CookingLabSlice.setTmRecipesExtended(false));
-  }
+  };
 
   return (
     <Navbar expand="md" className="navbar background-color">
@@ -40,37 +43,37 @@ const NavBar = () => {
               as={HashLink}
               smooth
               to="/"
-              className="navbar-link"
-              onClick={() => handleRestart()}
+              className={`navbar-link ${activeLink === '/' ? 'active' : ''}`}
+              onClick={() => handleRestart('/')}
             >
               {RECIPE_GENERATOR}
-            </Nav.Link>
-            <Nav.Link
-              data-testid="cypress-personalRecipe"
-              as={HashLink}
-              smooth
-              to="/personalRecipe"
-              className="navbar-link"
-              onClick={() => handleRestart()}
-            >
-              {PERSONAL_RECIPE}
             </Nav.Link>
             <Nav.Link
               data-testid="cypress-savedRecipes"
               as={HashLink}
               smooth
               to="/savedRecipes"
-              className="navbar-link"
-              onClick={() => handleRestart()}
+              className={`navbar-link ${activeLink === '/savedRecipes' ? 'active' : ''}`}
+              onClick={() => handleRestart('/savedRecipes')}
             >
               {SAVED_RECIPES}
+            </Nav.Link>
+            <Nav.Link
+              data-testid="cypress-personalRecipe"
+              as={HashLink}
+              smooth
+              to="/personalRecipe"
+              className={`navbar-link ${activeLink === '/personalRecipe' ? 'active' : ''}`}
+              onClick={() => handleRestart('/personalRecipe')}
+            >
+              {PERSONAL_RECIPE}
             </Nav.Link>
           </Nav>
         </div>
       </Navbar.Collapse>
       {isLocalhost && <Debug />}
     </Navbar>
-  )
-}
+  );
+};
 
 export default NavBar;
