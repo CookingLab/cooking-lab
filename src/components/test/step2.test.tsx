@@ -19,7 +19,8 @@ import {
   STEP2_TEATIME,
   RESTART,
   MEAT_DROPDOWN,
-  MEAT_VALUES
+  MEAT_VALUES,
+  DESSERT
 } from '../../i18n/constants';
 
 const mockStore = configureStore([]);
@@ -226,4 +227,26 @@ describe('Step2 component', () => {
     expect(window.location.pathname).toBe('/summary');
   });
 
+  it('should clear meat selection if mealType is breakfast', () => {
+    store = mockStore({
+      cookingLab: {
+        selectedMealType: STEP2_BREAKFAST,
+        selectedMeat: 'chicken',
+        isEditing: false,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Router>
+          <Step2 />
+        </Router>
+      </Provider>
+    );
+
+    const mealType = screen.getAllByText(formatInputValue(STEP2_BREAKFAST))[0];
+    fireEvent.click(mealType);
+    const actions = (store as any).getActions();
+    expect(actions).toEqual([]);
+  });
 });
