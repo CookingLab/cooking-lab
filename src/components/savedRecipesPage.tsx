@@ -87,7 +87,7 @@ const SavedRecipes = () => {
       <div className="container mt-5" data-aos="fade-right">
         <div className="card shadow mb-5">
           <div className="card-body card-body-bg">
-            <h1 className="text-center">
+            <h1 className="text-center" data-testid="saved-recipes-title">
               <strong>{SAVED_RECIPES_TITLE}</strong>
             </h1>
             {!isSavedRecipesEmpty && (
@@ -95,7 +95,7 @@ const SavedRecipes = () => {
             )}
             <div className="container">
               {isSavedRecipesEmpty ? (
-                <p className="text-center">{NO_SAVED_RECIPES}</p>
+                <p className="text-center" data-testid="no-saved-recipes">{NO_SAVED_RECIPES}</p>
               ) : (
                 <ul className="list-group">
                   {Object.entries(savedRecipes).map(([name, url]) => (
@@ -108,6 +108,7 @@ const SavedRecipes = () => {
                         className="btn p-0 float-end"
                         style={{ fontSize: '1.5rem' }}
                         aria-label="Remove saved recipe"
+                        data-testid="remove-saved-recipe-btn"
                       >
                         <i className="bi bi-trash-fill" aria-hidden="true"></i>
                       </button>
