@@ -20,7 +20,6 @@ import {
   RESTART,
   MEAT_DROPDOWN,
   MEAT_VALUES,
-  DESSERT
 } from '../../i18n/constants';
 
 const mockStore = configureStore([]);
