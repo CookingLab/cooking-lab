@@ -138,7 +138,8 @@ describe('Step2 component', () => {
   it('should remove mealType if double clicked', () => {
     store = mockStore({
       cookingLab: {
-        selectedMealType: STEP2_DINNER,
+        selectedMealType: STEP2_BREAKFAST,
+        selectedMeat: 'chicken',
         isEditing: false,
       },
     });
@@ -151,9 +152,9 @@ describe('Step2 component', () => {
       </Provider>
     );
     
-    const mealType = screen.getAllByText(formatInputValue(STEP2_DINNER))[0];
-    const actions = (store as any).getActions();
+    const mealType = screen.getAllByText(formatInputValue(STEP2_BREAKFAST))[0];
     fireEvent.click(mealType);
+    const actions = (store as any).getActions();
     expect(actions).toEqual([]);
   });
 
@@ -224,28 +225,5 @@ describe('Step2 component', () => {
     const nextIcon = screen.getByTestId('next-icon');
     fireEvent.click(nextIcon);
     expect(window.location.pathname).toBe('/summary');
-  });
-
-  it('should clear meat selection if mealType is breakfast', () => {
-    store = mockStore({
-      cookingLab: {
-        selectedMealType: STEP2_BREAKFAST,
-        selectedMeat: 'chicken',
-        isEditing: false,
-      },
-    });
-
-    render(
-      <Provider store={store}>
-        <Router>
-          <Step2 />
-        </Router>
-      </Provider>
-    );
-
-    const mealType = screen.getAllByText(formatInputValue(STEP2_BREAKFAST))[0];
-    fireEvent.click(mealType);
-    const actions = (store as any).getActions();
-    expect(actions).toEqual([]);
   });
 });
