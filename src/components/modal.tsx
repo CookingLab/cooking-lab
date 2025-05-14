@@ -12,7 +12,11 @@ const CustomModal = ({ modalTitle, modalText, show, handleClose }: CustomModalPr
       </Modal.Header>
       <Modal.Body>{modalText}</Modal.Body>
       <Modal.Footer>
-        <Button className="btn btn-dark cooking-lab-btn me-3 ms-3" onClick={handleClose}>
+        <Button
+          data-testid="close-modal-btn"
+          className="btn btn-dark cooking-lab-btn me-3 ms-3"
+          onClick={handleClose}
+        >
           {MODAL_CLOSE}
         </Button>
       </Modal.Footer>
