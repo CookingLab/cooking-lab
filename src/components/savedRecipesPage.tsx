@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import jsPDF from 'jspdf';
-import logo from '../img/cookingLabLogo2.png';
 import { SAVED_RECIPES_TITLE, SAVED_RECIPES_MSG, NO_SAVED_RECIPES, GENERATE_TXT, MODAL_TITLE, MODAL_TEXT } from '../i18n/constants';
 import CustomModal from './modal';
 import {handleGeneratePdfFile} from '../utils/index';
