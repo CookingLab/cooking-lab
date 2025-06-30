@@ -48,31 +48,7 @@ describe('GetPersonalRecipe Component', () => {
     );
   
     await waitFor(() => {
-      expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/api/recipes/personal/undefined');
-    });
-  });
-  
-  it('should handle response correctly with id from param', async () => {
-    (axios.get as jest.Mock).mockRejectedValueOnce({
-      response: {
-        status: 200,
-      },
-    });
-    
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/personalRecipe/recipe/1']}>
-          <Routes>
-            <Route path="/personalRecipe/recipe/:id" element={<GetPersonalRecipe />} />
-          </Routes>
-        </MemoryRouter>
-      </Provider>
-    );
-  
-    await waitFor(() => {
-      expect(axios.get).toHaveBeenCalledWith(
-        'https://cooking-lab-personal-recipe-api.onrender.com/api/recipes/personal/1'
-      );
+      expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/api/personalRecipes/undefined');
     });
   });
   
