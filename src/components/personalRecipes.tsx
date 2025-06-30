@@ -29,10 +29,10 @@ const PersonalRecipes = () => {
   const [tmRecipes, setTmRecipes] = useState<Recipe[]>([]);
   const endpoint = useSelector((state: RootState) => state.cookingLab.backEndEndpoint);
 
-  let targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+  let targetEndpoint = 'https://cooking-lab-recipes-api.onrender.com';
 
   if(endpoint === 'prod'){
-    targetEndpoint = 'https://cooking-lab-personal-recipe-api.onrender.com';
+    targetEndpoint = 'https://cooking-lab-recipes-api.onrender.com';
   }else{
     targetEndpoint = 'http://localhost:8080';
   }
@@ -40,7 +40,7 @@ const PersonalRecipes = () => {
   useEffect(() => {
     const fetchRecipes = async (owner: string) => {
       try {
-        const response = await axios(`${targetEndpoint}/api/recipes/personal?owner=${owner}`);
+        const response = await axios(`${targetEndpoint}/api/personalRecipes?owner=${owner}`);
         const data = response.data;
         return data;
       } catch (error) {
