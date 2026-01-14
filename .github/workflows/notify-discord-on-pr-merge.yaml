@@ -22,21 +22,10 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_MERGED_WEBHOOK_URL }}
         run: |
-          set -euo pipefail
-
-          # Build JSON safely (handles escaping)
-          payload=$(python3 - <<'PY'
-import json, os
-msg = "✅ **PR #{}**: {} was merged into `prod` by **{}**\n🔗 {}".format(
-    os.environ['PR_NUMBER'],
-    os.environ['PR_TITLE'],
-    os.environ['PR_USER'],
-    os.environ['PR_URL']
-)
-print(json.dumps({"content": msg}))
-PY
-)
-
-          # send to discord without printing the webhook
-          curl -sS --fail -H "Content-Type: application/json" -d "$payload" "$DISCORD_WEBHOOK"
-          
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"content\": \"✅ **PR #${PR_NUMBER}**: ${PR_TITLE} was merged into \`prod\` by **${PR_USER}**\n🔗 ${PR_URL}"
+            }" \
+            $DISCORD_WEBHOOK
+            
