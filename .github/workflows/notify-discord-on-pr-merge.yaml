@@ -14,7 +14,6 @@ jobs:
 
     steps:
       - name: Send notification to Discord
-        if: ${{ secrets.DISCORD_MERGED_WEBHOOK_URL != '' }}
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_USER: ${{ github.event.pull_request.user.login }}
