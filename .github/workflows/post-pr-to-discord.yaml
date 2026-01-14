@@ -18,18 +18,9 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_OPENED_PR_WEBHOOK_URL }}
         run: |
-          set -euo pipefail
-
-          payload=$(python3 - <<'PY'
-import json, os
-msg = "📢 New Pull Request Created!\n**#{}**: {}\n🧑‍💻 Author: {}\n🔗 {}".format(
-    os.environ['PR_NUMBER'],
-    os.environ['PR_TITLE'],
-    os.environ['PR_USER'],
-    os.environ['PR_URL']
-)
-print(json.dumps({"content": msg}))
-PY
-)
-
-          curl -sS --fail -H "Content-Type: application/json" -d "$payload" "$DISCORD_WEBHOOK"
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"content\": \"📢 New Pull Request Created!\n**#${PR_NUMBER}**: ${PR_TITLE}\n🧑‍💻 Author: ${PR_USER}\n🔗 ${PR_URL}\"
+            }" \
+            $DISCORD_WEBHOOK
